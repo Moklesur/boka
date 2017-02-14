@@ -24,7 +24,7 @@
 			$text_position = '';
 			if(!empty($CameraSlider['text_position'])) $text_position = $CameraSlider['text_position'];
 
-			echo '<div  data-src="'. $image_url .'" class="fffffffffffff"><div class="camera-slider-inner '.$CameraSlider['heading_alignment'].'" style="margin:'.$text_position.'"><h1 style="'.$CameraSlider_title_color.'">'.$CameraSlider['CameraSlider_title'].'</h1><h3 style="'.$CameraSlider_subtitle_color.'">'.$CameraSlider['CameraSlider_subtitle'].'</h3><div class="slider-details">'.$CameraSlider['CameraSlider_texteditor'].'</div>'.$button.'</div></div>';
+			echo '<div  data-src="'. $image_url .'"><div class="camera-slider-inner '.$CameraSlider['heading_alignment'].'" style="margin:'.$text_position.'"><h1 style="'.$CameraSlider_title_color.'">'.$CameraSlider['CameraSlider_title'].'</h1><h3 style="'.$CameraSlider_subtitle_color.'">'.$CameraSlider['CameraSlider_subtitle'].'</h3><div class="slider-details">'.$CameraSlider['CameraSlider_texteditor'].'</div>'.$button.'</div></div>';
 
 		endforeach; ?>
 	</div>
@@ -37,11 +37,11 @@
 				loader: 'bar',
 				margin:'',
 				alignment: 'center',
-				barPosition: 'top',
+				barPosition: 'bottom',
 				thumbnails: false,
 				playPause: false,
 				loaderColor: '#fff',
-				loaderBgColor: '#b49132',
+				loaderBgColor: '#f93759',
 				hover: true,
 				opacityOnGrid: true,
 				pagination: false

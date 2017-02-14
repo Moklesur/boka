@@ -15,7 +15,7 @@
 				$profile_picture_fallback
 			);
 			if ( ! empty( $image_details ) ) {
-				echo '<a href="'.sow_esc_url( $portfolio['button_url'] ).'" class="portfolio-url"><img src="' . esc_url( $image_details[0] ) . '" class="img-responsive" /><span>'.$portfolio['menu_title'].'</span></a>';
+				echo '<a href="'.sow_esc_url( $portfolio['button_url'] ).'" class="portfolio-url" target="_blank"><img src="' . esc_url( $image_details[0] ) . '" class="img-responsive" /><span>'.$portfolio['menu_title'].'</span></a>';
 			}
 			?>
 		</div>

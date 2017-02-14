@@ -45,8 +45,7 @@ function themetim_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary', 'boka' ),
-		'footer-1' => esc_html__( 'Footer 1', 'boka' ),
-		'footer-2' => esc_html__( 'Footer 2', 'boka' ),
+		'footer-1' => esc_html__( 'Footer Menu', 'boka' ),
 	) );
 
 	/*
@@ -256,26 +255,6 @@ function themetim_active_plugins() {
 		array(
 			'name'      => 'Widgets Bundle by SiteOrigin',
 			'slug'      => 'so-widgets-bundle',
-			'required'  => false,
-		),
-		array(
-			'name'      => 'YITH WooCommerce Compare',
-			'slug'      => 'yith-woocommerce-compare',
-			'required'  => false,
-		),
-		array(
-			'name'      => 'YITH WooCommerce Quick View',
-			'slug'      => 'yith-woocommerce-quick-view',
-			'required'  => false,
-		),
-		array(
-			'name'      => 'Yoast SEO',
-			'slug'      => 'wordpress-seo',
-			'required'  => false,
-		),
-		array(
-			'name'      => 'WP Construction Mode',
-			'slug'      => 'wp-construction-mode',
 			'required'  => false,
 		),
 	);

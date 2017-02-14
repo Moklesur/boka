@@ -4,7 +4,6 @@
  *
  * @package boka
  * @subpackage boka
- * @since boka 1.0.0
  */
 get_header(); ?>
 

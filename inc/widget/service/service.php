@@ -40,7 +40,7 @@ class Boka_Service_Widget extends SiteOrigin_Widget {
 				'icon_color' => array(
 					'type' => 'color',
 					'label' => __( 'Icon Color', 'boka' ),
-					'default' => '#000'
+					'default' => '#f93759'
 				),
 				'title' => array(
 					'type'  => 'text',
@@ -59,6 +59,10 @@ class Boka_Service_Widget extends SiteOrigin_Widget {
 						'mce_buttons_4' => array( $this, 'filter_mce_buttons_5' ),
 						'quicktags_settings' => array( $this, 'filter_quicktags_settings' ),
 					),
+				),
+				'url' => array(
+					'type'  => 'link',
+					'label' => __( 'URL', 'boka' ),
 				),
 			)
 

@@ -10,7 +10,7 @@
 			<?php foreach( $instance['testimonial'] as $i => $testimonial ) : ?>
 				<div class="item">
 					<?php if ( ! empty( $testimonial['testimonial_texteditor'] ) ) : ?>
-						<div class="testimonial-details margin-bottom-20"><?php echo  $testimonial['testimonial_texteditor'] ; ?></div>
+						<div class="testimonial-details margin-bottom-30"><?php echo  $testimonial['testimonial_texteditor'] ; ?></div>
 					<?php endif; ?>
 					<?php if ( ! empty( $testimonial['testimonial_name'] ) ) : ?>
 						<h4><span><?php echo esc_html( $testimonial['testimonial_name'] ); ?></span></h4>

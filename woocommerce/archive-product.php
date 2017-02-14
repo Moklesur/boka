@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header( 'shop' ); ?>
-<main class="themetim-archive-product padding-gap-2">
+<main class="themetim-archive-product padding-gap-2 padding-gap-1">
 	<section>
 		<div class='container'>
 			<div class='row'>
@@ -53,9 +53,9 @@ get_header( 'shop' ); ?>
 					?>
 				</div>
 				<?php if (get_theme_mod('shop_sidebar_enable','1') ) : ?>
-				<div class='col-md-9 col-sm-12 col-xs-12'>
+				<div class='col-md-9 col-sm-12 col-xs-12  padding-gap-3'>
 					<?php else: ?>
-					<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="col-md-12 col-sm-12 col-xs-12  padding-gap-3">
 						<?php endif; ?>
 						<?php if ( have_posts() ) : ?>
 
@@ -112,7 +112,7 @@ get_header( 'shop' ); ?>
 					 * @hooked woocommerce_get_sidebar - 10
 					 */
 					if (get_theme_mod('shop_sidebar_enable','1') ) :
-						?><aside id="secondary" class="widget-area col-md-3 col-sm-12 col-xs-12 padding-gap-1" role="complementary"><?php
+						?><aside id="secondary" class="widget-area col-md-3 col-sm-12 col-xs-12 padding-gap-3" role="complementary"><?php
 						if ( is_active_sidebar( 'shop-product' ) ) :
 							dynamic_sidebar( 'shop-product' );
 						else: echo "<h2>Sidebar Empty</h2>";

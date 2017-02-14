@@ -15,13 +15,13 @@ function themetim_breadcrumbs( $args = array() ) {
 
         global $post;
         $defaults  = array(
-            'separator_icon'      => '&gt;',
+            'separator_icon'      => '<i class="fa fa-angle-right"></i>',
             'breadcrumbs_id'      => 'breadcrumb',
             'breadcrumbs_classes' => 'breadcrumb-trail breadcrumb margin-null',
             'home_title'          => esc_html__( 'Home', 'boka' )
         );
         $args      = apply_filters( 'themetim_breadcrumbs_args', wp_parse_args( $args, $defaults ) );
-        $separator = '<span class="separator"> ' . esc_html( $args['separator_icon'] ) . ' </span>';
+        $separator = '<span class="separator">' . $args['separator_icon'] . ' </span>';
 
         /***** Begin Markup *****/
 
@@ -29,7 +29,7 @@ function themetim_breadcrumbs( $args = array() ) {
         $html = '<div id="' . esc_attr( $args['breadcrumbs_id'] ) . '" class="' . esc_attr( $args['breadcrumbs_classes'] ) . '">';
 
         // Add Homepage link & separator (always present)
-        $html .= '<span class="item-home"><a class="bread-link bread-home" href="' . get_home_url() . '" title="' . esc_attr( $args['home_title'] ) . '">' . esc_html( $args['home_title'] ) . '</a></span>';
+        $html .= '<span class="item-home"><a class="bread-link bread-home" href="' . get_home_url() . '" title="' . esc_attr( $args['home_title'] ) . '">' .  $args['home_title'] . '</a></span>';
         $html .= $separator;
 
         // Post

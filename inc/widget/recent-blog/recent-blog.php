@@ -35,7 +35,7 @@ class Themetim_Recent_Blog_Widget extends SiteOrigin_Widget {
 				'post_limit' => array(
 					'type' => 'number',
 					'label' => __( 'Post Limit', 'boka' ),
-                    'default' => '3'
+                    'default' => '2'
 				),
 			)
 

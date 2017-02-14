@@ -10,7 +10,7 @@ function header_social() {
 
     if(get_theme_mod('social_header_enable','1')) :
         ?>
-        <ul class="list-inline header-social">
+        <ul class="list-inline text-right">
             <?php
             if(get_theme_mod('header_fb', 'https://www.facebook.com/') ) {
                 echo '<li><a href="'.get_theme_mod('header_fb').'"  target="_blank"><i class="fa fa-facebook"></i></a></li>';
@@ -42,24 +42,7 @@ function header_social() {
     endif;
 }
 add_action( 'themetim_header_social', 'header_social' );
-/**
- * Header My Account
- */
-function header_account(){
-    if(get_theme_mod('top_header_tel_enable', '1')):
-        echo '<li><i class="fa fa-phone"></i> '.get_theme_mod('top_header_tel', '880 258 0785').'</li>';
-    endif;
-    if(get_theme_mod('top_header_account_enable', '1')){
-        $login_register =  get_permalink(get_theme_mod('header_login_register'));
-        $header_myaccount =  get_permalink(get_theme_mod('header_myaccount'));
-        if(is_user_logged_in()){
-            echo '<li><a href="'.$header_myaccount.'">'.get_theme_mod('top_header_account','Account').'</a></li><li><a href="'.wp_logout_url().'">Logout</a></li>';
-        }else{
-            echo '<li><a href="'.$login_register.'">Login</a></li><li><a href="'.$login_register.'">Register</a></li>';
-        }
-    }
-}
-add_action( 'themetim_header_account', 'header_account' );
+
 /********************************************************
  * Footer
  ********************************************************/
@@ -67,10 +50,9 @@ add_action( 'themetim_header_account', 'header_account' );
  * Footer Social
  */
 function footer_social() {
-    if(get_theme_mod('social_footer_enable','1')) :
-        ?>
-        <div class="col-md-6 col-sm-6 col-xs-12 footer-social">
-            <ul class="list-inline margin-bottom-0 text-right">
+    if(get_theme_mod('social_footer_enable','1')) : ?>
+        <div class="footer-social margin-top-20">
+            <ul class="list-inline margin-bottom-0">
                 <?php
                 if(get_theme_mod('footer_fb','1')) {
                     echo '<li><a href="'.get_theme_mod('footer_fb','https://www.facebook.com/ ').'"  target="_blank"><i class="fa fa-facebook"></i></a></li>';
@@ -99,8 +81,7 @@ function footer_social() {
                 ?>
             </ul>
         </div>
-        <?php
-    endif;
+    <?php endif;
 }
 add_action( 'themetim_footer_social', 'footer_social' );
 /**
@@ -108,10 +89,10 @@ add_action( 'themetim_footer_social', 'footer_social' );
  */
 function footer_newsletter(){
     if(get_theme_mod('newsletter_footer_enable','1')){ ?>
-        <h4><?php echo get_theme_mod('top_footer_newsletter_title','Newsletter'); ?></h4>
-        <form class="margin-top-xs-20" action="<?php echo get_theme_mod('top_footer_newsletter_url','https://www.yourmailchimpurl.com'); ?>" method="post" target="_blank">
+        <h4><?php echo get_theme_mod('top_footer_newsletter_title','Follow Us'); ?></h4>
+        <form class="position-relative" action="<?php echo get_theme_mod('top_footer_newsletter_url','https://www.yourmailchimpurl.com'); ?>" method="post" target="_blank">
             <input type="email" class="form-control" name="newsletter-email" id="newsletter-email" placeholder="info@yoursite.com" required="">
-            <button type="submit" class="btn btn-primary margin-top-10">Subscribe</button>
+            <button type="submit" class="btn btn-success"><i class="fa fa-envelope"></i></button>
         </form>
     <?php }
 }
@@ -122,8 +103,8 @@ add_action( 'themetim_footer_newsletter', 'footer_newsletter' );
  */
 function middle_footer_description(){
     ?>
-    <div class="col-md-4 col-sm-6 col-xs-12">
-        <h4><?php echo get_theme_mod('middle_footer_text_heading','About'); ?></h4>
+    <div class="col-md-4 col-sm-6 col-xs-12 footer-contact">
+        <h4><?php echo get_theme_mod('middle_footer_text_heading','Get In Touch'); ?></h4>
         <p><?php echo get_theme_mod('middle_footer_text','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.'); ?></p>
     </div>
     <?php
@@ -135,8 +116,8 @@ add_action( 'themetim_middle_footer_description', 'middle_footer_description' );
  */
 function middle_footer_nav_1(){
     ?>
-    <div class="col-md-2 col-sm-6 col-xs-12">
-        <h4><?php echo get_theme_mod('middle_footer_nav_heading_1','The Service'); ?></h4>
+    <div class="col-md-3 col-sm-6 col-xs-12 footer-menu">
+        <h4><?php echo get_theme_mod('middle_footer_nav_heading_1','Information'); ?></h4>
         <?php
         if ( has_nav_menu( 'footer-1' ) ) :
             wp_nav_menu( array( 'theme_location' => 'footer-1', 'menu_class' => 'list-unstyled text-capitalize', 'menu_id' => 'primary-menu','container' => '' ) );
@@ -149,30 +130,12 @@ function middle_footer_nav_1(){
 add_action( 'themetim_middle_footer_nav_1', 'middle_footer_nav_1' );
 
 /**
- * Middle Footer Nav 2
- */
-function middle_footer_nav_2(){
-    ?>
-    <div class="col-md-2 col-sm-6 col-xs-12">
-        <h4><?php echo get_theme_mod('middle_footer_nav_heading_2','Information'); ?></h4>
-        <?php
-        if ( has_nav_menu( 'footer-2' ) ) :
-            wp_nav_menu( array( 'theme_location' => 'footer-2', 'menu_class' => 'list-unstyled text-capitalize', 'menu_id' => 'primary-menu','container' => '' ) );
-        else: echo '<p class="text-capitalize">Please select <a href="/wp-admin/nav-menus.php" class="text-muted">Footer Nav 2</a> </p>';
-        endif;
-        ?>
-    </div>
-    <?php
-}
-add_action( 'themetim_middle_footer_nav_2', 'middle_footer_nav_2' );
-
-/**
  * Bottom Footer Copyright
  */
 function bottom_footer_copyright(){
     ?>
-    <div class="col-md-6 col-sm-6 col-xs-12 site-info">
-        <p><a href="https://wordpress.org"><?php echo get_theme_mod('bottom_footer_copyright','Proudly powered by WordPress'); ?></a></p>
+    <div class="col-md-12 col-sm-12 col-xs-12 site-info text-center">
+        <p><a href="https://wordpress.org"><?php echo get_theme_mod('bottom_footer_copyright','Proudly powered by WordPress'); ?></a> | <a href="http://themetim.com">Boka By ThemeTim</a></p>
     </div>
     <?php
 }

@@ -1,18 +1,8 @@
 /********************************************************
  ThemeTim
- Version:   1.0.1
+ Version:   1.0.0
  ********************************************************/
 jQuery(function(){
-
-    var head = jQuery( 'header' ).height();
-    jQuery(window).scroll(function() {
-        if (jQuery(this).scrollTop() > head){
-            jQuery('header').addClass("sticky");
-        }
-        else{
-            jQuery('header').removeClass("sticky");
-        }
-    });
     /*******************************************************************************
      * Body Animation
      *******************************************************************************/
@@ -22,7 +12,7 @@ jQuery(function(){
             outClass: 'fade-out',
             inDuration: 1500,
             outDuration: 800,
-            linkElement: 'a:not([target="_blank"]):not([href^="#"])',
+            linkElement: '.primary-menu ul li a',
             // e.g. linkElement: 'a:not([target="_blank"]):not([href^="#"])'
             loading: true,
             loadingParentElement: 'body', //animsition wrapper element

@@ -22,13 +22,13 @@
 				endif;
 				if(get_theme_mod('middle_footer_nav_1_enable','1')) :
 					do_action('themetim_middle_footer_nav_1');
-				endif;
-				if(get_theme_mod('middle_footer_nav_2_enable','1')) :
-					do_action('themetim_middle_footer_nav_2');
 				endif; ?>
 				<!--------------- Footer Newsletter ---------------->
-				<div class="col-md-4 col-sm-6 col-xs-12 newsletter">
-					<?php do_action('themetim_footer_newsletter');?>
+				<div class="col-md-5 col-sm-6 col-xs-12 newsletter">
+					<?php
+					do_action('themetim_footer_newsletter');
+					do_action('themetim_footer_social');
+					?>
 				</div>
 			</div>
 		</div>
@@ -40,9 +40,7 @@
 				<?php
 				if(get_theme_mod('bottom_footer_copyright_enable','1')) :
 					do_action('themetim_bottom_footer_copyright');
-				endif;
-				do_action('themetim_footer_social');
-				?>
+				endif; ?>
 			</div>
 		</div>
 	</section>
@@ -74,8 +72,6 @@
 		});
 	});
 </script>
-
-
 
 </body>
 </html>

@@ -9,11 +9,11 @@
 	endif; ?>
 	<?php if ( ! empty( $instance['sub_title'] ) ||  ! empty( $instance['title'] ) ) : ?>
 	<div class="<?php echo $instance['heading_alignment']; ?>-heading margin-bottom-30">
-		<?php if ( ! empty( $instance['sub_title'] ) ) : ?>
-			<h1 class="widget-sub-heading margin-bottom-30 margin-top-10"><?php echo esc_html( $instance['sub_title'] ); ?></h1>
-		<?php endif; ?>
 		<?php if ( ! empty( $instance['title'] ) ) : ?>
 			<h1 class="page-header"><?php echo esc_html( $instance['title'] ); ?></h1>
+		<?php endif; ?>
+		<?php if ( ! empty( $instance['sub_title'] ) ) : ?>
+			<h3 class="widget-sub-heading margin-null"><?php echo esc_html( $instance['sub_title'] ); ?></h3>
 		<?php endif; ?>
 	</div>
 	<?php endif; ?>

@@ -12,11 +12,11 @@
 		'posts_per_page'	  => $recent_post_limit
 	) );
 	?>
-	<div class="recent-blog-post-widget">
+	<div class="recent-blog-post-widget text-left">
 		<?php
 		if ($query_latest_blog->have_posts()) :
 			while ( $query_latest_blog->have_posts() ) : $query_latest_blog->the_post(); ?>
-				<div class="col-md-4 col-sm-6 col-xs-12 margin-top-30">
+				<div class="col-md-6 col-sm-6 col-xs-12 margin-top-30">
 					<?php the_title( sprintf( '<h4 class="entry-title text-capitalize margin-null"><a href="%s">', esc_url( get_permalink() ) ), '</a></h4>' );
 					if ( 'post' === get_post_type() ) : ?>
 						<div class="entry-meta margin-bottom-20 margin-top-10">

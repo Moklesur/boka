@@ -39,23 +39,9 @@ class Boka_Team_Widget extends SiteOrigin_Widget {
 							'type'  => 'text',
 							'label' => __( 'Title', 'boka' ),
 						),
-						'team_price' => array(
+						'team_text' => array(
 							'type'  => 'text',
-							'label' => __( 'Team', 'boka' ),
-						),
-						'texteditor' => array(
-							'type' => 'tinymce',
-							'label' => __( '', 'boka' ),
-							'default' => '',
-							'rows' => 10,
-							'default_editor' => 'html',
-							'button_filters' => array(
-								'mce_buttons' => array( $this, 'filter_mce_buttons' ),
-								'mce_buttons_2' => array( $this, 'filter_mce_buttons_2' ),
-								'mce_buttons_3' => array( $this, 'filter_mce_buttons_3' ),
-								'mce_buttons_4' => array( $this, 'filter_mce_buttons_5' ),
-								'quicktags_settings' => array( $this, 'filter_quicktags_settings' ),
-							),
+							'label' => __( 'Text', 'boka' ),
 						),
 						'profile_picture' => array(
 							'type'     => 'media',
@@ -63,17 +49,29 @@ class Boka_Team_Widget extends SiteOrigin_Widget {
 							'label'    => __( 'Image', 'boka' ),
 							'fallback' => true,
 						),
+						'facebook' => array(
+							'type'  => 'link',
+							'label' => __( 'Facebook URL', 'boka' ),
+						),
+						'linkedin' => array(
+							'type'  => 'link',
+							'label' => __( 'Linkedin URL', 'boka' ),
+						),
+						'twitter' => array(
+							'type'  => 'link',
+							'label' => __( 'Twitter URL', 'boka' ),
+						),
 					),
 				),
 				'per_row' => array(
 					'type'    => 'select',
-					'label'   => __( 'Menus per row', 'boka' ),
+					'label'   => __( 'Per row', 'boka' ),
 					'default' => 3,
 					'options' => array(
 						'12' => 1,
 						'6' => 2,
-						'3' => 4,
 						'4' => 3,
+						'3' => 4,
 					),
 				),
 			)

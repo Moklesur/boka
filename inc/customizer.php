@@ -29,42 +29,6 @@ function themetim_customize_register( $wp_customize ) {
 		}
 	}
 
-	/**
-	 * Boka Page
-	 */
-
-	if (class_exists('WP_Customize_Control')) {
-		class WP_Customize_Pages_Control extends WP_Customize_Control {
-			/**
-			 * Render the control's content.
-			 */
-			public function render_content() {
-				$get_page = wp_dropdown_pages(
-					array(
-						'name'                  => '_default_pages_' . $this->id,
-						'depth'                 => 0,
-						'child_of'              => 0,
-						'echo'                  => 0,
-						'id'                    => null, // string
-						'class'                 => null, // string
-						'show_option_none'      => __( '&mdash; Select &mdash;' ), // string
-						'show_option_no_change' => null, // string
-						'option_none_value'     => '0', // string
-						'selected'              => $this->value(),
-					)
-				);
-
-				$get_page = str_replace( '<select', '<select ' . $this->get_link(), $get_page );
-
-				printf(
-					'<label class="customize-control-select"><span class="customize-control-title">%s</span>%s</label>',
-					$this->label,
-					$get_page
-				);
-			}
-		}
-	}
-
 	/*********************************************
 	 * General
 	 *********************************************/
@@ -367,106 +331,6 @@ function themetim_customize_register( $wp_customize ) {
 		'settings' => 'social_header_enable'
 	) );
 
-
-	$wp_customize->add_setting( 'top_header_tel_enable', array(
-		'default'           => '1',
-		'sanitize_callback' => 'themetim_sanitize_checkbox',
-	) );
-	$wp_customize->add_control( 'top_header_tel_enable', array(
-		'label' => __( 'Enable Tel', 'boka' ),
-		'type' => 'checkbox',
-		'description'   => __('', 'boka'),
-		'section' => 'title_tagline',
-		'settings' => 'top_header_tel_enable'
-	) );
-
-	$wp_customize->add_setting( 'top_header_tel', array(
-		'default'           => '180 1584 7821',
-		'sanitize_callback' => 'themetim_sanitize_text',
-	) );
-	$wp_customize->add_control( 'top_header_tel', array(
-		'label' => __( 'Phone Number', 'boka' ),
-		'type' => 'text',
-		'description'   => __('', 'boka'),
-		'section' => 'title_tagline',
-		'settings' => 'top_header_tel'
-	) );
-
-	$wp_customize->add_setting( 'top_header_account_enable', array(
-		'default'           => '1',
-		'sanitize_callback' => 'themetim_sanitize_checkbox',
-	) );
-	$wp_customize->add_control( 'top_header_account_enable', array(
-		'label' => __( 'Enable Login Register', 'boka' ),
-		'type' => 'checkbox',
-		'description'   => __('', 'boka'),
-		'section' => 'title_tagline',
-		'settings' => 'top_header_account_enable'
-	) );
-
-
-	$wp_customize->add_setting( 'top_header_account', array(
-		'default'           => 'Account',
-		'sanitize_callback' => 'themetim_sanitize_text',
-	) );
-	$wp_customize->add_control( 'top_header_account', array(
-		'label' => __( 'My Account', 'boka' ),
-		'type' => 'text',
-		'section' => 'title_tagline',
-		'settings' => 'top_header_account',
-		'description'   => __('## Title of the link ##', 'boka')
-	) );
-
-	$wp_customize->add_setting( 'header_myaccount', array(
-		'default'           => '',
-		'sanitize_callback' => 'esc_url_raw',
-	) );
-	$wp_customize->add_control(
-		new WP_Customize_Pages_Control(
-			$wp_customize,
-			'header_myaccount',
-			array(
-				'label'    => __( 'My Account Page', 'boka' ),
-				'description'   => __('', 'boka'),
-				'settings' => 'header_myaccount',
-				'section'  => 'title_tagline'
-			)
-		)
-	);
-
-	$wp_customize->add_setting( 'header_login_register', array(
-		'default'           => '',
-		'sanitize_callback' => 'esc_url_raw',
-	) );
-	$wp_customize->add_control(
-		new WP_Customize_Pages_Control(
-			$wp_customize,
-			'header_login_register',
-			array(
-				'label'    => __( 'Login / Register Page', 'boka' ),
-				'settings' => 'header_login_register',
-				'description'   => __('', 'boka'),
-				'section'  => 'title_tagline'
-			)
-		)
-	);
-	/**
-	 * Boka Divider
-	 */
-	$wp_customize->add_setting('themetim_options[divider]', array(
-			'type'              => 'divider_control',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'esc_attr',
-		)
-	);
-	$wp_customize->add_control( new themetim_divider( $wp_customize, 'header_bottom', array(
-			'label' => __('Bottom Header', 'boka'),
-			'section' => 'title_tagline',
-			'description'   => __('', 'boka'),
-			'settings' => 'themetim_options[divider]'
-		) )
-	);
-
 	$wp_customize->add_setting( 'bottom_header_search', array(
 		'default'           => '1',
 		'sanitize_callback' => 'themetim_sanitize_checkbox',
@@ -543,7 +407,7 @@ function themetim_customize_register( $wp_customize ) {
 		'settings' => 'newsletter_footer_enable'
 	) );
 	$wp_customize->add_setting( 'top_footer_newsletter_title', array(
-		'default'           => 'Newsletter',
+		'default'           => 'Follow Us',
 		'sanitize_callback' => 'themetim_sanitize_text',
 	) );
 	$wp_customize->add_control( 'top_footer_newsletter_title', array(
@@ -578,7 +442,7 @@ function themetim_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'middle_footer_text_heading', array(
-		'default'           => 'About',
+		'default'           => 'Get In Touch',
 		'sanitize_callback' => 'themetim_sanitize_text',
 	) );
 	$wp_customize->add_control( 'middle_footer_text_heading', array(
@@ -602,7 +466,7 @@ function themetim_customize_register( $wp_customize ) {
 
 
 	$wp_customize->add_setting( 'middle_footer_nav_heading_1', array(
-		'default'           => 'The Service',
+		'default'           => 'Information',
 		'sanitize_callback' => 'themetim_sanitize_text',
 	) );
 	$wp_customize->add_control( 'middle_footer_nav_heading_1', array(
@@ -622,29 +486,6 @@ function themetim_customize_register( $wp_customize ) {
 		'description'   => __('', 'boka'),
 		'section' => 'footer_settings',
 		'settings' => 'middle_footer_nav_1_enable'
-	) );
-
-	$wp_customize->add_setting( 'middle_footer_nav_heading_2', array(
-		'default'           => 'Information',
-		'sanitize_callback' => 'themetim_sanitize_text',
-	) );
-	$wp_customize->add_control( 'middle_footer_nav_heading_2', array(
-		'label' => __( 'Heading', 'boka' ),
-		'type' => 'text',
-		'section' => 'footer_settings',
-		'settings' => 'middle_footer_nav_heading_2',
-		'description'   => __('', 'boka')
-	) );
-	$wp_customize->add_setting( 'middle_footer_nav_2_enable', array(
-		'default'           => '1',
-		'sanitize_callback' => 'themetim_sanitize_checkbox',
-	) );
-	$wp_customize->add_control( 'middle_footer_nav_2_enable', array(
-		'label' => __( 'Enable Nav 2', 'boka' ),
-		'type' => 'checkbox',
-		'description'   => __('', 'boka'),
-		'section' => 'footer_settings',
-		'settings' => 'middle_footer_nav_2_enable'
 	) );
 
 	/**
@@ -1187,7 +1028,7 @@ function themetim_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'btn_primary_bg_hover',
 		array(
-			'default'           => '#fff',
+			'default'           => '#f93759',
 			'sanitize_callback' => 'sanitize_hex_color',
 		)
 	);
@@ -1206,7 +1047,7 @@ function themetim_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'btn_primary_text_hover',
 		array(
-			'default'           => '#000',
+			'default'           => '#fff',
 			'sanitize_callback' => 'sanitize_hex_color',
 		)
 	);
@@ -1225,7 +1066,7 @@ function themetim_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'btn_primary_border_hover',
 		array(
-			'default'           => '#000',
+			'default'           => '#f93759',
 			'sanitize_callback' => 'sanitize_hex_color',
 		)
 	);
@@ -1261,7 +1102,7 @@ function themetim_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'btn_success_bg',
 		array(
-			'default'           => '#000',
+			'default'           => '#fff',
 			'sanitize_callback' => 'sanitize_hex_color',
 		)
 	);
@@ -1280,7 +1121,7 @@ function themetim_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'btn_success_text',
 		array(
-			'default'           => '#fff',
+			'default'           => '#000',
 			'sanitize_callback' => 'sanitize_hex_color',
 		)
 	);
@@ -1299,7 +1140,7 @@ function themetim_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'btn_success_border',
 		array(
-			'default'           => '#000',
+			'default'           => '#fff',
 			'sanitize_callback' => 'sanitize_hex_color',
 		)
 	);
@@ -1318,7 +1159,7 @@ function themetim_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'btn_success_bg_hover',
 		array(
-			'default'           => '#fff',
+			'default'           => '#f93759',
 			'sanitize_callback' => 'sanitize_hex_color',
 		)
 	);
@@ -1337,7 +1178,7 @@ function themetim_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'btn_success_text_hover',
 		array(
-			'default'           => '#000',
+			'default'           => '#fff',
 			'sanitize_callback' => 'sanitize_hex_color',
 		)
 	);
@@ -1356,7 +1197,7 @@ function themetim_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'btn_success_border_hover',
 		array(
-			'default'           => '#fff',
+			'default'           => '#f93759',
 			'sanitize_callback' => 'sanitize_hex_color',
 		)
 	);
@@ -1533,7 +1374,7 @@ function themetim_customize_register( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_setting( 'body_font_size', array(
-		'default'           => '14',
+		'default'           => '15',
 		'sanitize_callback' => 'absint',
 	) );
 	$wp_customize->add_control( 'body_font_size', array(
