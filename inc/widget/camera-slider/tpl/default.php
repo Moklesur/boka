@@ -7,9 +7,8 @@
 			endif;
 
 			$CameraSlider_image = $CameraSlider['CameraSlider_image'];
-			$CameraSlider_image_fallback = $CameraSlider['profile_picture_fallback'];
 			$image_url = siteorigin_widgets_get_attachment_image_src(
-				$CameraSlider_image, '', $CameraSlider_image_fallback
+				$CameraSlider_image, '', ''
 			);
 			if ( ! empty( $image_url ) ) {
 				$image_url = esc_url( $image_url[0] );
