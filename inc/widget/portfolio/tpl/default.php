@@ -8,11 +8,8 @@
 		<div class="boka-portfolio-list  position-relative padding-null col-md-<?php echo esc_attr( $instance['per_row'] ); ?> col-sm-<?php echo esc_attr( $instance['per_row'] ); ?> col-xs-6">
 			<?php
 			$profile_picture = $portfolio['profile_picture'];
-			$profile_picture_fallback = $portfolio['profile_picture_fallback'];
 			$image_details = siteorigin_widgets_get_attachment_image_src(
-				$profile_picture,
-				'',
-				$profile_picture_fallback
+				$profile_picture, '', ''
 			);
 			if ( ! empty( $image_details ) ) {
 				echo '<a href="'.sow_esc_url( $portfolio['button_url'] ).'" class="portfolio-url" target="_blank"><img src="' . esc_url( $image_details[0] ) . '" class="img-responsive" /><span>'.$portfolio['menu_title'].'</span></a>';

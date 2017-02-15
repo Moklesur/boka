@@ -8,13 +8,11 @@
 		<?php foreach( $instance['brand'] as $i => $brand ) : ?>
 			<?php
 			$profile_picture = $brand['profile_picture'];
-			$profile_picture_fallback = $brand['profile_picture_fallback'];
 			$image_details = siteorigin_widgets_get_attachment_image_src(
-				$profile_picture,
-				'thumbnail',
-				$profile_picture_fallback
+				$profile_picture, 'thumbnail', ''
 			);
 			$url = $brand['button_url'];
+
 			if ( ! empty( $url ) ) {
 				$url = sow_esc_url( $brand['button_url'] );
 			}else{

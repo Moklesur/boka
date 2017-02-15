@@ -17,11 +17,8 @@
 					<?php endif; ?>
 					<?php
 					$profile_picture = $testimonial['testimonial_profile_picture'];
-					$profile_picture_fallback = $testimonial['profile_picture_fallback'];
 					$image_details = siteorigin_widgets_get_attachment_image_src(
-						$profile_picture,
-						'thumbnail',
-						$profile_picture_fallback
+						$profile_picture, 'thumbnail',''
 					);
 					if ( ! empty( $image_details ) ) {
 						echo '<img src="' . esc_url( $image_details[0] ) . '" class="img-circle center-block" />';
