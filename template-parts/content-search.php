@@ -15,7 +15,7 @@ $margin[] = 'padding-gap-6 overflow';
 
 		<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta margin-top-10">
-			<?php themetim_posted_on(); ?>
+			<?php boka_posted_on(); ?>
 		</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->

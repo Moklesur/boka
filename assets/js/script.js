@@ -1,39 +1,13 @@
 /********************************************************
- ThemeTim
- Version:   1.0.0
+ Boka
  ********************************************************/
-jQuery(function(){
-    /*******************************************************************************
-     * Body Animation
-     *******************************************************************************/
-    if(jQuery('.animsition').length){
-        jQuery(".animsition").animsition({
-            inClass: 'fade-in',
-            outClass: 'fade-out',
-            inDuration: 1500,
-            outDuration: 800,
-            linkElement: '.primary-menu ul li a',
-            // e.g. linkElement: 'a:not([target="_blank"]):not([href^="#"])'
-            loading: true,
-            loadingParentElement: 'body', //animsition wrapper element
-            loadingClass: 'animsition-loading',
-            loadingInner: '', // e.g '<img src="loading.svg" />'
-            timeout: false,
-            timeoutCountdown: 5000,
-            onLoadEvent: true,
-            browser: [ 'animation-duration', '-webkit-animation-duration'],
-            // "browser" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
-            // The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
-            overlay : false,
-            overlayClass : 'animsition-overlay-slide',
-            overlayParentElement : 'body',
-            transition: function(url){ window.location.href = url; }
-        });
-    }
+
+var $ = jQuery;
+$(function(){
     /*******************************************************************************
      * Smooth Scroll
      *******************************************************************************/
-    jQuery.srSmoothscroll({
+    $.srSmoothscroll({
         step: 95,
         speed: 600,
         ease: 'swing',
@@ -41,4 +15,26 @@ jQuery(function(){
         container: jQuery(window)
     })
 
+});
+
+/*******************************************************************************
+ * Mega Menu *
+ *******************************************************************************/
+$(function() {
+    window.prettyPrint && prettyPrint();
+    $(document).on('click', '.primary-menu .xs-dropdown-menu', function(e) {
+        e.stopPropagation();
+    });
+    $('.primary-menu .xs-dropdown-menu').parent().hover(function() {
+        var menu = $(this).find("ul");
+        var menupos = $(menu).offset();
+        if (menupos.left + menu.width() > $(window).width()) {
+            var newpos = -$(menu).width();
+            menu.css({ left: newpos });
+        }
+    });
+    $(document).on('click', '.primary-menu .xs-angle-down', function(e) {
+        e.preventDefault();
+        $(this).parents('.xs-dropdown').find('.xs-dropdown-menu').toggleClass('active');
+    });
 });

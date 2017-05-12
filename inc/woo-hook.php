@@ -1,10 +1,10 @@
 <?php
 /**
- * ThemeTim WooCommerce Hook
+ * Boka WooCommerce Hook
  */
 
 /**
- * ThemeTim Shop Page
+ * Boka Shop Page
  * Remove woo #container
  */
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
@@ -15,7 +15,7 @@ remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wra
  * Remove hook
  * Modify Breadcrumbs
  */
-add_action( 'init', 'themetim_woo_breadcrumbs' );
-function themetim_woo_breadcrumbs() {
+add_action( 'init', 'boka_woo_breadcrumbs' );
+function boka_woo_breadcrumbs() {
     remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
 }

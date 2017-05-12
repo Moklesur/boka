@@ -1,14 +1,14 @@
 /*
 Theme Name: Boka
-Theme URI: http://demo.themetim.com/boka/
+Theme URI:
 Author: themetim
-Author URI: http://themetim.com/
+Author URI:
 Description: Boka is responsive woocommerce integrated theme which is designed subtle and prevailing. Ideal for featuring Boka products and techniques. It has Boka optimized for best practice SEO with visual page builder integration.
-Version: 1.0.0
+Version: 1.0.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: boka
-Tags: left-sidebar, right-sidebar, custom-background, custom-colors, custom-menu, featured-images, full-width-template, post-formats, sticky-post, translation-ready, theme-options, threaded-comments, footer-widgets, custom-logo
+Tags: left-sidebar, right-sidebar, custom-background, custom-colors, custom-menu, featured-images, full-width-template, post-formats, translation-ready, theme-options, threaded-comments, custom-logo, footer-widgets
 */
 
 /********************************************************
@@ -39,6 +39,18 @@ a,p,.woocommerce input.button,.woocommerce-cart .cart-collaterals .cart_totals t
 }
 p,.woocommerce-Address address {
 	line-height: 29px;
+}
+table {
+	width: 100%;
+}
+th, td {
+	border: 1px solid #eee;
+	padding: 6px;
+	text-align: center;
+}
+.widget_calendar caption{
+	padding-top: 0;
+	font-size: 18px;
 }
 .panel,.navbar-default .navbar-collapse, .navbar-default .navbar-form,.navbar-default .navbar-collapse, .navbar-default .navbar-form{
 	border: 0;
@@ -149,7 +161,7 @@ img{
 .woocommerce ul.products li.product .price del,.margin-right-10{
 	margin-right: 10px;
 }
-.display-inline-b,.header-top .header-social a,.footer-social a,.footer-top li a,.woocommerce ul.products li.product .price del,.owl-nav>div,.wpcf7-form-control-wrap{
+.display-inline-b,.header-top .header-social a,.social-media a a,.footer-top li a,.woocommerce ul.products li.product .price del,.owl-nav>div,.wpcf7-form-control-wrap{
 	display: inline-block;
 }
 .overflow,.woocommerce ul.products li.product .price{
@@ -228,6 +240,11 @@ img{
 	margin-top: -40px;
 	display: none;
 }
+.primary-menu ul .xs-dropdown-menu li a{
+	padding: 10px 15px;
+	width: 100%;
+	display: block;
+}
 .primary-menu .dropdown-submenu:hover>.dropdown-menu, .primary-menu ul.nav li.dropdown:hover > ul.dropdown-menu {
 	display: block;
 	padding: 0;
@@ -243,6 +260,9 @@ img{
 .primary-menu .dropdown-menu>.dropdown>.dropdown-menu {
 	top: 0;
 	left: 100%;
+}
+.camera_wrap{
+	height: 600px;
 }
 .camera_overlayer {
 	background: rgba(0, 0, 0, .7);
@@ -638,17 +658,23 @@ img{
 	margin-bottom: 30px;
 	margin-top: 40px;
 }
-.footer-menu li:first-child a{
+.footer-top .menu{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.footer-top .menu li:first-child a{
 	padding-top: 0;
 }
-.footer-menu li a{
+.footer-top .menu li a{
 	padding: 5px 0;
+	text-transform: capitalize;
 }
 .footer-bottom{
 	padding-top: 20px;
 	background: #f93759;
 }
-.footer-contact .fa{
+.footer-top .widget_text .fa{
 	color: #f93759;
 	margin-right: 10px;
 }
@@ -663,7 +689,10 @@ img{
 	top: 4px;
 	right: 3px;
 }
-.footer-top .footer-social a{
+.footer-top .social-media{
+	margin-top: 20px;
+ }
+.social-media a,.footer-top .social-media a{
 	border:1px solid;
 	width: 40px;
 	height: 40px;
@@ -687,11 +716,55 @@ img{
 .breadcrumb .separator {
 	padding: 0 5px 0 8px;
 }
-.wp-caption{}
-.wp-caption-text{}
-.gallery-caption {}
+.alignleft {
+	display: inline;
+	float: left;
+	margin: 0 15px 15px 0;
+}
+.alignright {
+	display: inline;
+	float: right;
+	margin: 0 0 15px 15px;
+}
+.aligncenter {
+	display: block;
+	margin: 0 auto;
+}
+.wp-caption {
+	margin-bottom: 30px;
+	max-width: 100%;
+}
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin: 0 auto;
+}
+.wp-caption-text {
+	text-align: center;
+	background: #f9f9f9;
+	padding: 15px;
+}
+.wp-caption .wp-caption-text {
+	margin: 0;
+}
+.gallery {
+	margin-bottom: 30px;
+}
+.gallery-item {
+	display: inline-block;
+	text-align: center;
+	width: 100%;
+}
+.gallery-columns-2 .gallery-item {
+	max-width: 50%;
+}
+.gallery-columns-3 .gallery-item {
+	max-width: 33.33%;
+}
+.gallery-columns-4 .gallery-item {
+	max-width: 25%;
+}
+.gallery-caption {
+	display: block;
+}
 .bypostauthor{}
-.alignright{}
-.alignleft{}
-.aligncenter{}
 .sticky{}

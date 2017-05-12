@@ -1,36 +1,22 @@
 === Boka ===
 
-Contributors: automattic
-Tags: translation-ready, left-sidebar, right-sidebar, custom-background, custom-colors, custom-menu, featured-images, full-width-template, post-formats, sticky-post, translation-ready, theme-options, threaded-comments, footer-widgets, custom-logo
-
+Contributors: Boka
 Requires at least: 4.0
 Tested up to: 4.4.2
-Stable tag: 1.0.0
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
-A starter theme called Boka, or underscores.
+Tags: left-sidebar, right-sidebar, custom-background, custom-colors, custom-menu, featured-images, full-width-template, post-formats, translation-ready, theme-options, threaded-comments, custom-logo, footer-widgets
 
 == Description ==
 
 Boka is responsive woocommerce integrated theme which is designed subtle and prevailing. Ideal for featuring Boka products and techniques. It has Boka optimized for best practice SEO with visual page builder integration.
 
 == Installation ==
-	
+
 1. In your admin panel, go to Appearance > Themes and click the Add New button.
 2. Click Upload and Choose File, then select the theme's .zip file. Click Install Now.
 3. Click Activate to use your new theme right away.
-
-== Frequently Asked Questions ==
-
-= Does this theme support any plugins? =
-
-Boka includes support for Infinite Scroll in Jetpack.
-
-== Changelog ==
-
-= 1.0 - May 12 2015 =
-* Initial release
 
 == Credits ==
 
@@ -57,12 +43,6 @@ Boka includes support for Infinite Scroll in Jetpack.
   Licensed under the MIT license - http://opensource.org/licenses/MIT
   Copyright (c) 2016 Daniel Eden
 
-* Animsition
-  animsition v4.0.2
-  A simple and easy jQuery plugin for CSS animated page transitions.
-  http://blivesta.github.io/animsition
-  License : MIT
-  Author : blivesta (http://blivesta.com/)
 
 * Camera slideshow
   Camera slideshow v1.4.0 - a jQuery slideshow with many effects, transitions, easy to customize, using canvas and mobile ready, based on jQuery 1.9.1+
@@ -88,3 +68,9 @@ Boka includes support for Infinite Scroll in Jetpack.
   copyright (c) 2012 https://github.com/simov/simplr-smoothscroll
   licensed under MIT
   requires jquery.mousewheel - https://github.com/jquery/jquery-mousewheel
+
+* Image (used in screenshot)
+  https://pixabay.com/en/person-man-male-commuting-bike-731492/
+  https://www.pexels.com/photo/redneck-man-fashion-model-24257/
+  https://www.pexels.com/photo/woman-in-white-dress-and-black-ling-sicks-near-white-wall-48714/
+  https://www.pexels.com/photo/man-in-red-jacket-carrying-brown-leather-shoulder-bag-standing-on-foggy-weathered-field-63951/

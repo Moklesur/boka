@@ -17,10 +17,10 @@
 		if ($query_latest_blog->have_posts()) :
 			while ( $query_latest_blog->have_posts() ) : $query_latest_blog->the_post(); ?>
 				<div class="col-md-6 col-sm-6 col-xs-12 margin-top-30">
-					<?php the_title( sprintf( '<h4 class="entry-title text-capitalize margin-null"><a href="%s">', esc_url( get_permalink() ) ), '</a></h4>' );
+					<?php the_title( sprintf( '<h4 class="entry-title text-capitalize margin-null link-fix"><a href="%s">', esc_url( get_permalink() ) ), '</a></h4>' );
 					if ( 'post' === get_post_type() ) : ?>
-						<div class="entry-meta margin-bottom-20 margin-top-10">
-							<?php themetim_posted_on(); ?>
+						<div class="entry-meta margin-bottom-20 margin-top-10 link-fix">
+							<?php boka_posted_on(); ?>
 						</div><!-- .entry-meta -->
 					<?php endif; ?>
 					<?php if ( has_post_thumbnail() ) : ?>
@@ -36,9 +36,6 @@
 							<a href="<?php the_permalink(); ?>" class="btn btn-default">Read More</a>
 						</div>
 					<?php endif;  ?>
-					<div class="pull-right margin-top-10">
-						<?php themetim_social_sharing(); ?>
-					</div>
 				</div>
 			<?php endwhile;
 			wp_reset_postdata();

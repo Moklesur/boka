@@ -12,66 +12,50 @@
 ?>
 
 <footer class="footer-main">
+	<?php if ( (is_active_sidebar( 'footer-widget-1' ) ) || ( is_active_sidebar( 'footer-widget-1' ))  || ( is_active_sidebar( 'footer-widget-1' ) )) : ?>
 	<!--------------- Footer Top ---------------->
 	<section class="footer-top">
 		<div class="container">
 			<div class="row">
-				<?php
-				if(get_theme_mod('middle_footer_text_enable','1')) :
-					do_action('themetim_middle_footer_description');
-				endif;
-				if(get_theme_mod('middle_footer_nav_1_enable','1')) :
-					do_action('themetim_middle_footer_nav_1');
-				endif; ?>
-				<!--------------- Footer Newsletter ---------------->
-				<div class="col-md-5 col-sm-6 col-xs-12 newsletter">
+				<div class="col-md-4 col-sm-6 col-xs-12">
 					<?php
-					do_action('themetim_footer_newsletter');
-					do_action('themetim_footer_social');
+					if ( is_active_sidebar( 'footer-widget-1' ) ) :
+						dynamic_sidebar( 'footer-widget-1' );
+					endif;
+					?>
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-12">
+					<?php
+					if ( is_active_sidebar( 'footer-widget-2' ) ) :
+						dynamic_sidebar( 'footer-widget-2' );
+					endif;
+					?>
+				</div>
+				<div class="col-md-5 col-sm-12 col-xs-12">
+					<?php
+					if ( is_active_sidebar( 'footer-widget-3' ) ) :
+						dynamic_sidebar( 'footer-widget-3' );
+					endif;
 					?>
 				</div>
 			</div>
 		</div>
 	</section>
+	<?php endif; ?>
+	<?php
+	if(get_theme_mod('bottom_footer_copyright_enable','1')) : ?>
 	<!--------------- Footer bottom ---------------->
 	<section class="footer-bottom">
 		<div class="container">
 			<div class="row">
-				<?php
-				if(get_theme_mod('bottom_footer_copyright_enable','1')) :
-					do_action('themetim_bottom_footer_copyright');
-				endif; ?>
+				<?php do_action('boka_bottom_footer_copyright'); ?>
 			</div>
 		</div>
 	</section>
+	<?php endif; ?>
 </footer>
 </div>
 <?php wp_footer(); ?>
-
-<script>
-	var $ = jQuery;
-	$(function() {
-		/***************************************************************************************
-		 * Mega Menu
-		 ***************************************************************************************/
-		window.prettyPrint && prettyPrint();
-		$(document).on('click', '.primary-menu .xs-dropdown-menu', function(e) {
-			e.stopPropagation();
-		});
-		$('.primary-menu .xs-dropdown-menu').parent().hover(function() {
-			var menu = $(this).find("ul");
-			var menupos = $(menu).offset();
-			if (menupos.left + menu.width() > $(window).width()) {
-				var newpos = -$(menu).width();
-				menu.css({ left: newpos });
-			}
-		});
-		$(document).on('click', '.primary-menu .xs-angle-down', function(e) {
-			e.preventDefault();
-			$(this).parents('.xs-dropdown').find('.xs-dropdown-menu').toggleClass('active');
-		});
-	});
-</script>
 
 </body>
 </html>

@@ -1,6 +1,6 @@
 /********************************************************
   Mobile Devices
-  Version:   1.0.0
+  Version:   1.0.1
 ********************************************************/
 
 /********************************************************
@@ -16,18 +16,24 @@
     .woocommerce a.add_to_cart_button{
         padding: .618em 6px;
     }
-    .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
-        width: 22.566666%;
-    }
     .woocommerce.archive ul.products li.last{
         margin-right: 0;
+    }
+    .woocommerce ul.products li.product .button{
+        width: 100%;
+        text-align: center;
     }
 }
 /********************************************************
         ## Min Width 768px And Max Width 991px
 ********************************************************/
 @media (min-width: 768px) and (max-width: 991px){
-
+    .camera_target_content{
+        top: 15%;
+    }
+    .pricing-list {
+        padding: 25px;
+    }
 }
 /********************************************************
         ## Max Width 767px
@@ -64,8 +70,13 @@
     .logo img{
         margin: 0 auto;
     }
+    .header-top .header-social ul{
+        text-align: left;
+    }
     .header-social {
-        margin-bottom: 10px;
+        position: absolute;
+        top: 100px;
+        z-index: 1;
     }
     .header-middle .mini-cart {
         position: absolute;
@@ -79,16 +90,18 @@
         padding: 15px;
     }
     .navbar-default .navbar-toggle{
-
+        position: relative;
+        z-index: 20;
+        border-color: #f93759;
     }
     .navbar-default .navbar-toggle .icon-bar{
-
+        background-color: #f93759;
     }
     .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover{
-
+        background-color: #f93759;
     }
     .navbar-default .navbar-toggle:focus .icon-bar, .navbar-default .navbar-toggle:hover .icon-bar{
-
+        background-color: #fff;
     }
     .woocommerce .product-fix .compare, .woocommerce .product-fix .yith-wcqv-button{
         visibility: visible;
@@ -100,13 +113,64 @@
     .footer-bottom ,.footer-bottom ul{
         text-align: center;
     }
-
+    .logo{
+        text-align: center;
+    }
+    .primary-menu ul li:first-child a{
+        padding-left: 15px;
+    }
+    .header-search .form-control{
+        width: 100%;
+    }
+    .header-search .btn {
+        top: 14px;
+        right: 19px;
+    }
+    .camera-slider-inner.text-center {
+        padding: 0 15px;
+    }
+    .camera-slider-inner h1 {
+        font-size: 30px;
+    }
+    .camera-slider-inner h3 {
+        font-size: 18px;
+    }
+    .camera_wrap{
+        height: 350px;
+    }
+    .pricing-list {
+        padding: 20px;
+    }
+    .camera_target_content{
+        top: 13%;
+    }
 }
 /********************************************************
         ## Max Width 480px
 ********************************************************/
 @media only screen and (max-width:480px) {
     .woocommerce ul.products li.product, .woocommerce-page ul.products li.product, .woocommerce-page[class*=columns-] ul.products li.product, .woocommerce[class*=columns-] ul.products li.product{
+        width: 100%;
+    }
+    .header-social li{
+        padding: 0 2px;
+    }
+    .slider-details{
+        display: none;
+    }
+    .camera_target_content{
+        top: 10%;
+    }
+    .camera-slider-inner.text-left{
+        padding-left: 15px;
+    }
+    .camera-slider-inner.text-right{
+        padding-right: 15px;
+    }
+    .fact-list li {
+        width: 50%;
+    }
+    .boka-portfolio-list{
         width: 100%;
     }
 }

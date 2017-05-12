@@ -5,12 +5,7 @@
  *
  */
 
-function themetim_typography_color($color) {
-
-    wp_enqueue_style(
-        'themetim',
-        get_template_directory_uri() . '/assets/css/themetim.css'
-    );
+function boka_typography_color($color) {
 
     $color = '';
 
@@ -27,11 +22,11 @@ function themetim_typography_color($color) {
     $heading_font_family = get_theme_mod( 'heading_font_family', 'Source Sans Pro' );
     $color .= "h1, h2, h3, h4, h5, h6 { color:" . esc_attr($heading_color) . ";font-family: ". esc_attr(str_replace('+', ' ', $heading_font_family)) ."} ";
 
-    $link_color = get_theme_mod( 'link_color', '#000' );
-    $color .= ".woocommerce ul.products li.product .price,a,.header-bottom .navbar-default .active a:hover,.header-bottom .navbar-default li> a,.woocommerce div.product .product_title,.woocommerce div.product p.price, .woocommerce div.product span.price,.woocommerce div.product form.cart .variations td.label { color:" . esc_attr($link_color) . "} ";
+    $link_color = get_theme_mod( 'link_color', '#f93759' );
+    $color .= "a,.header-social a:hover,.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover,.logo a:hover,.service-url:hover,.team-social a:hover,.link-fix a:hover ,.footer-top a:hover,.woo-widget a:hover,.woocommerce-MyAccount-navigation a:hover,.blog-link header a:hover,.widget-area a:hover{ color:" . esc_attr($link_color) . "} ";
 
-    $link_hover_color = get_theme_mod( 'link_hover_color', '#f93759' );
-    $color .= ".team-social a:hover ,.footer-top .footer-social a:hover,a:hover,.header-bottom .navbar-default .active a,.header-bottom .navbar-default .active a:hover,.header-bottom .navbar-default li> a:hover { color:" . esc_attr($link_hover_color) . "} ";
+    $link_hover_color = get_theme_mod( 'link_hover_color', '#000' );
+    $color .= "a:hover,a:focus,.header-social a,.navbar-default .navbar-nav>li>a,.logo a,.service-url,.link-fix a,.site-info a:hover,.woocommerce ul.products li.product .price,.woo-widget a,.woocommerce-MyAccount-navigation a,.blog-link header a,.widget-area a{ color:" . esc_attr($link_hover_color) . "} ";
 
     /*
      * Header Section
@@ -87,9 +82,9 @@ function themetim_typography_color($color) {
 
     $color .= ".camera_wrap .slider-button .btn-success,.btn-success,.btn-success.disabled{ background-color:" . esc_attr($btn_success_bg) . "; color: " . esc_attr($btn_success_text) . ";border-color: " . esc_attr($btn_success_border) . "; } ";
 
-    $btn_success_bg_hover = get_theme_mod( 'btn_success_bg_hover', '#f93759' );
+    $btn_success_bg_hover = get_theme_mod( 'btn_success_bg_hover', '#000' );
     $btn_success_text_hover = get_theme_mod( 'btn_success_text_hover', '#fff' );
-    $btn_success_border_hover = get_theme_mod( 'btn_success_border_hover', '#f93759' );
+    $btn_success_border_hover = get_theme_mod( 'btn_success_border_hover', '#000' );
 
     $color .= ".camera_wrap .slider-button .btn-success:hover,.btn-success.active, .btn-success.focus, .btn-success:active, .btn-success:focus, .btn-success:hover, .open>.dropdown-toggle.btn-success{ background-color:" . esc_attr($btn_success_bg_hover) . "; color: " . esc_attr($btn_success_text_hover) . ";border-color: " . esc_attr($btn_success_border_hover) . "; } ";
 
@@ -114,7 +109,6 @@ function themetim_typography_color($color) {
     /*
      * Typography & Color Inline
      */
-
-    wp_add_inline_style( 'themetim', $color );
+    wp_add_inline_style( 'boka-style', $color );
 }
-add_action( 'wp_enqueue_scripts', 'themetim_typography_color' );
+add_action( 'wp_enqueue_scripts', 'boka_typography_color' );

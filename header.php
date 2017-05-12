@@ -20,13 +20,13 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<div class="preloader animsition">
+<div class="wrap-fix">
 	<header class="header">
 		<!--------------- Header Top ---------------->
 		<section class="header-top position-relative">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6 col-sm-6 col-xs-6 logo">
+					<div class="col-md-6 col-sm-6 col-xs-12 logo">
 						<?php
 						if (get_theme_mod('site_logo') != '') : ?>
 							<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo get_theme_mod('site_logo'); ?>" class="img-responsive" alt="" /></a>
@@ -37,8 +37,8 @@
 							<?php endif ?>
 						<?php endif ?>
 					</div>
-					<div class="col-md-6 col-sm-6 col-xs-6 header-social">
-						<?php do_action('themetim_header_social'); ?>
+					<div class="col-md-6 col-sm-6 col-xs-12 header-social">
+						<?php do_action('boka_header_social'); ?>
 					</div>
 				</div>
 			</div>
@@ -58,10 +58,19 @@
 						</div>
 						<div id="navbar-collapse" class="navbar-collapse collapse">
 							<?php
-							if ( has_nav_menu( 'primary' ) ) :
-								wp_nav_menu( array('menu' => 'primary', 'theme_location' => 'primary', 'depth' => 5, 'container' => '', 'menu_id' => 'primary-menu', 'container_class' => 'collapse navbar-collapse', 'container_id' => 'bs-example-navbar-collapse-1', 'menu_class' => 'nav navbar-nav', 'fallback_cb' => 'wp_bootstrap_navwalker::fallback', 'walker' => new wp_bootstrap_navwalker()));
-							else: echo '<p class="margin-top-10 pull-left text-capitalize">Please select <a href="/wp-admin/nav-menus.php" class="text-muted">Primary Menu</a> </p>';
-							endif; ?>
+							wp_nav_menu( array(
+									'menu'              => 'primary',
+									'theme_location'    => 'primary',
+									'depth'             => 2,
+									'menu_id'			=> 'primary-menu',
+									'container'         => '',
+									'container_class'   => 'collapse navbar-collapse',
+									'container_id'      => 'bs-example-navbar-collapse-1',
+									'menu_class'        => 'nav navbar-nav',
+									'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+									'walker'            => new WP_Bootstrap_Navwalker())
+							);
+							?>
 							<?php if (get_theme_mod('bottom_header_search','1')) : ?>
 								<!--------------- Search ---------------->
 								<form role="search" method="get" class="navbar-form navbar-right header-search position-relative" action="<?php echo home_url( '/' ); ?>">
@@ -75,15 +84,3 @@
 			</div>
 		</section>
 	</header>
-	<?php if ( !is_front_page() ) { ?>
-	<!--------------- Breadcrumb ---------------->
-	<section class="breadcrumb-wrap">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 col-sm-12 col-xs-12">
-					<?php themetim_breadcrumbs(); ?>
-				</div>
-			</div>
-		</div>
-	</section>
-<?php } ?>

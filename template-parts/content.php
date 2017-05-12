@@ -7,7 +7,7 @@
  * @package boka
  */
 
-$margin[] = 'padding-gap-6 overflow';
+$margin[] = 'padding-gap-6 overflow blog-link';
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class($margin); ?>>
@@ -21,7 +21,7 @@ $margin[] = 'padding-gap-6 overflow';
 
 		if ( 'post' === get_post_type() ) : ?>
 			<div class="entry-meta  margin-top-10">
-				<?php themetim_posted_on(); ?>
+				<?php boka_posted_on(); ?>
 			</div><!-- .entry-meta -->
 			<?php
 		endif; ?>
@@ -33,11 +33,11 @@ $margin[] = 'padding-gap-6 overflow';
 		if(has_post_thumbnail()):
 			if(is_single()) { ?>
 				<img src="<?php echo $post_thumbnail_id = get_the_post_thumbnail_url(); ?>"
-					 class="img-responsive margin-top-20 margin-bottom-20" alt=""/>
+					 class="img-responsive margin-top-20 margin-bottom-20 feature-images" alt=""/>
 				<?php } else { ?>
 				<a href="<?php the_permalink(); ?>"><img
 						src="<?php echo $post_thumbnail_id = get_the_post_thumbnail_url(); ?>"
-						class="img-responsive margin-top-20 margin-bottom-20" alt=""/></a>
+						class="img-responsive margin-top-20 margin-bottom-20 feature-images" alt=""/></a>
 				<?php
 			}
 		endif;
@@ -61,12 +61,7 @@ $margin[] = 'padding-gap-6 overflow';
 	<footer class="entry-footer overflow">
 		<?php if(!is_single()) : ?>
 		<div class="pull-left">
-			<a href="<?php the_permalink(); ?>" class="btn btn-default margin-top-10">Continue Reading</a>
-		</div>
-		<?php endif; ?>
-		<?php if (get_theme_mod('blog_social_sharing_enable', '1')) : ?>
-		<div class="pull-right margin-top-10">
-			<?php themetim_social_sharing(); ?>
+			<a href="<?php the_permalink(); ?>" class="btn btn-default margin-top-10"><?php esc_html_e( 'Continue Reading', 'boka' )?></a>
 		</div>
 		<?php endif; ?>
 	</footer><!-- .entry-footer -->

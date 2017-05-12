@@ -10,17 +10,16 @@
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
-function themetim_customize_register( $wp_customize ) {
+function boka_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 	$wp_customize->get_section( 'title_tagline' )->title = __('Header', 'boka');
-	$wp_customize->remove_section( 'background_image' );
 
 	/**
 	 * Class Boka Divider
 	 */
-	class themetim_divider extends WP_Customize_Control {
+	class boka_divider extends WP_Customize_Control {
 		public $type = 'divider';
 		public $label = '';
 		public function render_content() { ?>
@@ -43,17 +42,17 @@ function themetim_customize_register( $wp_customize ) {
 	/**
 	 * Boka Divider
 	 */
-	$wp_customize->add_setting('themetim_options[divider]', array(
+	$wp_customize->add_setting('boka_options[divider]', array(
 			'type'              => 'divider_control',
 			'capability'        => 'edit_theme_options',
 			'sanitize_callback' => 'esc_attr',
 		)
 	);
-	$wp_customize->add_control( new themetim_divider( $wp_customize, 'header_social', array(
+	$wp_customize->add_control( new boka_divider( $wp_customize, 'header_social', array(
 			'label' => __('Header Social', 'boka'),
 			'description'   => __('', 'boka'),
 			'section' => 'social_settings',
-			'settings' => 'themetim_options[divider]'
+			'settings' => 'boka_options[divider]'
 		) )
 	);
 	/********************* Header Social ************************/
@@ -149,31 +148,19 @@ function themetim_customize_register( $wp_customize ) {
 	/**
 	 * Boka Divider
 	 */
-	$wp_customize->add_setting('themetim_options[divider]', array(
+	$wp_customize->add_setting('boka_options[divider]', array(
 			'type'              => 'divider_control',
 			'capability'        => 'edit_theme_options',
 			'sanitize_callback' => 'esc_attr',
 		)
 	);
-	$wp_customize->add_control( new themetim_divider( $wp_customize, 'footer_social', array(
-			'label' => __('Footer Social', 'boka'),
+	$wp_customize->add_control( new boka_divider( $wp_customize, 'footer_social', array(
+			'label' => __('Widget Social', 'boka'),
 			'section' => 'social_settings',
-			'settings' => 'themetim_options[divider]'
+			'settings' => 'boka_options[divider]'
 		) )
 	);
 	/********************* Footer Social ************************/
-	$wp_customize->add_setting( 'social_footer_enable', array(
-		'default'           => '1',
-		'sanitize_callback' => 'themetim_sanitize_checkbox',
-	) );
-	$wp_customize->add_control( 'social_footer_enable', array(
-		'label' => __( 'Enable Footer Social', 'boka' ),
-		'type' => 'checkbox',
-		'description'   => __('', 'boka'),
-		'section' => 'social_settings',
-		'settings' => 'social_footer_enable'
-	) );
-
 	$wp_customize->add_setting( 'footer_fb', array(
 		'default'           => 'https://www.facebook.com/',
 		'sanitize_callback' => 'esc_url_raw',
@@ -269,17 +256,17 @@ function themetim_customize_register( $wp_customize ) {
 	/**
 	 * Boka Divider
 	 */
-	$wp_customize->add_setting('themetim_options[divider]', array(
+	$wp_customize->add_setting('boka_options[divider]', array(
 			'type'              => 'divider_control',
 			'capability'        => 'edit_theme_options',
 			'sanitize_callback' => 'esc_attr',
 		)
 	);
-	$wp_customize->add_control( new themetim_divider( $wp_customize, 'header_logo', array(
+	$wp_customize->add_control( new boka_divider( $wp_customize, 'header_logo', array(
 			'label' => __('Logo', 'boka'),
 			'description'   => __('', 'boka'),
 			'section' => 'title_tagline',
-			'settings' => 'themetim_options[divider]'
+			'settings' => 'boka_options[divider]'
 		) )
 	);
 	/********************* Logo ************************/
@@ -305,23 +292,23 @@ function themetim_customize_register( $wp_customize ) {
 	/**
 	 * Boka Divider
 	 */
-	$wp_customize->add_setting('themetim_options[divider]', array(
+	$wp_customize->add_setting('boka_options[divider]', array(
 			'type'              => 'divider_control',
 			'capability'        => 'edit_theme_options',
 			'sanitize_callback' => 'esc_attr',
 		)
 	);
-	$wp_customize->add_control( new themetim_divider( $wp_customize, 'header_top', array(
+	$wp_customize->add_control( new boka_divider( $wp_customize, 'header_top', array(
 			'label' => __('Header Top', 'boka'),
 			'section' => 'title_tagline',
 			'description'   => __('', 'boka'),
-			'settings' => 'themetim_options[divider]'
+			'settings' => 'boka_options[divider]'
 		) )
 	);
 	/********************* Top Header ************************/
 	$wp_customize->add_setting( 'social_header_enable', array(
-		'default'           => '1',
-		'sanitize_callback' => 'themetim_sanitize_checkbox',
+		'default'           => '',
+		'sanitize_callback' => 'boka_sanitize_checkbox',
 	) );
 	$wp_customize->add_control( 'social_header_enable', array(
 		'label' => __( 'Enable Header Social', 'boka' ),
@@ -332,8 +319,8 @@ function themetim_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'bottom_header_search', array(
-		'default'           => '1',
-		'sanitize_callback' => 'themetim_sanitize_checkbox',
+		'default'           => '',
+		'sanitize_callback' => 'boka_sanitize_checkbox',
 	) );
 	$wp_customize->add_control( 'bottom_header_search', array(
 		'label' => __( 'Enable Search', 'boka' ),
@@ -345,17 +332,17 @@ function themetim_customize_register( $wp_customize ) {
 	/**
 	 * Boka Divider
 	 */
-	$wp_customize->add_setting('themetim_options[divider]', array(
+	$wp_customize->add_setting('boka_options[divider]', array(
 			'type'              => 'divider_control',
 			'capability'        => 'edit_theme_options',
 			'sanitize_callback' => 'esc_attr',
 		)
 	);
-	$wp_customize->add_control( new themetim_divider( $wp_customize, 'header_favicon', array(
+	$wp_customize->add_control( new boka_divider( $wp_customize, 'header_favicon', array(
 			'label' => __('Favicon', 'boka'),
 			'section' => 'title_tagline',
 			'description'   => __('', 'boka'),
-			'settings' => 'themetim_options[divider]'
+			'settings' => 'boka_options[divider]'
 		) )
 	);
 	/*********************************************
@@ -366,148 +353,11 @@ function themetim_customize_register( $wp_customize ) {
 		'description' => '',
 		'priority' => 20,
 	) );
-	/**
-	 * Boka Divider
-	 */
-	$wp_customize->add_setting('themetim_options[divider]', array(
-			'type'              => 'divider_control',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'esc_attr',
-		)
-	);
-	$wp_customize->add_control( new themetim_divider( $wp_customize, 'footer_top', array(
-			'label' => __('Top Footer', 'boka'),
-			'description'   => __('', 'boka'),
-			'section' => 'footer_settings',
-			'settings' => 'themetim_options[divider]'
-		) )
-	);
-	/********************* Top Footer ************************/
-	$wp_customize->add_setting( 'social_footer_enable', array(
-		'default'           => '1',
-		'sanitize_callback' => 'themetim_sanitize_checkbox',
-	) );
-	$wp_customize->add_control( 'social_footer_enable', array(
-		'label' => __( 'Enable Footer Social', 'boka' ),
-		'type' => 'checkbox',
-		'description'   => __('## Please Go Back To Social Media Settings For Social Links ##', 'boka'),
-		'section' => 'footer_settings',
-		'settings' => 'social_footer_enable'
-	) );
 
-	$wp_customize->add_setting( 'newsletter_footer_enable', array(
-		'default'           => '1',
-		'sanitize_callback' => 'themetim_sanitize_checkbox',
-	) );
-	$wp_customize->add_control( 'newsletter_footer_enable', array(
-		'label' => __( 'Enable Footer Newsletter', 'boka' ),
-		'type' => 'checkbox',
-		'description'   => __('', 'boka'),
-		'section' => 'footer_settings',
-		'settings' => 'newsletter_footer_enable'
-	) );
-	$wp_customize->add_setting( 'top_footer_newsletter_title', array(
-		'default'           => 'Follow Us',
-		'sanitize_callback' => 'themetim_sanitize_text',
-	) );
-	$wp_customize->add_control( 'top_footer_newsletter_title', array(
-		'label' => __( 'Heading', 'boka' ),
-		'type' => 'text',
-		'section' => 'footer_settings',
-		'settings' => 'top_footer_newsletter_title',
-		'description'   => __('', 'boka')
-	) );
-	$wp_customize->add_setting( 'top_footer_newsletter_url', array(
-		'default'           => 'https://www.yourmailchimpurl.com',
-		'sanitize_callback' => 'themetim_sanitize_text',
-	) );
-	$wp_customize->add_control( 'top_footer_newsletter_url', array(
-		'label' => __( 'Mail Chimp URL', 'boka' ),
-		'type' => 'textarea',
-		'section' => 'footer_settings',
-		'settings' => 'top_footer_newsletter_url',
-		'description'   => __('', 'boka')
-	) );
-
-	$wp_customize->add_setting( 'middle_footer_text_enable', array(
-		'default'           => '1',
-		'sanitize_callback' => 'themetim_sanitize_checkbox',
-	) );
-	$wp_customize->add_control( 'middle_footer_text_enable', array(
-		'label' => __( 'Enable Description', 'boka' ),
-		'type' => 'checkbox',
-		'description'   => __('', 'boka'),
-		'section' => 'footer_settings',
-		'settings' => 'middle_footer_text_enable'
-	) );
-
-	$wp_customize->add_setting( 'middle_footer_text_heading', array(
-		'default'           => 'Get In Touch',
-		'sanitize_callback' => 'themetim_sanitize_text',
-	) );
-	$wp_customize->add_control( 'middle_footer_text_heading', array(
-		'label' => __( 'Heading', 'boka' ),
-		'type' => 'text',
-		'section' => 'footer_settings',
-		'settings' => 'middle_footer_text_heading',
-		'description'   => __('', 'boka')
-	) );
-	$wp_customize->add_setting( 'middle_footer_text', array(
-		'default'           => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
-		'sanitize_callback' => 'themetim_sanitize_text',
-	) );
-	$wp_customize->add_control( 'middle_footer_text', array(
-		'label' => __( 'Description', 'boka' ),
-		'type' => 'textarea',
-		'section' => 'footer_settings',
-		'settings' => 'middle_footer_text',
-		'description'   => __('', 'boka')
-	) );
-
-
-	$wp_customize->add_setting( 'middle_footer_nav_heading_1', array(
-		'default'           => 'Information',
-		'sanitize_callback' => 'themetim_sanitize_text',
-	) );
-	$wp_customize->add_control( 'middle_footer_nav_heading_1', array(
-		'label' => __( 'Heading', 'boka' ),
-		'type' => 'text',
-		'section' => 'footer_settings',
-		'settings' => 'middle_footer_nav_heading_1',
-		'description'   => __('', 'boka')
-	) );
-	$wp_customize->add_setting( 'middle_footer_nav_1_enable', array(
-		'default'           => '1',
-		'sanitize_callback' => 'themetim_sanitize_checkbox',
-	) );
-	$wp_customize->add_control( 'middle_footer_nav_1_enable', array(
-		'label' => __( 'Enable Nav 1', 'boka' ),
-		'type' => 'checkbox',
-		'description'   => __('', 'boka'),
-		'section' => 'footer_settings',
-		'settings' => 'middle_footer_nav_1_enable'
-	) );
-
-	/**
-	 * Boka Divider
-	 */
-	$wp_customize->add_setting('themetim_options[divider]', array(
-			'type'              => 'divider_control',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'esc_attr',
-		)
-	);
-	$wp_customize->add_control( new themetim_divider( $wp_customize, 'footer_bottom', array(
-			'label' => __('Bottom Footer', 'boka'),
-			'description'   => __('', 'boka'),
-			'section' => 'footer_settings',
-			'settings' => 'themetim_options[divider]'
-		) )
-	);
 	/********************* Bottom Footer ************************/
 	$wp_customize->add_setting( 'bottom_footer_copyright_enable', array(
 		'default'           => '1',
-		'sanitize_callback' => 'themetim_sanitize_checkbox',
+		'sanitize_callback' => 'boka_sanitize_checkbox',
 	) );
 	$wp_customize->add_control( 'bottom_footer_copyright_enable', array(
 		'label' => __( 'Enable Copyright', 'boka' ),
@@ -518,7 +368,7 @@ function themetim_customize_register( $wp_customize ) {
 	) );
 	$wp_customize->add_setting( 'bottom_footer_copyright', array(
 		'default'           => 'Proudly powered by WordPress',
-		'sanitize_callback' => 'themetim_sanitize_text',
+		'sanitize_callback' => 'boka_sanitize_text',
 	) );
 	$wp_customize->add_control( 'bottom_footer_copyright', array(
 		'label' => __( 'Text', 'boka' ),
@@ -538,22 +388,22 @@ function themetim_customize_register( $wp_customize ) {
 	/**
 	 * Boka Divider
 	 */
-	$wp_customize->add_setting('themetim_options[divider]', array(
+	$wp_customize->add_setting('boka_options[divider]', array(
 			'type'              => 'divider_control',
 			'capability'        => 'edit_theme_options',
 			'sanitize_callback' => 'esc_attr',
 		)
 	);
-	$wp_customize->add_control( new themetim_divider( $wp_customize, 'blog', array(
+	$wp_customize->add_control( new boka_divider( $wp_customize, 'blog', array(
 			'label' => __('Blog Section', 'boka'),
 			'description'   => __('', 'boka'),
 			'section' => 'blog_settings',
-			'settings' => 'themetim_options[divider]'
+			'settings' => 'boka_options[divider]'
 		) )
 	);
 	$wp_customize->add_setting( 'blog_sidebar_enable', array(
 		'default'           => '1',
-		'sanitize_callback' => 'themetim_sanitize_checkbox',
+		'sanitize_callback' => 'boka_sanitize_checkbox',
 	) );
 	$wp_customize->add_control( 'blog_sidebar_enable', array(
 		'label' => __( 'Enable Sidebar', 'boka' ),
@@ -578,18 +428,6 @@ function themetim_customize_register( $wp_customize ) {
 			'step'  => 5,
 		),
 	) );
-	$wp_customize->add_setting( 'blog_social_sharing_enable', array(
-		'default'           => '1',
-		'sanitize_callback' => 'themetim_sanitize_checkbox',
-	) );
-	$wp_customize->add_control( 'blog_social_sharing_enable', array(
-		'label' => __( 'Enable Social Sharing', 'boka' ),
-		'type' => 'checkbox',
-		'description'   => __('', 'boka'),
-		'section' => 'blog_settings',
-		'settings' => 'blog_social_sharing_enable'
-	) );
-
 	/*********************************************
 	 * Shop
 	 *********************************************/
@@ -601,23 +439,23 @@ function themetim_customize_register( $wp_customize ) {
 	/**
 	 * Boka Divider
 	 */
-	$wp_customize->add_setting('themetim_options[divider]', array(
+	$wp_customize->add_setting('boka_options[divider]', array(
 			'type'              => 'divider_control',
 			'capability'        => 'edit_theme_options',
 			'sanitize_callback' => 'esc_attr',
 		)
 	);
-	$wp_customize->add_control( new themetim_divider( $wp_customize, 'shop', array(
+	$wp_customize->add_control( new boka_divider( $wp_customize, 'shop', array(
 			'label' => __('Widget', 'boka'),
 			'description'   => __('', 'boka'),
 			'section' => 'shop_settings',
-			'settings' => 'themetim_options[divider]'
+			'settings' => 'boka_options[divider]'
 		) )
 	);
 
 	$wp_customize->add_setting( 'shop_sidebar_enable', array(
-		'default'           => '1',
-		'sanitize_callback' => 'themetim_sanitize_checkbox',
+		'default'           => '',
+		'sanitize_callback' => 'boka_sanitize_checkbox',
 	) );
 	$wp_customize->add_control( 'shop_sidebar_enable', array(
 		'label' => __( 'Enable Widget', 'boka' ),
@@ -672,7 +510,7 @@ function themetim_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'link_color',
 		array(
-			'default'           => '#000',
+			'default'           => '#f93759',
 			'sanitize_callback' => 'sanitize_hex_color',
 		)
 	);
@@ -691,7 +529,7 @@ function themetim_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'link_hover_color',
 		array(
-			'default'           => '#f93759',
+			'default'           => '#000',
 			'sanitize_callback' => 'sanitize_hex_color',
 		)
 	);
@@ -710,17 +548,17 @@ function themetim_customize_register( $wp_customize ) {
 	/**
 	 * Boka Divider
 	 */
-	$wp_customize->add_setting('themetim_options[divider]', array(
+	$wp_customize->add_setting('boka_options[divider]', array(
 			'type'              => 'divider_control',
 			'capability'        => 'edit_theme_options',
 			'sanitize_callback' => 'esc_attr',
 		)
 	);
-	$wp_customize->add_control( new themetim_divider( $wp_customize, 'header_color', array(
+	$wp_customize->add_control( new boka_divider( $wp_customize, 'header_color', array(
 			'label' => __('Header Color', 'boka'),
 			'description'   => __('', 'boka'),
 			'section' => 'colors',
-			'settings' => 'themetim_options[divider]'
+			'settings' => 'boka_options[divider]'
 		) )
 	);
 
@@ -766,24 +604,24 @@ function themetim_customize_register( $wp_customize ) {
 	/**
 	 * Boka Divider
 	 */
-	$wp_customize->add_setting('themetim_options[divider]', array(
+	$wp_customize->add_setting('boka_options[divider]', array(
 			'type'              => 'divider_control',
 			'capability'        => 'edit_theme_options',
 			'sanitize_callback' => 'esc_attr',
 		)
 	);
-	$wp_customize->add_control( new themetim_divider( $wp_customize, 'footer_color', array(
+	$wp_customize->add_control( new boka_divider( $wp_customize, 'footer_color', array(
 			'label' => __('Footer Color', 'boka'),
 			'description'   => __('', 'boka'),
 			'section' => 'colors',
-			'settings' => 'themetim_options[divider]'
+			'settings' => 'boka_options[divider]'
 		) )
 	);
 
 	$wp_customize->add_setting(
 		'footer_bg_color',
 		array(
-			'default'           => '#ddd',
+			'default'           => '#000',
 			'sanitize_callback' => 'sanitize_hex_color',
 		)
 	);
@@ -802,7 +640,7 @@ function themetim_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'footer_text_color',
 		array(
-			'default'           => '#000',
+			'default'           => '#fff',
 			'sanitize_callback' => 'sanitize_hex_color',
 		)
 	);
@@ -821,17 +659,17 @@ function themetim_customize_register( $wp_customize ) {
 	/**
 	 * Boka Divider
 	 */
-	$wp_customize->add_setting('themetim_options[divider]', array(
+	$wp_customize->add_setting('boka_options[divider]', array(
 			'type'              => 'divider_control',
 			'capability'        => 'edit_theme_options',
 			'sanitize_callback' => 'esc_attr',
 		)
 	);
-	$wp_customize->add_control( new themetim_divider( $wp_customize, 'default', array(
+	$wp_customize->add_control( new boka_divider( $wp_customize, 'default', array(
 			'label' => __('Default Button', 'boka'),
 			'description'   => __('', 'boka'),
 			'section' => 'colors',
-			'settings' => 'themetim_options[divider]'
+			'settings' => 'boka_options[divider]'
 		) )
 	);
 
@@ -954,17 +792,17 @@ function themetim_customize_register( $wp_customize ) {
 	/**
 	 * Boka Divider
 	 */
-	$wp_customize->add_setting('themetim_options[divider]', array(
+	$wp_customize->add_setting('boka_options[divider]', array(
 			'type'              => 'divider_control',
 			'capability'        => 'edit_theme_options',
 			'sanitize_callback' => 'esc_attr',
 		)
 	);
-	$wp_customize->add_control( new themetim_divider( $wp_customize, 'primary', array(
+	$wp_customize->add_control( new boka_divider( $wp_customize, 'primary', array(
 			'label' => __('Primary Button', 'boka'),
 			'description'   => __('', 'boka'),
 			'section' => 'colors',
-			'settings' => 'themetim_options[divider]'
+			'settings' => 'boka_options[divider]'
 		) )
 	);
 
@@ -1085,17 +923,17 @@ function themetim_customize_register( $wp_customize ) {
 	/**
 	 * Boka Divider
 	 */
-	$wp_customize->add_setting('themetim_options[divider]', array(
+	$wp_customize->add_setting('boka_options[divider]', array(
 			'type'              => 'divider_control',
 			'capability'        => 'edit_theme_options',
 			'sanitize_callback' => 'esc_attr',
 		)
 	);
-	$wp_customize->add_control( new themetim_divider( $wp_customize, 'success', array(
+	$wp_customize->add_control( new boka_divider( $wp_customize, 'success', array(
 			'label' => __('Primary Button', 'boka'),
 			'description'   => __('', 'boka'),
 			'section' => 'colors',
-			'settings' => 'themetim_options[divider]'
+			'settings' => 'boka_options[divider]'
 		) )
 	);
 
@@ -1159,7 +997,7 @@ function themetim_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'btn_success_bg_hover',
 		array(
-			'default'           => '#f93759',
+			'default'           => '#000',
 			'sanitize_callback' => 'sanitize_hex_color',
 		)
 	);
@@ -1197,7 +1035,7 @@ function themetim_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'btn_success_border_hover',
 		array(
-			'default'           => '#f93759',
+			'default'           => '#000',
 			'sanitize_callback' => 'sanitize_hex_color',
 		)
 	);
@@ -1217,17 +1055,17 @@ function themetim_customize_register( $wp_customize ) {
 	/**
 	 * Boka Divider
 	 */
-	$wp_customize->add_setting('themetim_options[divider]', array(
+	$wp_customize->add_setting('boka_options[divider]', array(
 			'type'              => 'divider_control',
 			'capability'        => 'edit_theme_options',
 			'sanitize_callback' => 'esc_attr',
 		)
 	);
-	$wp_customize->add_control( new themetim_divider( $wp_customize, 'extracolor', array(
+	$wp_customize->add_control( new boka_divider( $wp_customize, 'extracolor', array(
 			'label' => __('Extra Color', 'boka'),
 			'description'   => __('', 'boka'),
 			'section' => 'colors',
-			'settings' => 'themetim_options[divider]'
+			'settings' => 'boka_options[divider]'
 		) )
 	);
 	$wp_customize->add_setting(
@@ -1271,17 +1109,17 @@ function themetim_customize_register( $wp_customize ) {
 	/**
 	 * Boka Divider
 	 */
-	$wp_customize->add_setting('themetim_options[divider]', array(
+	$wp_customize->add_setting('boka_options[divider]', array(
 			'type'              => 'divider_control',
 			'capability'        => 'edit_theme_options',
 			'sanitize_callback' => 'esc_attr',
 		)
 	);
-	$wp_customize->add_control( new themetim_divider( $wp_customize, 'extrabg', array(
+	$wp_customize->add_control( new boka_divider( $wp_customize, 'extrabg', array(
 			'label' => __('Extra BG', 'boka'),
 			'description'   => __('', 'boka'),
 			'section' => 'colors',
-			'settings' => 'themetim_options[divider]'
+			'settings' => 'boka_options[divider]'
 		) )
 	);
 	$wp_customize->add_setting(
@@ -1336,7 +1174,7 @@ function themetim_customize_register( $wp_customize ) {
 		'body_font_family',
 		array(
 			'default' => 'Source+Sans+Pro',
-			'sanitize_callback'     => 'themetim_sanitize_choices',
+			'sanitize_callback'     => 'boka_sanitize_choices',
 		)
 	);
 	$wp_customize->add_control(
@@ -1397,7 +1235,7 @@ function themetim_customize_register( $wp_customize ) {
 	) );
 	$wp_customize->add_setting('heading_font_family', array(
 		'default'        => 'Source+Sans+Pro',
-		'sanitize_callback'     => 'themetim_sanitize_choices',
+		'sanitize_callback'     => 'boka_sanitize_choices',
 	));
 	$wp_customize->add_control( 'heading_font_family', array(
 		'label'   => __('Heading Font', 'boka'),
@@ -1442,14 +1280,14 @@ function themetim_customize_register( $wp_customize ) {
 		'description'   => __('', 'boka')
 	) );
 }
-add_action( 'customize_register', 'themetim_customize_register' );
+add_action( 'customize_register', 'boka_customize_register' );
 
 /**
  * Choices ( Fonts Family )
  * @param $input
  * @return string
  */
-function themetim_sanitize_choices( $input ) {
+function boka_sanitize_choices( $input ) {
 	$valid = array(
 		'Poppins' => 'Poppins',
 		'Source+Sans+Pro' => 'Source Sans Pro',
@@ -1489,7 +1327,7 @@ function themetim_sanitize_choices( $input ) {
  * @return string
  */
 
-function themetim_sanitize_text( $input ) {
+function boka_sanitize_text( $input ) {
 	return wp_kses_post( force_balance_tags( $input ) );
 }
 
@@ -1498,7 +1336,7 @@ function themetim_sanitize_text( $input ) {
  * @param $input
  * @return int|string
  */
-function themetim_sanitize_checkbox( $input ) {
+function boka_sanitize_checkbox( $input ) {
 	if ( $input == 1 ) {
 		return 1;
 	} else {
@@ -1509,9 +1347,9 @@ function themetim_sanitize_checkbox( $input ) {
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
-function themetim_customize_preview_js() {
-	wp_enqueue_script( 'themetim_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
+function boka_customize_preview_js() {
+	wp_enqueue_script( 'boka_customizer', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-preview' ), '20151215', true );
 }
-add_action( 'customize_preview_init', 'themetim_customize_preview_js' );
+add_action( 'customize_preview_init', 'boka_customize_preview_js' );
 
 
