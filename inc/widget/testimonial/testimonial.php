@@ -48,7 +48,6 @@ class Boka_Testimonial_Widget extends SiteOrigin_Widget {
 						),
 						'testimonial_texteditor' => array(
 							'type' => 'tinymce',
-							'label' => __( '', 'boka' ),
 							'default' => '',
 							'rows' => 10,
 							'default_editor' => 'html',

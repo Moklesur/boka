@@ -12,7 +12,7 @@
 ?>
 
 <footer class="footer-main">
-	<?php if ( (is_active_sidebar( 'footer-widget-1' ) ) || ( is_active_sidebar( 'footer-widget-1' ))  || ( is_active_sidebar( 'footer-widget-1' ) )) : ?>
+	<?php if ( (is_active_sidebar( 'footer-widget-1' ) ) || ( is_active_sidebar( 'footer-widget-2' ))  || ( is_active_sidebar( 'footer-widget-3' ) )) : ?>
 	<!--------------- Footer Top ---------------->
 	<section class="footer-top">
 		<div class="container">
@@ -42,8 +42,6 @@
 		</div>
 	</section>
 	<?php endif; ?>
-	<?php
-	if(get_theme_mod('bottom_footer_copyright_enable','1')) : ?>
 	<!--------------- Footer bottom ---------------->
 	<section class="footer-bottom">
 		<div class="container">
@@ -52,7 +50,6 @@
 			</div>
 		</div>
 	</section>
-	<?php endif; ?>
 </footer>
 </div>
 <?php wp_footer(); ?>

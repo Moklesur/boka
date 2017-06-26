@@ -52,7 +52,6 @@ class Boka_Editor_Widget extends SiteOrigin_Widget {
 				),
 				'texteditor' => array(
 					'type' => 'tinymce',
-					'label' => __( '', 'boka' ),
 					'default' => '',
 					'rows' => 7,
 					'default_editor' => 'html',

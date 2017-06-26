@@ -15,7 +15,7 @@ get_header(); ?>
 				<div class="row">
 					<div class="col-md-12 text-center">
 						<header class="page-header margin-null  padding-gap-1">
-							<h2 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'boka' ), '<span>' . get_search_query() . '</span>' ); ?></h2>
+							<h2 class="page-title"><?php printf( __( 'Search Results for: %s', 'boka' ), '<span>' . get_search_query() . '</span>' ); ?></h2>
 						</header><!-- .page-header -->
 					</div>
 					<div class="col-md-9 col-sm-8 col-xs-12 padding-gap-1 padding-gap-4">

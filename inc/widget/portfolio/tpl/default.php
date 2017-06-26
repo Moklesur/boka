@@ -9,7 +9,7 @@
 			<?php
 			$profile_picture = $portfolio['profile_picture'];
 			$image_details = siteorigin_widgets_get_attachment_image_src(
-				$profile_picture, '', ''
+				$profile_picture, 'boka-medium-thumb', ''
 			);
 			if ( ! empty( $image_details ) ) {
 				echo '<a href="'.sow_esc_url( $portfolio['button_url'] ).'" class="portfolio-url" target="_blank"><img src="' . esc_url( $image_details[0] ) . '" class="img-responsive" /><span>'.$portfolio['menu_title'].'</span></a>';

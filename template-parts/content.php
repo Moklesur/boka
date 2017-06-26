@@ -30,18 +30,6 @@ $margin[] = 'padding-gap-6 overflow blog-link';
 	<div class="entry-content">
 		<?php
 
-		if(has_post_thumbnail()):
-			if(is_single()) { ?>
-				<img src="<?php echo $post_thumbnail_id = get_the_post_thumbnail_url(); ?>"
-					 class="img-responsive margin-top-20 margin-bottom-20 feature-images" alt=""/>
-				<?php } else { ?>
-				<a href="<?php the_permalink(); ?>"><img
-						src="<?php echo $post_thumbnail_id = get_the_post_thumbnail_url(); ?>"
-						class="img-responsive margin-top-20 margin-bottom-20 feature-images" alt=""/></a>
-				<?php
-			}
-		endif;
-
 		if(is_single()) :
 			the_content();
 		else:
@@ -55,7 +43,7 @@ $margin[] = 'padding-gap-6 overflow blog-link';
 			'after'  => '</div>',
 		) );
 		?>
-
+		<div class="clearfix"></div>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer overflow">

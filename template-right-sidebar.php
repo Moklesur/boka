@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Template Name: Right Sidebar
  *
@@ -6,15 +6,14 @@
  * @subpackage boka
  */
 get_header(); ?>
-    <main class="ride-sidebar-page">
+
+    <main class="left-sidebar-page">
         <section>
             <div class="container">
                 <div class="row">
-                    <?php get_sidebar(); ?>
                     <div class="col-md-9 col-sm-8 col-xs-12 padding-gap-1 padding-gap-4">
                         <?php
                         while ( have_posts() ) : the_post();
-
                             get_template_part( 'template-parts/content', 'page' );
 
                             // If comments are open or we have at least one comment, load up the comment template.
@@ -25,6 +24,7 @@ get_header(); ?>
                         endwhile; // End of the loop.
                         ?>
                     </div>
+                    <?php get_sidebar(); ?>
                 </div>
             </div>
         </section>

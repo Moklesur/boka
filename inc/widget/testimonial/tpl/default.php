@@ -31,11 +31,11 @@
 			<!-- Controls -->
 			<a class="" href="#testimonial-slider" role="button" data-slide="prev">
 				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
+				<span class="sr-only"><?php esc_html_e( 'Previous', 'boka' ); ?></span>
 			</a>
 			<a class="" href="#testimonial-slider" role="button" data-slide="next">
 				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
+				<span class="sr-only"><?php esc_html_e( 'Next', 'boka' ); ?></span>
 			</a>
 		</div>
 	</div>

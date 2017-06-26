@@ -7,29 +7,29 @@
 	<div class="social-widget social-media">
 		<ul class="list-inline margin-bottom-0">
 			<?php
-			if(get_theme_mod('footer_fb','1')) {
-				echo '<li><a href="'.get_theme_mod('footer_fb','https://www.facebook.com/ ').'"  target="_blank"><i class="fa fa-facebook"></i></a></li>';
+			if(get_theme_mod('footer_fb')) {
+				echo '<li><a href="'.esc_url(get_theme_mod('footer_fb')).'"  target="_blank"><i class="fa fa-facebook"></i></a></li>';
 			}
-			if(get_theme_mod('footer_tw','1')) {
-				echo '<li><a href="'.get_theme_mod('footer_tw','https://twitter.com').'" target="_blank"><i class="fa fa-twitter"></i></a></li>';
+			if(get_theme_mod('footer_tw')) {
+				echo '<li><a href="'.esc_url(get_theme_mod('footer_tw')).'" target="_blank"><i class="fa fa-twitter"></i></a></li>';
 			}
-			if(get_theme_mod('footer_li','1')) {
-				echo '<li><a href="'.get_theme_mod('footer_li','https://linkedin.com').'" target="_blank"><i class="fa fa-linkedin"></i></a></li>';
+			if(get_theme_mod('footer_li')) {
+				echo '<li><a href="'.esc_url(get_theme_mod('footer_li')).'" target="_blank"><i class="fa fa-linkedin"></i></a></li>';
 			}
-			if(get_theme_mod('footer_pint','1')) {
-				echo '<li><a href="'.get_theme_mod('footer_pint','https://pinterest.com').'" target="_blank"><i class="fa fa-pinterest"></i></a></li>';
+			if(get_theme_mod('footer_pint')) {
+				echo '<li><a href="'.esc_url(get_theme_mod('footer_pint')).'" target="_blank"><i class="fa fa-pinterest"></i></a></li>';
 			}
-			if(get_theme_mod('footer_ins','1')) {
-				echo '<li><a href="'.get_theme_mod('footer_ins','https://instagram.com').'" target="_blank"><i class="fa fa-linkedin"></i></a></li>';
+			if(get_theme_mod('footer_ins')) {
+				echo '<li><a href="'.esc_url(get_theme_mod('footer_ins')).'" target="_blank"><i class="fa fa-linkedin"></i></a></li>';
 			}
-			if(get_theme_mod('footer_dri','1')) {
-				echo '<li><a href="'.get_theme_mod('footer_dri','https://dribbble.com').'" target="_blank"><i class="fa fa-dribbble"></i></a></li>';
+			if(get_theme_mod('footer_dri')) {
+				echo '<li><a href="'.esc_url(get_theme_mod('footer_dri')).'" target="_blank"><i class="fa fa-dribbble"></i></a></li>';
 			}
-			if(get_theme_mod('footer_plus','1')) {
-				echo '<li><a href="'.get_theme_mod('footer_plus','https://plus.google.com').'" target="_blank"><i class="fa fa-google-plus"></i></a></li>';
+			if(get_theme_mod('footer_plus')) {
+				echo '<li><a href="'.esc_url(get_theme_mod('footer_plus')).'" target="_blank"><i class="fa fa-google-plus"></i></a></li>';
 			}
-			if(get_theme_mod('footer_you','1')) {
-				echo '<li><a href="'.get_theme_mod('footer_you','https://youtube.com').'" target="_blank"><i class="fa fa-youtube"></i></a></li>';
+			if(get_theme_mod('footer_you')) {
+				echo '<li><a href="'.esc_url(get_theme_mod('footer_you')).'" target="_blank"><i class="fa fa-youtube"></i></a></li>';
 			}
 			?>
 		</ul>

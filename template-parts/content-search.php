@@ -10,8 +10,8 @@ $margin[] = 'padding-gap-6 overflow';
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class($margin); ?>>
-	<header class="entry-header  margin-bottom-20">
-		<?php the_title( sprintf( '<h3 class="entry-title page-header"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
+	<header class="entry-header margin-bottom-20 search-title">
+		<?php the_title( sprintf( '<h3 class="entry-title text-capitalize"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
 
 		<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta margin-top-10">
@@ -22,19 +22,19 @@ $margin[] = 'padding-gap-6 overflow';
 
 	<div class="entry-summary">
 		<?php
-		if(has_post_thumbnail()){
-			?>
+		if(has_post_thumbnail()){ ?>
 			<a href="<?php the_permalink(); ?>"><img src="<?php echo $post_thumbnail_id = get_the_post_thumbnail_url(); ?>" class="img-responsive margin-top-20 margin-bottom-20" alt="" /></a>
 			<?php
 		}
 		the_excerpt();
 		?>
+		<div class="clearfix"></div>
 	</div><!-- .entry-summary -->
 
 	<footer class="entry-footer">
 		<?php if(!is_single()) : ?>
 			<div class="pull-left">
-				<a href="<?php the_permalink(); ?>" class="btn btn-default margin-top-10">Continue Reading</a>
+				<a href="<?php the_permalink(); ?>" class="btn btn-default margin-top-10"><?php echo __( 'Continue Reading', 'boka' ); ?></a>
 			</div>
 		<?php endif; ?>
 	</footer><!-- .entry-footer -->

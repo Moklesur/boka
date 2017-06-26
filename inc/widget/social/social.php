@@ -21,7 +21,7 @@ class Boka_social_Widget extends SiteOrigin_Widget {
                 'title' => array(
                     'type'  => 'text',
                     'label' => __( 'Heading', 'boka' ),
-                    'description' => '<h2>## Please Go To Appearance -> Customize -> Social Media Settings For Social Links ##</h2>'
+                    'description' => __('<h2>## Please Go To Appearance -> Customize -> Social Media Settings For Social Links ##</h2>', 'boka')
                 ),
             )
 

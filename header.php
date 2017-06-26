@@ -22,19 +22,22 @@
 <body <?php body_class(); ?>>
 <div class="wrap-fix">
 	<header class="header">
+		<?php if ( get_header_image() ) : ?>
+			<div id="header-image">
+				<img src="<?php header_image(); ?>"  alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" class="img-responsive">
+			</div>
+		<?php endif; ?>
 		<!--------------- Header Top ---------------->
 		<section class="header-top position-relative">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-sm-6 col-xs-12 logo">
 						<?php
-						if (get_theme_mod('site_logo') != '') : ?>
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo get_theme_mod('site_logo'); ?>" class="img-responsive" alt="" /></a>
-						<?php else : ?>
+						if (get_theme_mod('custom_logo') && function_exists('the_custom_logo'))  :
+						the_custom_logo();
+							else : ?>
 							<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-							<?php if(!empty( get_bloginfo('description') )) : ?>
-								<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'description' ); ?></a></p>
-							<?php endif ?>
+							<p class="site-title"><?php bloginfo( 'description' ); ?></p>
 						<?php endif ?>
 					</div>
 					<div class="col-md-6 col-sm-6 col-xs-12 header-social">
@@ -61,7 +64,6 @@
 							wp_nav_menu( array(
 									'menu'              => 'primary',
 									'theme_location'    => 'primary',
-									'depth'             => 2,
 									'menu_id'			=> 'primary-menu',
 									'container'         => '',
 									'container_class'   => 'collapse navbar-collapse',
@@ -71,10 +73,10 @@
 									'walker'            => new WP_Bootstrap_Navwalker())
 							);
 							?>
-							<?php if (get_theme_mod('bottom_header_search','1')) : ?>
+							<?php if (get_theme_mod('bottom_header_search')) : ?>
 								<!--------------- Search ---------------->
 								<form role="search" method="get" class="navbar-form navbar-right header-search position-relative" action="<?php echo home_url( '/' ); ?>">
-									<input type="search" class="search-field form-control" placeholder="<?php esc_html_e( 'Search', 'boka' ) ?>" value="<?php echo get_search_query() ?>" name="s" />
+									<input type="search" class="search-field form-control" placeholder="<?php  esc_attr_e( 'Search', 'boka' ) ?>" value="<?php echo get_search_query() ?>" name="s" />
 									<button type="submit" class="btn btn-default"><i class="fa fa-long-arrow-right"></i></button>
 								</form>
 							<?php endif ?>

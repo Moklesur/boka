@@ -67,7 +67,6 @@ class Boka_Pricing_Widget extends SiteOrigin_Widget {
 						),
 						'pricing_texteditor' => array(
 							'type' => 'tinymce',
-							'label' => __( '', 'boka' ),
 							'default' => '',
 							'rows' => 7,
 							'default_editor' => 'html',

@@ -4,19 +4,16 @@ Theme URI:
 Author: themetim
 Author URI:
 Description: Boka is responsive woocommerce integrated theme which is designed subtle and prevailing. Ideal for featuring Boka products and techniques. It has Boka optimized for best practice SEO with visual page builder integration.
-Version: 1.0.2
+Version: 1.0.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: boka
-Tags: left-sidebar, right-sidebar, custom-background, custom-colors, custom-menu, featured-images, full-width-template, post-formats, translation-ready, theme-options, threaded-comments, custom-logo, footer-widgets
+Tags: custom-background, custom-colors, custom-menu, post-formats, translation-ready, theme-options, threaded-comments, custom-logo, footer-widgets, sticky-post
 */
 
 /********************************************************
     ## Common
 ********************************************************/
-body{
-	font-weight: 400;
-}
 a,.btn,input,button,.woocommerce .product-fix .compare,.woocommerce .product-fix .yith-wcqv-button,.woocommerce ul.products li.product .thumbs,.team-image::after,.team-social,.pricing-list{
 	-webkit-transition: all .3s ease-in-out;
 	-moz-transition: all .3s ease-in-out;
@@ -47,6 +44,12 @@ th, td {
 	border: 1px solid #eee;
 	padding: 6px;
 	text-align: center;
+}
+h5{
+	font-size: 16px;
+}
+h6{
+	font-size: 14px;
 }
 .widget_calendar caption{
 	padding-top: 0;
@@ -245,6 +248,16 @@ img{
 	width: 100%;
 	display: block;
 }
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover{
+	background-color: #f93759;
+	color: #fff;
+}
+.dropdown-menu{
+	border: 0;
+}
+.dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover{
+	background-color: #f93759;
+}
 .primary-menu .dropdown-submenu:hover>.dropdown-menu, .primary-menu ul.nav li.dropdown:hover > ul.dropdown-menu {
 	display: block;
 	padding: 0;
@@ -265,7 +278,7 @@ img{
 	height: 600px;
 }
 .camera_overlayer {
-	background: rgba(0, 0, 0, .7);
+	background: rgba(0, 0, 0, .3);
 }
 .camera-slider-inner{
 	max-width: 700px;
@@ -306,6 +319,16 @@ img{
 /********************************************************
     ## Home
 ********************************************************/
+.pricing-details ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.pricing-details li{
+	border-bottom: 1px solid #eee;
+	padding: 12px 0;
+	letter-spacing: 1px;
+}
 .team-image::after{
 	content: '';
 	background: rgba(0,0,0,.5);
@@ -348,6 +371,9 @@ img{
 }
 .fact-list li h1,.fact-list li h4{
 	color: #fff;
+}
+.featured-image-page{
+	margin-bottom: 30px;
 }
 .service-url{
 	border-bottom: 1px solid #f93759;
@@ -416,7 +442,7 @@ img{
 	visibility: hidden;
 }
 .brand img {
-	max-height: 30px;
+	max-height: 85px;
 }
 .brand li {
 	padding: 0 35px;
@@ -556,6 +582,12 @@ img{
 /********************************************************
     ## WooCommerce
 ********************************************************/
+#container{
+	max-width: 1170px;
+	margin: 20px auto 0;
+	padding: 0 15px;
+	overflow: hidden;
+}
 .woocommerce .widget_price_filter .price_slider_wrapper .ui-widget-content{
 	margin-bottom: 25px;
 	margin-top: 25px;
@@ -638,10 +670,6 @@ img{
 .woocommerce form .form-row input.input-text, .woocommerce form .form-row textarea{
 	padding: 8px 15px;
 }
-/********************************************************
-    ## Quick View, Compare, Wishlist
-********************************************************/
-
 /********************************************************
     ## Footer
 ********************************************************/

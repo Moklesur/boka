@@ -21,10 +21,11 @@
 		the_content();
 
 		wp_link_pages( array(
-			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'boka' ),
+			'before' => '<div class="page-links">' . __( 'Pages:', 'boka' ),
 			'after'  => '</div>',
 		) );
 		?>
+		<div class="clearfix"></div>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
@@ -32,7 +33,7 @@
 		edit_post_link(
 			sprintf(
 			/* translators: %s: Name of current post */
-				esc_html__( 'Edit %s', 'boka' ),
+				__( 'Edit %s', 'boka' ),
 				the_title( '<span class="screen-reader-text">"', '"</span>', false )
 			),
 			'<span class="edit-link">',

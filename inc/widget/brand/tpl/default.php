@@ -11,16 +11,14 @@
 			$image_details = siteorigin_widgets_get_attachment_image_src(
 				$profile_picture, 'thumbnail', ''
 			);
-
 			$url = '';
 			if ( ! empty( $url ) ) {
 				$url = sow_esc_url( $brand['button_url'] );
 			}else{
 				$url = '#';
 			}
-
 			if ( ! empty( $image_details ) ) {
-				echo '<li class="margin-top-20"><a href="'.$url.'" target="_blank"><img src="' . esc_url( $image_details[0] ) . '" class="img-responsive center-block" /></a></li>';
+				echo '<li class="margin-top-20"><a href="'.$url.'" target="_blank"><img src="'. esc_url( $image_details[0] ).'" class="img-responsive center-block" /></a></li>';
 			}
 			?>
 		<?php endforeach; ?>
