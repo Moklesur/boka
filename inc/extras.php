@@ -24,6 +24,15 @@ function boka_body_classes( $classes ) {
 		$classes[] = 'hfeed';
 	}
 
+	if (  get_theme_mod( 'site_layout' ) == 'boxed' ) {
+		$classes[] =  "boxed";
+
+	}else{
+		$classes[] = "wide";
+	}
+
+
+
 	return $classes;
 }
 add_filter( 'body_class', 'boka_body_classes' );

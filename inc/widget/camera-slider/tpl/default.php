@@ -1,5 +1,5 @@
 <div class="boka-camera-slider-widget camera-slider">
-	<div class="boka-camera-slider">
+	<div class="boka-camera-slider camera_wrap">
 		<?php foreach( $instance['CameraSlider'] as $i => $CameraSlider ) :
 
 			if ( ! empty( $CameraSlider['CameraSlider_button_text'] ) ) :
@@ -28,6 +28,12 @@
 		endforeach; ?>
 	</div>
 </div>
+<?php
+/**
+ * Primary Color
+ */
+$primary_color = get_theme_mod( 'primary_color', '#1488cc' );
+?>
 <script>
 	jQuery(function(){
 		if (jQuery('.boka-camera-slider').length) {
@@ -40,7 +46,7 @@
 				thumbnails: false,
 				playPause: false,
 				loaderColor: '#fff',
-				loaderBgColor: '#f93759',
+				loaderBgColor: '<?php echo esc_attr( $primary_color ); ?>',
 				hover: true,
 				opacityOnGrid: true,
 				pagination: false

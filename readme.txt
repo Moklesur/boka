@@ -8,7 +8,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-Boka is responsive woocommerce integrated theme which is designed subtle and prevailing. Ideal for featuring Boka products and techniques. It has Boka optimized for best practice SEO with visual page builder integration.
+Boka is created with Latest Bootsrap focusing with modern websites look. Any agency or personal blogger can easily start with elegant design. As a free theme Boka has ultimate customization area where any user can easily play with color & font even go with box or full width layout. One of the best offer for the user is demo installation & a complete guide to use this theme. Designed with most easiest pagebuilder to make it more easy to change any sections & has 12+ custom widgets to make it more flexible. Boka is fully compatible with woo commerce & with it's custom look to make the shop more attractive. Demo is already created with it's shop look as well to make it more easy who want to go with shop.
+
+Boka is fully responsive & compatible with all major browsers. As a free theme you are getting most popular icon set, Google fonts, Custom team widget, Awesome slider to represent anything you want, Portfolio section, Grid & normal blog layouts, Mailchimp integrated subscribe option, Custom testimonial section, Color switching easy option, Social media widget, Call to action area, Two header variant & much more.
 
 == Installation ==
 
@@ -91,12 +93,7 @@ Footer Menu
   GLYPHICONS Halflings font is also released as an extension of a Bootstrap (www.getbootstrap.com) for free and it is released under the same license as Bootstrap. While you are not required to include attribution on your Bootstrap-based projects, I would certainly appreciate any form of support, even a nice Tweet is enough. Of course if you want, you can say thank you and support me by buying more icons on www.glyphicons.com.
   http://glyphicons.com/license/
 
+* Masonry v4.2.0  https://masonry.desandro.com MIT License by David DeSandro
+
 * Image (used in screenshot)
   https://pixabay.com/en/person-man-male-commuting-bike-731492/
-  https://www.pexels.com/photo/redneck-man-fashion-model-24257/
-  https://www.pexels.com/photo/woman-in-white-dress-and-black-ling-sicks-near-white-wall-48714/
-  https://www.pexels.com/photo/man-in-red-jacket-carrying-brown-leather-shoulder-bag-standing-on-foggy-weathered-field-63951/
-  https://pixabay.com/en/entrepreneur-start-start-up-career-696976/
-  https://www.pexels.com/photo/businessman-man-desk-working-90333/
-  https://pixabay.com/en/woman-person-business-professional-801872/
-  https://www.pexels.com/photo/working-woman-technology-computer-7374/

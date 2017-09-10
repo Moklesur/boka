@@ -12,14 +12,6 @@ get_header(); ?>
 		<section class="category-page">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12 text-center padding-gap-1">
-						<header class="page-header margin-null">
-							<?php
-							the_archive_title( '<h2 class="page-title">', '</h2>' );
-							the_archive_description( '<div class="taxonomy-description">', '</div>' );
-							?>
-						</header><!-- .page-header -->
-					</div>
 					<div class="col-md-9 col-sm-8 col-xs-12 padding-gap-1 padding-gap-4">
 						<?php
 						if ( have_posts() ) : ?>

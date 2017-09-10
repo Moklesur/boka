@@ -31,6 +31,306 @@ function boka_customize_register( $wp_customize ) {
 	/*********************************************
 	 * General
 	 *********************************************/
+	$wp_customize->add_setting('boka_options[divider]', array(
+			'type'              => 'divider_control',
+			'capability'        => 'edit_theme_options',
+			'sanitize_callback' => 'esc_attr',
+		)
+	);
+	$wp_customize->add_panel( 'general_settings_panel', array(
+		'title' => __( 'General Settings', 'boka' ),
+		'priority' => 10
+	) );
+
+	/********************* Sections ************************/
+
+	$wp_customize->add_section( 'background_image', array(
+		'title'          => __( 'Background Image', 'boka' ),
+		'theme_supports' => 'custom-background',
+		'panel' => 'general_settings_panel',
+		'priority'       => 20
+	) );
+
+	$wp_customize->add_section( 'site_width', array(
+		'title'          => __( 'Site Width', 'boka' ),
+		'panel' => 'general_settings_panel',
+		'priority'       => 10
+	) );
+
+	/********************* Site Layout ************************/
+
+	$wp_customize->add_setting(
+		'site_layout',
+		array(
+			'default'           => 'wide',
+			'sanitize_callback' => 'boka_layout_sanitize',
+		)
+	);
+	$wp_customize->add_control(
+		'site_layout',
+		array(
+			'type'        => 'radio',
+			'label'       => __( 'Layout Settings', 'boka' ),
+			'priority'       => 10,
+			'section'     => 'site_width',
+			'choices' => array(
+				'wide'    => __( 'Wide', 'boka' ),
+				'boxed'     => __( 'Boxed', 'boka' )
+			),
+		)
+	);
+
+	/*********************************************
+	 * Header
+	 *********************************************/
+
+	/**
+	 * Boka Divider
+	 */
+
+	$wp_customize->add_control( new boka_divider( $wp_customize, 'header_logo', array(
+			'label' => __('Logo', 'boka'),
+			'section' => 'title_tagline',
+			'settings' => 'boka_options[divider]',
+			'priority'      => 5
+		) )
+	);
+	$wp_customize->add_control( new boka_divider( $wp_customize, 'header_favicon', array(
+			'label' => __('Favicon', 'boka'),
+			'section' => 'title_tagline',
+			'settings' => 'boka_options[divider]',
+			'priority'      => 50
+		) )
+	);
+
+	$wp_customize->add_panel( 'header_panel', array(
+		'title' => __( 'Header', 'boka' ),
+		'priority' => 20
+	) );
+
+	/********************* Sections ************************/
+
+	$wp_customize->add_section( 'title_tagline', array(
+		'title'          => __( 'Header Content', 'boka' ),
+		'panel' => 'header_panel',
+		'priority'       => 5
+	) );
+
+	$wp_customize->add_section( 'header_design', array(
+		'title'          => __( 'Header Design Options', 'boka' ),
+		'panel' => 'header_panel',
+		'priority'       => 10
+	) );
+
+	$wp_customize->add_section( 'menu_design', array(
+		'title'          => __( 'Menu Design', 'boka' ),
+		'panel' => 'header_panel',
+		'priority'       => 20
+	) );
+
+	$wp_customize->add_section( 'top_bar', array(
+		'title'          => __( 'Top Bar', 'boka' ),
+		'panel' => 'header_panel',
+		'priority'       => 30
+	) );
+
+	$wp_customize->add_section( 'header_image', array(
+		'title'          => __( 'Header Image', 'boka' ),
+		'panel' => 'header_panel',
+		'priority'       => 40
+	) );
+	/********************* Search ************************/
+
+	$wp_customize->add_setting( 'search_enable', array(
+		'default'           => '',
+		'sanitize_callback' => 'boka_sanitize_checkbox',
+	) );
+	$wp_customize->add_control( 'search_enable', array(
+		'label' => __( 'Hide/Show Search', 'boka' ),
+		'type' => 'checkbox',
+		'section' => 'title_tagline',
+		'priority'       => 40
+	) );
+
+	/********************* Header Design Option ************************/
+
+	$wp_customize->add_setting(
+		'header_bg_color',
+		array(
+			'default'           => '#fff',
+			'sanitize_callback' => 'sanitize_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'header_bg_color',
+			array(
+				'label'         => __('Background Color', 'boka'),
+				'section'       => 'header_design',
+				'settings'      => 'header_bg_color'
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'header_border_color',
+		array(
+			'default'           => '#ffffff',
+			'sanitize_callback' => 'sanitize_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'header_border_color',
+			array(
+				'label'         => __('Border Color', 'boka'),
+				'section'       => 'header_design'
+			)
+		)
+	);
+	/********************* Menu Design ************************/
+	$wp_customize->add_setting(
+		'menu_layout',
+		array(
+			'default'           => 'wide',
+			'sanitize_callback' => 'boka_layout_sanitize',
+		)
+	);
+	$wp_customize->add_control(
+		'menu_layout',
+		array(
+			'type'        => 'radio',
+			'label'       => __( 'Menu Layout', 'boka' ),
+			'priority'       => 20,
+			'section'     => 'menu_design',
+			'choices' => array(
+				'wide'    => __( 'Wide', 'boka' ),
+				'collapse'     => __( 'Collapse (Not Ready Yet!)', 'boka' )
+			),
+		)
+	);
+
+	$wp_customize->add_setting( 'menu_indicator', array(
+		'default'           => '',
+		'sanitize_callback' => 'boka_sanitize_checkbox',
+	) );
+	$wp_customize->add_control( 'menu_indicator', array(
+		'label' => __( 'Hide/Show DropDown indicator', 'boka' ),
+		'type' => 'checkbox',
+		'section' => 'menu_design',
+		'priority'       => 20
+	) );
+
+	$wp_customize->add_setting(
+		'submenu_bg',
+		array(
+			'default'           => '#ffffff',
+			'sanitize_callback' => 'sanitize_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'submenu_bg',
+			array(
+				'label'         => __('DropDown Background Color', 'boka'),
+				'section'       => 'menu_design'
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'menu_color',
+		array(
+			'default'           => '#888888'
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'menu_color',
+			array(
+				'label'         => __('Menu Font Color', 'boka'),
+				'section'       => 'menu_design'
+			)
+		)
+	);
+
+	$wp_customize->add_setting( 'menu_font_size', array(
+		'default'           => '16',
+		'sanitize_callback' => 'absint',
+	) );
+	$wp_customize->add_control( 'menu_font_size', array(
+		'label' => __( 'Menu Font Size', 'boka' ),
+		'type' => 'number',
+		'section' => 'menu_design'
+	) );
+
+	/********************* Top Bar ************************/
+	$wp_customize->add_setting( 'enable_top_bar', array(
+		'default'           => '',
+		'sanitize_callback' => 'boka_sanitize_checkbox',
+	) );
+	$wp_customize->add_control( 'enable_top_bar', array(
+		'label' => __( 'Hide/Show Top Bar', 'boka' ),
+		'type' => 'checkbox',
+		'section' => 'top_bar',
+		'priority'       => 30
+	) );
+
+	$wp_customize->add_setting(
+		'top_bar_bg',
+		array(
+			'default'           => '#000',
+			'sanitize_callback' => 'sanitize_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'top_bar_bg',
+			array(
+				'label'         => __('Background Color', 'boka'),
+				'section'       => 'top_bar'
+			)
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'header_textcolor',
+			array(
+				'label'         => __('Heading Color', 'boka'),
+				'section'       => 'header_design'
+			)
+		)
+	);
+
+	$wp_customize->add_setting( 'enable_top_bar_social', array(
+		'default'           => '',
+		'sanitize_callback' => 'boka_sanitize_checkbox',
+	) );
+	$wp_customize->add_control( 'enable_top_bar_social', array(
+		'label' => __( 'Hide/Show Social', 'boka' ),
+		'description'   => __('## Please Go Back To Social Media Settings For Social Links ##', 'boka'),
+		'type' => 'checkbox',
+		'section' => 'top_bar',
+		'priority'       => 30
+	) );
+
+	$wp_customize->add_setting( 'top_bar_text', array(
+		'default'           => '',
+		'sanitize_callback' => 'boka_sanitize_text',
+	) );
+	$wp_customize->add_control( 'top_bar_text', array(
+		'label' => __( 'Text', 'boka' ),
+		'type' => 'textarea',
+		'section' => 'top_bar',
+		'priority'       => 30
+	) );
 
 	/*********************************************
 	 * Social Links
@@ -42,12 +342,6 @@ function boka_customize_register( $wp_customize ) {
 	/**
 	 * Boka Divider
 	 */
-	$wp_customize->add_setting('boka_options[divider]', array(
-			'type'              => 'divider_control',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'esc_attr',
-		)
-	);
 	$wp_customize->add_control( new boka_divider( $wp_customize, 'header_social', array(
 			'label' => __('Header Social', 'boka'),
 			'section' => 'social_settings',
@@ -139,14 +433,8 @@ function boka_customize_register( $wp_customize ) {
 	/**
 	 * Boka Divider
 	 */
-	$wp_customize->add_setting('boka_options[divider]', array(
-			'type'              => 'divider_control',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'esc_attr',
-		)
-	);
 	$wp_customize->add_control( new boka_divider( $wp_customize, 'footer_social', array(
-			'label' => __('Widget Social', 'boka'),
+			'label' => __('Footer Social', 'boka'),
 			'section' => 'social_settings',
 			'settings' => 'boka_options[divider]'
 		) )
@@ -234,162 +522,281 @@ function boka_customize_register( $wp_customize ) {
 	) );
 
 	/*********************************************
-	 * Header
-	 *********************************************/
-	/**
-	 * Boka Divider
-	 */
-	$wp_customize->add_setting('boka_options[divider]', array(
-			'type'              => 'divider_control',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'esc_attr',
-		)
-	);
-	$wp_customize->add_control( new boka_divider( $wp_customize, 'header_logo', array(
-			'label' => __('Logo', 'boka'),
-			'section' => 'title_tagline',
-			'settings' => 'boka_options[divider]',
-			'priority'      => 5
-		) )
-	);
-	/**
-	 * Boka Divider
-	 */
-	$wp_customize->add_control( new boka_divider( $wp_customize, 'header_top', array(
-			'label' => __('Header Top', 'boka'),
-			'section' => 'title_tagline',
-			'settings' => 'boka_options[divider]'
-		) )
-	);
-	/********************* Top Header ************************/
-	$wp_customize->add_setting( 'social_header_enable', array(
-		'default'           => '',
-		'sanitize_callback' => 'boka_sanitize_checkbox',
-	) );
-	$wp_customize->add_control( 'social_header_enable', array(
-		'label' => __( 'Enable Header Social', 'boka' ),
-		'type' => 'checkbox',
-		'description'   => __('## Please Go Back To Social Media Settings For Social Links ##', 'boka'),
-		'section' => 'title_tagline',
-		'settings' => 'social_header_enable'
-	) );
-
-	$wp_customize->add_setting( 'bottom_header_search', array(
-		'default'           => '',
-		'sanitize_callback' => 'boka_sanitize_checkbox',
-	) );
-	$wp_customize->add_control( 'bottom_header_search', array(
-		'label' => __( 'Enable Search', 'boka' ),
-		'type' => 'checkbox',
-		'section' => 'title_tagline',
-		'settings' => 'bottom_header_search'
-	) );
-	/**
-	 * Boka Divider
-	 */
-	$wp_customize->add_setting('boka_options[divider]', array(
-			'type'              => 'divider_control',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'esc_attr',
-		)
-	);
-	$wp_customize->add_control( new boka_divider( $wp_customize, 'header_favicon', array(
-			'label' => __('Favicon', 'boka'),
-			'section' => 'title_tagline',
-			'settings' => 'boka_options[divider]'
-		) )
-	);
-	/*********************************************
 	 * Blog
 	 *********************************************/
-	$wp_customize->add_section( 'blog_settings', array(
+
+	$wp_customize->add_panel( 'blog_panel', array(
 		'title' => __( 'Blog', 'boka' ),
-		'priority' => 81,
+		'priority' => 85
 	) );
-	/**
-	 * Boka Divider
-	 */
-	$wp_customize->add_setting('boka_options[divider]', array(
-			'type'              => 'divider_control',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'esc_attr',
+
+	/********************* Sections ************************/
+
+	$wp_customize->add_section( 'blog_layout_settings', array(
+		'title'          => __( 'Blog Layout', 'boka' ),
+		'panel' => 'blog_panel',
+		'priority'       => 10
+	) );
+
+	$wp_customize->add_section( 'blog_meta', array(
+		'title'          => __( 'Meta', 'boka' ),
+		'panel' => 'blog_panel',
+		'priority'       => 20
+	) );
+ 
+	$wp_customize->add_section( 'blog_content_excerpt', array(
+		'title'          => __( 'Content/Excerpt', 'boka' ),
+		'panel' => 'blog_panel',
+		'priority'       => 30
+	) );
+
+	$wp_customize->add_section( 'blog_featured_image', array(
+		'title'          => __( 'Featured Image', 'boka' ),
+		'panel' => 'blog_panel',
+		'priority'       => 40
+	) );
+
+	/********************* Blog Layout ************************/
+	$wp_customize->add_setting(
+		'blog_layout',
+		array(
+			'default'           => 'default',
+			'sanitize_callback' => 'boka_blog_layout_sanitize',
 		)
 	);
-	$wp_customize->add_control( new boka_divider( $wp_customize, 'blog', array(
-			'label' => __('Blog Section', 'boka'),
-			'section' => 'blog_settings',
-			'settings' => 'boka_options[divider]'
-		) )
+	$wp_customize->add_control(
+		'blog_layout',
+		array(
+			'type'        => 'radio',
+			'label'       => __( 'Blog Layout', 'boka' ),
+			'priority'       => 10,
+			'section'     => 'blog_layout_settings',
+			'choices' => array(
+				'default'    => __( 'Default ( Sidebar )', 'boka' ),
+				'blog-wide'     => __( 'Full Width', 'boka' ),
+				'masonry'     => __( 'Masonry ( Two Columns )', 'boka' )
+			),
+		)
 	);
-	$wp_customize->add_setting( 'blog_sidebar_enable', array(
-		'default'           => '1',
+	/********************* Blog Meta ************************/
+	$wp_customize->add_setting( 'meta_index_enable', array(
+		'default'           => '',
 		'sanitize_callback' => 'boka_sanitize_checkbox',
 	) );
-	$wp_customize->add_control( 'blog_sidebar_enable', array(
-		'label' => __( 'Enable Sidebar', 'boka' ),
+	$wp_customize->add_control( 'meta_index_enable', array(
+		'label' => __( 'Hide/Show Post Meta on Index', 'boka' ),
 		'type' => 'checkbox',
-		'section' => 'blog_settings',
-		'settings' => 'blog_sidebar_enable'
+		'section' => 'blog_meta',
+		'priority'       => 20
+	) );
+
+	$wp_customize->add_setting( 'meta_single_enable', array(
+		'default'           => '',
+		'sanitize_callback' => 'boka_sanitize_checkbox',
+	) );
+	$wp_customize->add_control( 'meta_single_enable', array(
+		'label' => __( 'Hide/Show Post Meta on Single', 'boka' ),
+		'type' => 'checkbox',
+		'section' => 'blog_meta',
+		'priority'       => 20
+	) );
+	/********************* Excerpt length ************************/
+	$wp_customize->add_setting( 'excerpt_content_enable', array(
+		'default'           => '',
+		'sanitize_callback' => 'boka_sanitize_checkbox',
+	) );
+	$wp_customize->add_control( 'excerpt_content_enable', array(
+		'label' => __( 'Hide/Show Excerpt/content', 'boka' ),
+		'type' => 'checkbox',
+		'section' => 'blog_content_excerpt'
 	) );
 	$wp_customize->add_setting( 'excerpt_lenght', array(
-		'default'           => '60',
+		'default'           => '45',
 		'sanitize_callback' => 'absint',
 	) );
 	$wp_customize->add_control( 'excerpt_lenght', array(
 		'type'        => 'number',
-		'section'     => 'blog_settings',
+		'section'     => 'blog_content_excerpt',
 		'settings' => 'excerpt_lenght',
 		'label'       => __('Excerpt length', 'boka'),
-		'description' => __('Excerpt length Default: 60 words', 'boka'),
+		'description' => __('Set Your Excerpt length Default: 45 words', 'boka'),
 		'input_attrs' => array(
 			'min'   => 10,
 			'max'   => 200,
 			'step'  => 5,
 		),
 	) );
+	/********************* Featured Image ************************/
+	$wp_customize->add_setting( 'featured_image_index_enable', array(
+		'default'           => '',
+		'sanitize_callback' => 'boka_sanitize_checkbox',
+	) );
+	$wp_customize->add_control( 'featured_image_index_enable', array(
+		'label' => __( 'Hide/Show Featured Image on Index', 'boka' ),
+		'type' => 'checkbox',
+		'section' => 'blog_featured_image',
+		'priority'       => 30
+	) );
+
+	$wp_customize->add_setting( 'featured_image_single_enable', array(
+		'default'           => '',
+		'sanitize_callback' => 'boka_sanitize_checkbox',
+	) );
+	$wp_customize->add_control( 'featured_image_single_enable', array(
+		'label' => __( 'Hide/Show Featured Image on Single Post', 'boka' ),
+		'type' => 'checkbox',
+		'section' => 'blog_featured_image',
+		'priority'       => 30
+	) );
 	/*********************************************
-	 * Color
+	 * Footer
 	 *********************************************/
+	$wp_customize->add_panel( 'footer_panel', array(
+		'title' => __( 'Footer', 'boka' ),
+		'priority' => 85
+	) );
+
+	/********************* Sections ************************/
+
+	$wp_customize->add_section( 'footer_content', array(
+		'title' => __( 'Footer Content', 'boka' ),
+		'panel' => 'footer_panel',
+		'priority' => 10,
+	) );
+
+	$wp_customize->add_section( 'footer_design', array(
+		'title' => __( 'Footer Design Options', 'boka' ),
+		'panel' => 'footer_panel',
+		'priority' => 20,
+	) );
+
+	/********************* Footer Content ************************/
+	$wp_customize->add_setting( 'social_footer_enable', array(
+		'default'           => '',
+		'sanitize_callback' => 'boka_sanitize_checkbox',
+	) );
+	$wp_customize->add_control( 'social_footer_enable', array(
+		'label' => __( 'Hide/Show Social', 'boka' ),
+		'type' => 'checkbox',
+		'priority'       => 10,
+		'description'   => __('## Please Go Back To Social Media Settings For Social Links ##', 'boka'),
+		'section' => 'footer_content'
+	) );
+
 	$wp_customize->add_setting(
-		'bg_text_color',
+		'footer_widget_column',
 		array(
-			'default'           => '#000',
+			'default'           => 'two',
+			'sanitize_callback' => 'boka_footer_column_sanitize',
+		)
+	);
+	$wp_customize->add_control(
+		'footer_widget_column',
+		array(
+			'type'        => 'radio',
+			'label'       => __( 'Footer Column Settings', 'boka' ),
+			'priority'       => 10,
+			'section'     => 'footer_content',
+			'choices' => array(
+				'two'    => __( 'Two Column', 'boka' ),
+				'three'    => __( 'Three Column', 'boka' ),
+				'four'    => __( 'Four Column', 'boka' )
+			),
+		)
+	);
+	$wp_customize->add_setting( 'copyright', array(
+		'default'           => 'Boka By ThemeTim',
+		'sanitize_callback' => 'boka_sanitize_text',
+	) );
+	$wp_customize->add_control( 'copyright', array(
+		'label' => __( 'Copy Right', 'boka' ),
+		'type' => 'textarea',
+		'section' => 'footer_content',
+		'priority'       => 10
+	) );
+
+	/********************* Footer Design Options ************************/
+	$wp_customize->add_setting(
+		'footer_bg_color',
+		array(
+			'default'           => '#1488cc',
 			'sanitize_callback' => 'sanitize_hex_color',
 		)
 	);
 	$wp_customize->add_control(
 		new WP_Customize_Color_Control(
 			$wp_customize,
-			'bg_text_color',
+			'footer_bg_color',
 			array(
-				'label'         => __('Body Text Color', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'bg_text_color'
+				'label'         => __('Footer Background', 'boka'),
+				'section'       => 'footer_design'
 			)
 		)
 	);
 	$wp_customize->add_setting(
-		'heading_color',
+		'footer_text_color',
 		array(
-			'default'           => '#000',
+			'default'           => '#fff',
 			'sanitize_callback' => 'sanitize_hex_color',
 		)
 	);
 	$wp_customize->add_control(
 		new WP_Customize_Color_Control(
 			$wp_customize,
-			'heading_color',
+			'footer_text_color',
 			array(
-				'label'         => __('Heading Color', 'boka'),
+				'label'         => __('Footer Text Color', 'boka'),
+				'section'       => 'footer_design'
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'footer_border_color',
+		array(
+			'default'           => '#ffffff',
+			'sanitize_callback' => 'sanitize_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'footer_border_color',
+			array(
+				'label'         => __('Border Color', 'boka'),
+				'section'       => 'footer_design',
+				'priority'       => 20
+			)
+		)
+	);
+
+	/*********************************************
+	 * Color
+	 *********************************************/
+
+	$wp_customize->add_setting(
+		'primary_color',
+		array(
+			'default'           => '#1488cc',
+			'sanitize_callback' => 'sanitize_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'primary_color',
+			array(
+				'label'         => __('Primary Color', 'boka'),
 				'section'       => 'colors',
-				'settings'      => 'heading_color'
+				'settings'      => 'primary_color',
+				'priority'       => 5
 			)
 		)
 	);
 	$wp_customize->add_setting(
 		'link_color',
 		array(
-			'default'           => '#f93759',
+			'default'           => '#1488cc',
 			'sanitize_callback' => 'sanitize_hex_color',
 		)
 	);
@@ -407,7 +814,7 @@ function boka_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'link_hover_color',
 		array(
-			'default'           => '#000',
+			'default'           => '#2939b4',
 			'sanitize_callback' => 'sanitize_hex_color',
 		)
 	);
@@ -422,601 +829,77 @@ function boka_customize_register( $wp_customize ) {
 			)
 		)
 	);
-	/**
-	 * Boka Divider
-	 */
-	$wp_customize->add_setting('boka_options[divider]', array(
-			'type'              => 'divider_control',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'esc_attr',
-		)
-	);
-	$wp_customize->add_control( new boka_divider( $wp_customize, 'header_color', array(
-			'label' => __('Header Color', 'boka'),
-			'section' => 'colors',
-			'settings' => 'boka_options[divider]'
-		) )
-	);
-
-	$wp_customize->add_setting(
-		'header_bg_color',
-		array(
-			'default'           => '#fff',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'header_bg_color',
-			array(
-				'label'         => __('Header Background', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'header_bg_color'
-			)
-		)
-	);
-	$wp_customize->add_setting(
-		'header_text_color',
-		array(
-			'default'           => '#000',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'header_text_color',
-			array(
-				'label'         => __('Header Text Color', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'header_text_color'
-			)
-		)
-	);
-
-	/**
-	 * Boka Divider
-	 */
-	$wp_customize->add_setting('boka_options[divider]', array(
-			'type'              => 'divider_control',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'esc_attr',
-		)
-	);
-	$wp_customize->add_control( new boka_divider( $wp_customize, 'footer_color', array(
-			'label' => __('Footer Color', 'boka'),
-			'section' => 'colors',
-			'settings' => 'boka_options[divider]'
-		) )
-	);
-
-	$wp_customize->add_setting(
-		'footer_bg_color',
-		array(
-			'default'           => '#000',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'footer_bg_color',
-			array(
-				'label'         => __('Footer Background', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'footer_bg_color'
-			)
-		)
-	);
-	$wp_customize->add_setting(
-		'footer_text_color',
-		array(
-			'default'           => '#fff',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'footer_text_color',
-			array(
-				'label'         => __('Footer Text Color', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'footer_text_color'
-			)
-		)
-	);
-	/**
-	 * Boka Divider
-	 */
-	$wp_customize->add_setting('boka_options[divider]', array(
-			'type'              => 'divider_control',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'esc_attr',
-		)
-	);
-	$wp_customize->add_control( new boka_divider( $wp_customize, 'default', array(
-			'label' => __('Default Button', 'boka'),
-			'section' => 'colors',
-			'settings' => 'boka_options[divider]'
-		) )
-	);
-
-	$wp_customize->add_setting(
-		'btn_default_bg',
-		array(
-			'default'           => '#f93759',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'btn_default_bg',
-			array(
-				'label'         => __('Default BG Color', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'btn_default_bg'
-			)
-		)
-	);
-
-	$wp_customize->add_setting(
-		'btn_default_text',
-		array(
-			'default'           => '#fff',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'btn_default_text',
-			array(
-				'label'         => __('Default Text Color', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'btn_default_text'
-			)
-		)
-	);
-	$wp_customize->add_setting(
-		'btn_default_border',
-		array(
-			'default'           => '#f93759',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'btn_default_border',
-			array(
-				'label'         => __('Default Border Color', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'btn_default_border'
-			)
-		)
-	);
-
-	$wp_customize->add_setting(
-		'btn_default_bg_hover',
-		array(
-			'default'           => '#000',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'btn_default_bg_hover',
-			array(
-				'label'         => __('Default BG Hover Color', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'btn_default_bg_hover'
-			)
-		)
-	);
-	$wp_customize->add_setting(
-		'btn_default_text_hover',
-		array(
-			'default'           => '#fff',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'btn_default_text_hover',
-			array(
-				'label'         => __('Default Text Hover Color', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'btn_default_text_hover'
-			)
-		)
-	);
-	$wp_customize->add_setting(
-		'btn_default_border_hover',
-		array(
-			'default'           => '#000',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'btn_default_border_hover',
-			array(
-				'label'         => __('Default Border Hover Color', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'btn_default_border_hover'
-			)
-		)
-	);
-	/**
-	 * Boka Divider
-	 */
-	$wp_customize->add_setting('boka_options[divider]', array(
-			'type'              => 'divider_control',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'esc_attr',
-		)
-	);
-	$wp_customize->add_control( new boka_divider( $wp_customize, 'primary', array(
-			'label' => __('Primary Button', 'boka'),
-			'section' => 'colors',
-			'settings' => 'boka_options[divider]'
-		) )
-	);
-
-	$wp_customize->add_setting(
-		'btn_primary_bg',
-		array(
-			'default'           => '#000',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'btn_primary_bg',
-			array(
-				'label'         => __('Primary BG Color', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'btn_primary_bg'
-			)
-		)
-	);
-	$wp_customize->add_setting(
-		'btn_primary_text',
-		array(
-			'default'           => '#fff',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'btn_primary_text',
-			array(
-				'label'         => __('Primary Text Color', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'btn_primary_text'
-			)
-		)
-	);
-	$wp_customize->add_setting(
-		'btn_primary_border',
-		array(
-			'default'           => '#000',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'btn_primary_border',
-			array(
-				'label'         => __('Primary Border Color', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'btn_primary_border'
-			)
-		)
-	);
-	$wp_customize->add_setting(
-		'btn_primary_bg_hover',
-		array(
-			'default'           => '#f93759',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'btn_primary_bg_hover',
-			array(
-				'label'         => __('Primary BG Hover Color', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'btn_primary_bg_hover'
-			)
-		)
-	);
-	$wp_customize->add_setting(
-		'btn_primary_text_hover',
-		array(
-			'default'           => '#fff',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'btn_primary_text_hover',
-			array(
-				'label'         => __('Primary Text Hover Color', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'btn_primary_text_hover'
-			)
-		)
-	);
-	$wp_customize->add_setting(
-		'btn_primary_border_hover',
-		array(
-			'default'           => '#f93759',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'btn_primary_border_hover',
-			array(
-				'label'         => __('Primary Border Hover Color', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'btn_primary_border_hover'
-			)
-		)
-	);
-	/**
-	 * Boka Divider
-	 */
-	$wp_customize->add_setting('boka_options[divider]', array(
-			'type'              => 'divider_control',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'esc_attr',
-		)
-	);
-	$wp_customize->add_control( new boka_divider( $wp_customize, 'success', array(
-			'label' => __('Primary Button', 'boka'),
-			'section' => 'colors',
-			'settings' => 'boka_options[divider]'
-		) )
-	);
-
-	$wp_customize->add_setting(
-		'btn_success_bg',
-		array(
-			'default'           => '#fff',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'btn_success_bg',
-			array(
-				'label'         => __('Success BG Color', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'btn_success_bg'
-			)
-		)
-	);
-	$wp_customize->add_setting(
-		'btn_success_text',
-		array(
-			'default'           => '#000',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'btn_success_text',
-			array(
-				'label'         => __('Success Text Color', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'btn_success_text'
-			)
-		)
-	);
-	$wp_customize->add_setting(
-		'btn_success_border',
-		array(
-			'default'           => '#fff',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'btn_success_border',
-			array(
-				'label'         => __('Success Border Color', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'btn_success_border'
-			)
-		)
-	);
-	$wp_customize->add_setting(
-		'btn_success_bg_hover',
-		array(
-			'default'           => '#000',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'btn_success_bg_hover',
-			array(
-				'label'         => __('Success BG Hover Color', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'btn_success_bg_hover'
-			)
-		)
-	);
-	$wp_customize->add_setting(
-		'btn_success_text_hover',
-		array(
-			'default'           => '#fff',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'btn_success_text_hover',
-			array(
-				'label'         => __('Success Text Hover Color', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'btn_success_text_hover'
-			)
-		)
-	);
-	$wp_customize->add_setting(
-		'btn_success_border_hover',
-		array(
-			'default'           => '#000',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'btn_success_border_hover',
-			array(
-				'label'         => __('Success Border Hover Color', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'btn_success_border_hover'
-			)
-		)
-	);
-
-	/**
-	 * Boka Divider
-	 */
-	$wp_customize->add_setting('boka_options[divider]', array(
-			'type'              => 'divider_control',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'esc_attr',
-		)
-	);
-	$wp_customize->add_control( new boka_divider( $wp_customize, 'extracolor', array(
-			'label' => __('Extra Color', 'boka'),
-			'section' => 'colors',
-			'settings' => 'boka_options[divider]'
-		) )
-	);
-	$wp_customize->add_setting(
-		'text_color_1',
-		array(
-			'default'           => '#000',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'text_color_1',
-			array(
-				'label'         => __('Text Color 1', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'text_color_1'
-			)
-		)
-	);
-	$wp_customize->add_setting(
-		'text_color_2',
-		array(
-			'default'           => '#ccc',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'text_color_2',
-			array(
-				'label'         => __('Text Color 2', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'text_color_2'
-			)
-		)
-	);
-	/**
-	 * Boka Divider
-	 */
-	$wp_customize->add_setting('boka_options[divider]', array(
-			'type'              => 'divider_control',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'esc_attr',
-		)
-	);
-	$wp_customize->add_control( new boka_divider( $wp_customize, 'extrabg', array(
-			'label' => __('Extra BG', 'boka'),
-			'section' => 'colors',
-			'settings' => 'boka_options[divider]'
-		) )
-	);
-	$wp_customize->add_setting(
-		'bg_color_1',
-		array(
-			'default'           => '#fff',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'bg_color_1',
-			array(
-				'label'         => __('BG Color 1', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'bg_color_1'
-			)
-		)
-	);
-	$wp_customize->add_setting(
-		'bg_color_2',
-		array(
-			'default'           => '#ccc',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'bg_color_2',
-			array(
-				'label'         => __('BG Color 2', 'boka'),
-				'section'       => 'colors',
-				'settings'      => 'bg_color_2'
-			)
-		)
-	);
 
 	/*********************************************
 	 * Typography
 	 *********************************************/
-	$wp_customize->add_section( 'typography', array(
+
+	$wp_customize->add_panel( 'typography_panel', array(
 		'title' => __( 'Typography', 'boka' ),
-		'priority' => 40,
+		'priority' => 40
+	) );
+
+	/********************* Sections ************************/
+
+	$wp_customize->add_section( 'body_font', array(
+		'title'          => __( 'Body Font', 'boka' ),
+		'panel' => 'typography_panel',
+		'priority'       => 10
+	) );
+
+	$wp_customize->add_section( 'heading_font', array(
+		'title'          => __( 'Heading Font', 'boka' ),
+		'panel' => 'typography_panel',
+		'priority'       => 20
+	) );
+
+	/********************* Body Font ************************/
+	$wp_customize->add_setting(
+		'bg_text_color',
+		array(
+			'default'           => '#717171',
+			'sanitize_callback' => 'sanitize_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'bg_text_color',
+			array(
+				'label'         => __('Body Color', 'boka'),
+				'section'       => 'body_font'
+			)
+		)
+	);
+	$wp_customize->add_setting( 'body_font_size', array(
+		'default'           => '18',
+		'sanitize_callback' => 'absint',
+	) );
+	$wp_customize->add_control( 'body_font_size', array(
+		'label' => __( 'Body Font Size', 'boka' ),
+		'type' => 'number',
+		'section' => 'body_font'
 	) );
 
 	$wp_customize->add_setting(
+		'body_font_name',
+		array(
+			'default' => 'Source+Sans+Pro:300,700',
+			'sanitize_callback'     => 'boka_sanitize_text',
+		)
+	);
+	$wp_customize->add_control(
+		'body_font_name',
+		array(
+			'type' => 'text',
+			'label' => __('Body Font Name', 'boka'),
+			'section' => 'body_font'
+		)
+	);
+	$wp_customize->add_setting(
 		'body_font_family',
 		array(
-			'default' => 'Source+Sans+Pro',
+			'default' => '\'Source Sans Pro\', sans-serif',
 			'sanitize_callback'     => 'boka_sanitize_text',
 		)
 	);
@@ -1024,49 +907,67 @@ function boka_customize_register( $wp_customize ) {
 		'body_font_family',
 		array(
 			'type' => 'text',
-			'label' => __('Body Font', 'boka'),
-			'section' => 'typography'
+			'label' => __('Body Font Family', 'boka'),
+			'section' => 'body_font'
 		)
 	);
-	$wp_customize->add_setting( 'body_font_size', array(
-		'default'           => '15',
-		'sanitize_callback' => 'absint',
-	) );
-	$wp_customize->add_control( 'body_font_size', array(
-		'label' => __( 'Body Font Size', 'boka' ),
-		'type' => 'number',
-		'section' => 'typography',
-		'settings' => 'body_font_size',
-	) );
 	$wp_customize->add_setting( 'body_font_weight', array(
-		'default'           => '400',
+		'default'           => '300',
 		'sanitize_callback' => 'absint',
 	) );
 	$wp_customize->add_control( 'body_font_weight', array(
-		'label' => __( 'Font Weight', 'boka' ),
+		'label' => __( 'Body Font Weight', 'boka' ),
 		'type' => 'text',
-		'section' => 'typography',
-		'settings' => 'body_font_weight'
+		'section' => 'body_font'
 	) );
+
+	/********************* Heading Font ************************/
+	$wp_customize->add_setting(
+		'heading_color',
+		array(
+			'default'           => '#333',
+			'sanitize_callback' => 'sanitize_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'heading_color',
+			array(
+				'label'         => __('Heading Color', 'boka'),
+				'section'       => 'heading_font'
+			)
+		)
+	);
+
+	$wp_customize->add_setting('heading_font_name', array(
+		'default'        => 'Roboto:400',
+		'sanitize_callback'     => 'boka_sanitize_text',
+	));
+	$wp_customize->add_control( 'heading_font_name', array(
+		'label'   => __('Heading Font Name', 'boka'),
+		'section' => 'heading_font',
+		'type'    => 'text'
+
+	));
 	$wp_customize->add_setting('heading_font_family', array(
-		'default'        => 'Source+Sans+Pro',
+		'default'        => '\'Roboto\', sans-serif',
 		'sanitize_callback'     => 'boka_sanitize_text',
 	));
 	$wp_customize->add_control( 'heading_font_family', array(
-		'label'   => __('Heading Font', 'boka'),
-		'section' => 'typography',
+		'label'   => __('Heading Font Family', 'boka'),
+		'section' => 'heading_font',
 		'type'    => 'text'
 
 	));
 	$wp_customize->add_setting( 'heading_font_weight', array(
-		'default'           => '700',
+		'default'           => '400',
 		'sanitize_callback' => 'absint',
 	) );
 	$wp_customize->add_control( 'heading_font_weight', array(
-		'label' => __( 'Font Weight', 'boka' ),
+		'label' => __( 'Heading Font Weight', 'boka' ),
 		'type' => 'text',
-		'section' => 'typography',
-		'settings' => 'heading_font_weight'
+		'section' => 'heading_font'
 	) );
 }
 add_action( 'customize_register', 'boka_customize_register' );
@@ -1089,6 +990,64 @@ function boka_sanitize_text( $input ) {
 function boka_sanitize_checkbox( $input ) {
 	if ( $input == 1 ) {
 		return 1;
+	} else {
+		return '';
+	}
+}
+
+/**
+ * Site/Menu Layout Settings
+ * @param $input
+ * @return string
+ * boka_footer_column_sanitize
+ */
+function boka_layout_sanitize( $input ) {
+	$valid = array(
+		'wide'    => __('Wide', 'boka'),
+		'boxed'     => __('Boxed', 'boka'),
+		'collapse'     => __('Collapse', 'boka')
+	);
+
+	if ( array_key_exists( $input, $valid ) ) {
+		return $input;
+	} else {
+		return '';
+	}
+}
+
+/**
+ * Blog Layout Settings
+ * @param $input
+ * @return string
+ */
+function boka_blog_layout_sanitize( $input ) {
+	$valid = array(
+		'default'    => __( 'Default ( Sidebar )', 'boka' ),
+		'blog-wide'     => __( 'Full Width', 'boka' ),
+		'masonry'     => __( 'Masonry ( Two Columns )', 'boka' )
+	);
+
+	if ( array_key_exists( $input, $valid ) ) {
+		return $input;
+	} else {
+		return '';
+	}
+}
+
+/**
+ * Footer Column Settings
+ * @param $input
+ * @return string
+ */
+function boka_footer_column_sanitize( $input ) {
+	$valid = array(
+		'two'    => __( 'Two Column', 'boka' ),
+		'three'    => __( 'Three Column', 'boka' ),
+		'four'    => __( 'Four Column', 'boka' )
+	);
+
+	if ( array_key_exists( $input, $valid ) ) {
+		return $input;
 	} else {
 		return '';
 	}

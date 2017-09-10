@@ -20,7 +20,7 @@ if ( post_password_required() ) {
 }
 ?>
 
-<div id="comments" class="comments-area margin-top-30">
+<div id="comments" class="comments-area padding-gap-3">
 	<?php
 	// You can start editing here -- including this comment!
 	if ( have_comments() ) : ?>
@@ -60,7 +60,7 @@ if ( post_password_required() ) {
 			<?php
 			$comment_reply = array(
 				'style'             => 'li',
-				'avatar_size'       => 90,
+				'avatar_size'       => 60,
 				'short_ping'        => true,   // @since 3.6
 			);
 			wp_list_comments($comment_reply);
@@ -82,14 +82,14 @@ if ( post_password_required() ) {
 	// If comments are closed and there are comments, let's leave a little note, shall we?
 	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
 
-		<p class="no-comments"><?php esc_html__( 'Comments are closed.', 'boka' ); ?></p>
+		<p class="no-comments"><?php __( 'Comments are closed.', 'boka' ); ?></p>
 		<?php
 	endif;
 	$comment_form = array(
 		'id_form'           => 'commentform',
 		'class_form'      => 'comment-form',
 		'id_submit'         => 'submit',
-		'class_submit'      => 'submit btn btn-default margin-top-20',
+		'class_submit'      => 'submit btn margin-top-20',
 		$req = get_option( 'require_name_email' ),
 		$aria_req = ( $req ? " aria-required='true'" : '' ),
 		$fields =  array(

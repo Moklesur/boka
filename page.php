@@ -18,7 +18,7 @@ get_header(); ?>
 		<section>
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12 col-sm-12 col-xs-12 <?php if(!is_front_page()) echo "padding-gap-1"; ?>">
+					<div class="col-md-12 col-sm-12 col-xs-12 <?php if( !is_front_page() ) echo "padding-gap-1"; ?>">
 						<?php
 						while ( have_posts() ) : the_post();
 

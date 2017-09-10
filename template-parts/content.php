@@ -7,50 +7,65 @@
  * @package boka
  */
 
-$margin[] = 'padding-gap-6 overflow blog-link';
+$margin[] = 'margin-bottom-30 blog-link';
+$sticky_post = '';
+if ( is_sticky() ){
+	$sticky_post = ' sticky-post';
+}
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class($margin); ?>>
-	<header class="entry-header margin-bottom-20">
-		<?php
-		if ( is_single() ) {
-			the_title( '<h3 class="entry-title text-capitalize margin-null">', '</h3>' );
-		} else {
-			the_title( '<h3 class="entry-title margin-null text-capitalize"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' );
-		}
+<article id="post-<?php the_ID(); ?>" <?php post_class( $margin ); ?>>
+	<div class="article-wrap overflow">
+		<?php if ( has_post_thumbnail() && get_theme_mod('featured_image_index_enable') != 1 ) : ?>
 
-		if ( 'post' === get_post_type() ) : ?>
-			<div class="entry-meta  margin-top-10">
-				<?php boka_posted_on(); ?>
-			</div><!-- .entry-meta -->
-			<?php
-		endif; ?>
-	</header><!-- .entry-header -->
+			<div class="entry-thumb">
+				<a href="<?php the_permalink(); ?>">
+					<img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive" />
+				</a>
+			</div>
 
-	<div class="entry-content">
-		<?php
-
-		if(is_single()) :
-			the_content();
-		else:
-			$excerpt = get_theme_mod('excerpt_lenght', '55');
-			//return $excerpt;
-			the_excerpt();
-		endif;
-
-		wp_link_pages( array(
-			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'boka' ),
-			'after'  => '</div>',
-		) );
-		?>
-		<div class="clearfix"></div>
-	</div><!-- .entry-content -->
-
-	<footer class="entry-footer overflow">
-		<?php if(!is_single()) : ?>
-		<div class="pull-left">
-			<a href="<?php the_permalink(); ?>" class="btn btn-default margin-top-10"><?php esc_html_e( 'Continue Reading', 'boka' )?></a>
-		</div>
 		<?php endif; ?>
-	</footer><!-- .entry-footer -->
+		<div class="entry-content article-gap">
+
+			<header class="entry-header margin-bottom-30">
+				<?php
+				the_title( '<h2 class="entry-title margin-null text-capitalize'. $sticky_post .'"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+
+				if ( 'post' === get_post_type() && get_theme_mod('meta_index_enable') != 1 ) : ?>
+					<div class="entry-meta">
+						<?php
+
+						boka_posted_on();
+						boka_entry_footer();
+
+						?>
+					</div><!-- .entry-meta -->
+				<?php endif; ?>
+			</header><!-- .entry-header -->
+
+			<?php
+
+			if ( get_theme_mod( 'excerpt_content_enable' ) ){
+
+				the_content();
+
+			} else {
+
+				$excerpt = get_theme_mod('excerpt_lenght', '45');
+				//return $excerpt;
+				the_excerpt();
+
+				wp_link_pages( array(
+					'before' => '<div class="page-links">' . __( 'Pages : ', 'boka' ),
+					'after'  => '</div>',
+				) );
+
+				?>
+				<div class="clearfix"></div>
+				<footer class="entry-footer overflow text-capitalize margin-top-20">
+					<a href="<?php echo esc_url( get_permalink() ); ?>" class="read-more"><?php _e( 'read more', 'boka' )?> &rarr;</a>
+				</footer><!-- .entry-footer -->
+			<?php } ?>
+		</div><!-- .entry-content -->
+	</div>
 </article><!-- #post-## -->

@@ -5,9 +5,9 @@
 		</div>
 	<?php endif; ?>
 	<div class="newsletter-widget newsletter">
-		<form class="position-relative" action="<?php echo $instance['action_url']; ?>" method="post" target="_blank">
-			<input type="email" class="form-control" name="newsletter-email" id="newsletter-email" placeholder="info@yoursite.com" required="">
-			<button type="submit" class="btn btn-success"><i class="fa fa-envelope"></i></button>
+		<form class="position-relative" action="<?php echo esc_url( $instance['action_url'], 'boka' ); ?>" method="post" target="_blank">
+			<input type="email" class="form-control" name="EMAIL" id="newsletter-email" placeholder="info@yoursite.com" required="">
+			<button type="submit" class="btn"><i class="fa fa-envelope"></i></button>
 		</form>
 	</div>
 </div>

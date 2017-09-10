@@ -13,9 +13,6 @@ get_header(); ?>
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 text-center">
-						<header>
-							<h1 class="page-header margin-null"><?php _e( 'Oops! That page can&rsquo;t be found.', 'boka' ); ?></h1>
-						</header><!-- .page-header -->
 						<div class="page-content padding-gap-3">
 							<p><?php _e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'boka' ); ?></p>
 							<form role="search" method="get" id="searchform" class="searchform form-inline margin-top-20 margin-null" action="<?php echo esc_url( home_url( '/' ) ); ?>">

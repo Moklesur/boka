@@ -40,15 +40,12 @@
 ********************************************************/
 @media only screen and (max-width:767px) {
     .primary-menu .xs-angle-down {
-        margin: -10px 0 0 0;
+        margin: -7px 0 0 0;
         padding: 9px 15px;
-        background: #fff;
         float: right;
-        color: #333;
-        font-size: 22px;
-        border: 1px solid transparent;
     }
     .navbar-default .navbar-collapse {
+        width: 100%;
         overflow: hidden;
     }
     .primary-menu ul.nav li.dropdown:hover > ul.dropdown-menu {
@@ -59,24 +56,17 @@
         box-shadow: none;
         border: 0;
     }
-    .primary-menu .dropdown-menu {
+    .primary-menu .navbar-collapse .dropdown-menu {
         width: auto;
         float: none;
         position: static;
     }
-    .text-center-xs,.header-top .text-right{
+    .text-center-xs{
         text-align: center;
     }
-    .logo img{
-        margin: 0 auto;
-    }
-    .header-top .header-social ul{
-        text-align: left;
-    }
-    .header-social {
-        position: absolute;
-        top: 100px;
-        z-index: 1;
+    .navbar-header{
+        float: right;
+        margin-top: 17px;
     }
     .header-middle .mini-cart {
         position: absolute;
@@ -86,19 +76,15 @@
         z-index: 1;
         width: auto;
     }
-    .primary-menu ul li a {
-        padding: 15px;
+    .primary-menu .navbar-nav>li>a {
+        padding: 10px 8px;
     }
     .navbar-default .navbar-toggle{
+        margin-bottom: 0;
         position: relative;
         z-index: 20;
-        border-color: #f93759;
-    }
-    .navbar-default .navbar-toggle .icon-bar{
-        background-color: #f93759;
-    }
-    .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover{
-        background-color: #f93759;
+        margin-right: 0;
+        margin-left: 25px;
     }
     .navbar-default .navbar-toggle:focus .icon-bar, .navbar-default .navbar-toggle:hover .icon-bar{
         background-color: #fff;
@@ -110,14 +96,8 @@
     .margin-top-xs-20{
         margin-top: 20px;
     }
-    .footer-bottom ,.footer-bottom ul{
+    .footer-bottom ,.footer-bottom ul,.header-social ul,.top-bar-text{
         text-align: center;
-    }
-    .logo{
-        text-align: center;
-    }
-    .primary-menu ul li:first-child a{
-        padding-left: 15px;
     }
     .header-search .form-control{
         width: 100%;
@@ -144,16 +124,27 @@
     .camera_target_content{
         top: 13%;
     }
+    .masonry .hentry {
+        width: 100%;
+    }
+    .primary-menu .collapse{
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    .logo {
+        margin-top: 2px;
+    }
 }
 /********************************************************
         ## Max Width 480px
 ********************************************************/
 @media only screen and (max-width:480px) {
+    .search-fix{
+        width: 270px;
+        right: -100%;
+    }
     .woocommerce ul.products li.product, .woocommerce-page ul.products li.product, .woocommerce-page[class*=columns-] ul.products li.product, .woocommerce[class*=columns-] ul.products li.product{
         width: 100%;
-    }
-    .header-social li{
-        padding: 0 2px;
     }
     .slider-details{
         display: none;

@@ -18,13 +18,14 @@ get_header(); ?>
 		<section class="banner">
 			<div class="container">
 				<div class="row">
-					<?php if (get_theme_mod('blog_sidebar_enable','1') ) : ?>
+					<?php if ( get_theme_mod( 'blog_layout', 'default' ) == 'default' ) : ?>
 					<div class="col-md-9 col-sm-8 col-xs-12 padding-gap-1 padding-gap-4">
 						<?php else: ?>
-						<div class="col-md-12 col-sm-12 col-xs-12 padding-gap-1 padding-gap-4">
+						<div class="col-md-12 col-sm-12 col-xs-12 padding-gap-1 padding-gap-4 <?php echo get_theme_mod( 'blog_layout' ); ?>">
 							<?php endif; ?>
-							<?php
-							if ( have_posts() ) :
+							<div class="masonry-wrap">
+								<?php
+								if ( have_posts() ) :
 
 								/* Start the Loop */
 								while ( have_posts() ) : the_post();
@@ -37,20 +38,23 @@ get_header(); ?>
 									get_template_part( 'template-parts/content', get_post_format() );
 
 								endwhile;
-								if ( class_exists( 'WooCommerce' ) ) :
-									woocommerce_pagination();
-								else:
-									the_posts_navigation();
-								endif;
-							else :
+								?>
+							</div>
+						<?php
+						if ( class_exists( 'WooCommerce' ) ) :
+							woocommerce_pagination();
+						else:
+							the_posts_navigation();
+						endif;
+						else :
 
-								get_template_part( 'template-parts/content', 'none' );
-							endif;
+							get_template_part( 'template-parts/content', 'none' );
+						endif;
 
-							?>
+						?>
 						</div>
 						<?php
-						if (get_theme_mod('blog_sidebar_enable','1') ) :
+						if ( get_theme_mod( 'blog_layout', 'default' ) == 'default' ) :
 							get_sidebar();
 						endif;
 						?>

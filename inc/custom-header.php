@@ -19,7 +19,7 @@
 function boka_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'boka_custom_header_args', array(
 		'default-image'          => '',
-		'default-text-color'     => '000000',
+		'default-text-color'     => 'ffffff',
 		'width'                  => 1920,
 		'height'                 => 250,
 		'flex-height'            => true,
@@ -61,8 +61,7 @@ if ( ! function_exists( 'boka_header_style' ) ) :
                 // If the user has set a custom color for the text use that.
                 else :
             ?>
-			.site-title a,
-			.site-description {
+			.top-bar a,.top-bar {
 				color: #<?php echo esc_attr( $header_text_color ); ?>;
 			}
 			<?php endif; ?>
