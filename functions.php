@@ -118,12 +118,12 @@ function boka_scripts() {
 	if ( get_theme_mod('body_font_name') ) {
 		wp_enqueue_style( 'boka-body-fonts', '//fonts.googleapis.com/css?family=' . esc_attr( get_theme_mod( 'body_font_name' ) ) );
 	} else {
-		wp_enqueue_style( 'boka-body-fonts', '//fonts.googleapis.com/css?family=Source+Sans+Pro:300,700');
+		wp_enqueue_style( 'boka-body-fonts', '//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700');
 	}
 	if ( get_theme_mod('heading_font_name') ) {
 		wp_enqueue_style( 'boka-heading-fonts', '//fonts.googleapis.com/css?family=' . esc_attr( get_theme_mod( 'heading_font_name' ) ) );
 	} else {
-		wp_enqueue_style( 'boka-heading-fonts', '//fonts.googleapis.com/css?family=Roboto:400');
+		wp_enqueue_style( 'boka-heading-fonts', '//fonts.googleapis.com/css?family=Nunito:300,400');
 	}
 
 	wp_enqueue_style( 'boka-animate', get_template_directory_uri() . '/assets/css/animate.min.css', array(), '3.5.1' );

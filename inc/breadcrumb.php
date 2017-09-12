@@ -18,7 +18,7 @@ function boka_title( $args = array() ) {
 
     // Open the breadcrumbs
     $html = '<section class="' . esc_attr( $args['breadcrumbs_classes'] ) . '">
-		<div class="header-banner text-center text-capitalize">';
+		<div class="breadcrumb-wrap text-center text-capitalize">';
 
     // Post
     if ( is_singular( 'post' ) ) {

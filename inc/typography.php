@@ -33,14 +33,30 @@ function boka_typography_color($color) {
     endif;
 
     /**
+     * Header Banner Image With Contents
+     */
+
+    $header_banner_bg = get_theme_mod( 'header_banner_bg', '#1488cc' );
+    $header_banner_text_color = get_theme_mod( 'header_banner_text_color', '#fff' );
+    $header_banner_btn_txt_color = get_theme_mod( 'header_banner_btn_txt_color', '#717171' );
+    $header_banner_btn_bg_color = get_theme_mod( 'header_banner_btn_bg_color', '#fff' );
+
+    $color .= ".header-banner-image { background-color:" . esc_attr( $header_banner_bg ) . "; } ";
+    $color .= ".header-banner-contents h1,.header-banner-contents p { color:" . esc_attr( $header_banner_text_color ) . "; } ";
+    $color .= ".header-banner-contents .btn { color:" . esc_attr( $header_banner_btn_txt_color ) . "; background-color:" . esc_attr( $header_banner_btn_bg_color ) . "; border-color:" . esc_attr( $header_banner_btn_bg_color ) . "; } ";
+
+
+    /**
      * Menu
      */
+    $menu_font_weight = get_theme_mod( 'menu_font_weight', '400' );
     $menu_color = get_theme_mod( 'menu_color', '#888888' );
     $submenu_bg = get_theme_mod( 'submenu_bg', '#fff' );
     $menu_font_size = get_theme_mod( 'menu_font_size', '16' );
     $color .= ".dropdown-menu { background-color:" . esc_attr( $submenu_bg ) . "; } ";
     $color .= ".primary-menu .navbar-nav>li>a,.search-cart a{ font-size: " . esc_attr($menu_font_size) . "px;} ";
     $color .= ".primary-menu .navbar-nav>li>a,.search-cart a,.site-title a, .site-description{ color:" . esc_attr( $menu_color ) . ";} ";
+    $color .= ".primary-menu .navbar-nav>li>a,.dropdown-menu a{ font-weight:" . esc_attr( $menu_font_weight ) . ";} ";
 
     /**
      * Header Section
@@ -82,7 +98,7 @@ function boka_typography_color($color) {
     if ( $heading_font_family !='' ) {
         $color .= "h1,h2,h3,h4,h5,h6,.h1, .h2, .h3, h1, h2, h3{ font-family:" . $heading_font_family . ";}";
     }else{
-        $color .= "h1,h2,h3,h4,h5,h6,.h1, .h2, .h3, h1, h2, h3{ font-family: 'Roboto', sans-serif;}";
+        $color .= "h1,h2,h3,h4,h5,h6,.h1, .h2, .h3, h1, h2, h3{ font-family: 'Nunito', sans-serif;}";
     }
 
     /**
@@ -98,7 +114,7 @@ function boka_typography_color($color) {
      * Heading
      */
     $heading_color = get_theme_mod( 'heading_color', '#333' );
-    $heading_font_weight = get_theme_mod( 'heading_font_weight', '400' );
+    $heading_font_weight = get_theme_mod( 'heading_font_weight', '300' );
     $color .= "h1, h2, h3, h4, h5, h6,h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{ color:" . esc_attr($heading_color) . "; font-weight:" . esc_attr($heading_font_weight) .";} ";
 
     if ( get_theme_mod( 'link_color' ) ){

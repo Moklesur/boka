@@ -22,11 +22,6 @@
 <body <?php body_class(); ?>>
 <div class="wrap-fix">
 	<header class="header">
-		<?php if ( get_header_image() ) : ?>
-			<div id="header-image">
-				<img src="<?php header_image(); ?>"  alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" class="img-responsive">
-			</div>
-		<?php endif; ?>
 		<?php if ( get_theme_mod( 'enable_top_bar' ) ) : ?>
 			<section class="top-bar">
 				<div class="container">
@@ -74,7 +69,7 @@
 											<!--------------- Search ---------------->
 											<li class="dropdown search">
 												<a data-toggle="dropdown" class="search-border" href="#" aria-expanded="true"><i class="fa fa-search"></i></a>
-												<form role="search" method="get" class="dropdown-menu search-fix" action="<?php echo home_url( '/' ); ?>">
+												<form role="search" method="get" class="dropdown-menu search-fix" action="<?php echo esc_url( home_url( '/' )); ?>">
 													<input type="search" class="search-field form-control"
 														   placeholder="<?php echo esc_attr( 'Search ...', 'boka' ); ?>"
 														   value="<?php echo get_search_query() ?>" name="s" />
@@ -86,7 +81,9 @@
 										<?php endif ;
 										if ( class_exists( 'WooCommerce' ) ) : ?>
 											<li class="mini-cart">
-												<a class="cart-contents" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'View your shopping cart', 'boka' ); ?>"><i class="fa fa-shopping-basket"></i> <span class="badge"><?php echo sprintf (_n( '%d', '%d', '' ), WC()->cart->get_cart_contents_count() ); ?></span></a>
+												<a class="cart-contents" href="<?php echo WC()->cart->get_cart_url(); ?>">
+													<i class="fa fa-shopping-basket"></i>
+												</a>
 											</li>
 										<?php endif; ?>
 									</ul>
@@ -112,6 +109,18 @@
 				</div>
 			</div>
 		</section>
+		<?php if ( get_theme_mod( 'enable_hero_area' ) && is_front_page() ) : ?>
+			<div class="header-banner-image position-relative<?php echo get_header_image() ? ' banner-banner-content-fix' : ''; ?>">
+				<?php if ( get_header_image() ) : ?>
+					<img src="<?php header_image(); ?>"  alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" class="img-responsive">
+				<?php endif; ?>
+				<div class="header-banner-contents text-center">
+					<h1><?php echo esc_html( get_theme_mod( 'header_banner_heading' ) ); ?></h1>
+					<p><?php echo esc_html( get_theme_mod( 'header_banner_text' ) ); ?></p>
+					<a href="<?php echo esc_url( get_theme_mod( 'header_banner_button_link' ) ); ?>" class="btn"><?php echo esc_html( get_theme_mod( 'header_banner_button_text' ) ); ?></a>
+				</div>
+			</div>
+		<?php endif; ?>
 	</header>
 
 <?php boka_title(); ?>

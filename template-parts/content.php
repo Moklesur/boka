@@ -29,7 +29,7 @@ if ( is_sticky() ){
 
 			<header class="entry-header margin-bottom-30">
 				<?php
-				the_title( '<h2 class="entry-title margin-null text-capitalize'. $sticky_post .'"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+				the_title( '<h3 class="entry-title margin-null text-capitalize'. $sticky_post .'"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' );
 
 				if ( 'post' === get_post_type() && get_theme_mod('meta_index_enable') != 1 ) : ?>
 					<div class="entry-meta">

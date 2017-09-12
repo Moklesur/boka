@@ -21,7 +21,7 @@ function boka_custom_header_setup() {
 		'default-image'          => '',
 		'default-text-color'     => 'ffffff',
 		'width'                  => 1920,
-		'height'                 => 250,
+		'height'                 => 1000,
 		'flex-height'            => true,
 		'wp-head-callback'       => 'boka_header_style',
 	) ) );

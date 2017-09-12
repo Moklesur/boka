@@ -15,7 +15,7 @@ $margin[] = 'margin-bottom-30 blog-link';
 	<header class="entry-header margin-bottom-20">
 		<?php
 
-		the_title( '<h2 class="entry-title text-capitalize margin-null">', '</h2>' );
+		the_title( '<h1 class="entry-title text-capitalize margin-null">', '</h1>' );
 
 		if ( 'post' === get_post_type() && get_theme_mod('meta_single_enable') != 1 ) : ?>
 
