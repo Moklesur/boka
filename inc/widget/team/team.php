@@ -17,14 +17,6 @@ class Boka_Team_Widget extends SiteOrigin_Widget {
 			),
 			array(),
 			array(
-				'title' => array(
-					'type'  => 'text',
-					'label' => __( 'Title', 'boka' ),
-				),
-				'sub_title' => array(
-					'type' => 'text',
-					'label' => __( 'Sub Title', 'boka' ),
-				),
 				'team' => array(
 					'type'       => 'repeater',
 					'label'      => __( 'Team', 'boka' ),
@@ -35,13 +27,13 @@ class Boka_Team_Widget extends SiteOrigin_Widget {
 						'value_method' => 'val',
 					),
 					'fields' => array(
-						'team_title' => array(
+						'name' => array(
 							'type'  => 'text',
-							'label' => __( 'Title', 'boka' ),
+							'label' => __( 'Name', 'boka' ),
 						),
-						'team_text' => array(
+						'position' => array(
 							'type'  => 'text',
-							'label' => __( 'Text', 'boka' ),
+							'label' => __( 'Position', 'boka' ),
 						),
 						'profile_picture' => array(
 							'type'     => 'media',
@@ -61,11 +53,15 @@ class Boka_Team_Widget extends SiteOrigin_Widget {
 							'type'  => 'link',
 							'label' => __( 'Twitter URL', 'boka' ),
 						),
+						'youtube' => array(
+							'type'  => 'link',
+							'label' => __( 'YouTube URL', 'boka' ),
+						),
 					),
 				),
 				'per_row' => array(
 					'type'    => 'select',
-					'label'   => __( 'Per row', 'boka' ),
+					'label'   => __( 'Select Columns', 'boka' ),
 					'default' => 3,
 					'options' => array(
 						'12' => 1,

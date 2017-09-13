@@ -73,9 +73,7 @@
 													<input type="search" class="search-field form-control"
 														   placeholder="<?php echo esc_attr( 'Search ...', 'boka' ); ?>"
 														   value="<?php echo get_search_query() ?>" name="s" />
-													<button type="submit" class="btn">
-														<i class="fa fa-long-arrow-right"></i>
-													</button>
+													<button type="submit"><i class="fa fa-search"></i></button>
 												</form>
 											</li>
 										<?php endif ;

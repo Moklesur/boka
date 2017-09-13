@@ -2,7 +2,7 @@
 
 function boka_title( $args = array() ) {
 
-    if ( is_front_page() || is_singular( 'post' ) ) {
+    if ( is_front_page() || is_singular( 'post' ) || is_404() ) {
         return;
     }
 

@@ -28,10 +28,6 @@ class Boka_Pricing_Widget extends SiteOrigin_Widget {
 						'text-right' => __( 'Text Right', 'boka' ),
 					)
 				),
-				'title' => array(
-					'type'  => 'text',
-					'label' => __( 'Heading', 'boka' ),
-				),
 
 				'pricing' => array(
 					'type'       => 'repeater',
@@ -43,29 +39,24 @@ class Boka_Pricing_Widget extends SiteOrigin_Widget {
 						'value_method' => 'val',
 					),
 					'fields' => array(
-						'pricing_icon' => array(
-							'type' => 'icon',
-							'label' => __('Select an icon', 'boka'),
-						),
-						'pricing_icon_size' => array(
-							'type' => 'number',
-							'label' => __( 'Icon Size', 'boka' ),
-							'default' => '40'
-						),
-						'pricing_icon_color' => array(
+						'color' => array(
 							'type' => 'color',
-							'label' => __( 'Icon Color', 'boka' ),
-							'default' => '#000'
+							'label' => __( 'Plan Color', 'boka' ),
+							'default' => '#1488cc'
 						),
-						'pricing_title' => array(
+						'planName' => array(
 							'type'  => 'text',
-							'label' => __( 'Title', 'boka' ),
+							'label' => __( 'Plan Name', 'boka' ),
 						),
-						'pricing_price' => array(
+						'amount' => array(
 							'type'  => 'text',
-							'label' => __( 'Price', 'boka' ),
+							'label' => __( 'Amount', 'boka' ),
 						),
-						'pricing_texteditor' => array(
+						'currency' => array(
+							'type'  => 'text',
+							'label' => __( 'Currency ', 'boka' ),
+						),
+						'texteditor' => array(
 							'type' => 'tinymce',
 							'default' => '',
 							'rows' => 7,
@@ -78,26 +69,27 @@ class Boka_Pricing_Widget extends SiteOrigin_Widget {
 								'quicktags_settings' => array( $this, 'filter_quicktags_settings' ),
 							),
 						),
-						'pricing_button_text' => array(
+						'button_text' => array(
 							'type' => 'text',
 							'label' => __('Button Title', 'boka'),
 							'default' => ''
 						),
-						'pricing_button_style' => array(
-							'type' => 'select',
-							'label' => __( 'Button Style', 'boka' ),
-							'default' => 'btn-default',
-							'options' => array(
-								'btn-default' => __( 'Default', 'boka' ),
-								'btn-primary' => __( 'Primary', 'boka' ),
-								'btn-success' => __( 'Success', 'boka' ),
-							)
-						),
-						'pricing_button_url' => array(
+						'button_url' => array(
 							'type' => 'link',
 							'label' => __('Button URL', 'boka'),
 							'default' => ''
 						),
+					),
+				),
+				'per_row' => array(
+					'type'    => 'select',
+					'label'   => __( 'Select Columns', 'boka' ),
+					'default' => 3,
+					'options' => array(
+						'12' => 1,
+						'6' => 2,
+						'4' => 3,
+						'3' => 4,
 					),
 				),
 			)

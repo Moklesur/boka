@@ -53,18 +53,25 @@ if ( class_exists( 'SiteOrigin_Widget' ) ) {
     endif;
     add_filter( 'siteorigin_panels_widgets', 'boka_group_theme_widgets_in_builder' );
 
-    require get_template_directory() . '/inc/widget/camera-slider/camera-slider.php';
-    require get_template_directory() . '/inc/widget/testimonial/testimonial.php';
-    require get_template_directory() . '/inc/widget/brand/brand.php';
-    require get_template_directory() . '/inc/widget/pricing/pricing.php';
-    require get_template_directory() . '/inc/widget/fact/fact.php';
+    //require get_template_directory() . '/inc/widget/camera-slider/camera-slider.php';
+   // require get_template_directory() . '/inc/widget/testimonial/testimonial.php';
+    //require get_template_directory() . '/inc/widget/brand/brand.php';
+
+    //require get_template_directory() . '/inc/widget/fact/fact.php';
+
+
+    //require get_template_directory() . '/inc/widget/service/service.php';
+    //require get_template_directory() . '/inc/widget/editor/editor.php';
+    //require get_template_directory() . '/inc/widget/social/social.php';
+    //require get_template_directory() . '/inc/widget/newsletter/newsletter.php';
+    //require get_template_directory() . '/inc/widget/recent-blog/recent-blog.php';
+
     require get_template_directory() . '/inc/widget/portfolio/portfolio.php';
     require get_template_directory() . '/inc/widget/team/team.php';
-    require get_template_directory() . '/inc/widget/service/service.php';
-    require get_template_directory() . '/inc/widget/editor/editor.php';
-    require get_template_directory() . '/inc/widget/social/social.php';
-    require get_template_directory() . '/inc/widget/newsletter/newsletter.php';
-    require get_template_directory() . '/inc/widget/recent-blog/recent-blog.php';
+    require get_template_directory() . '/inc/widget/pricing/pricing.php';
     require get_template_directory() . '/inc/widget/heading/heading.php';
     require get_template_directory() . '/inc/widget/content-box/content-box.php';
+    require get_template_directory() . '/inc/widget/featured-list/featured-list.php';
+    require get_template_directory() . '/inc/widget/list-items/list-items.php';
+    require get_template_directory() . '/inc/widget/button/button.php';
 }

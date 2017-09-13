@@ -1,19 +1,37 @@
-<div class="boka-pricing <?php echo $instance['heading_alignment']; ?>">
-	<?php if ( ! empty( $instance['title'] ) ) : ?>
-		<div class="<?php echo $instance['heading_alignment']; ?>-heading">
-			<h1 class="page-header"><?php echo esc_html( $instance['title'] ); ?></h1>
-		</div>
-	<?php endif; ?>
-	<div class="boka-pricing-list position-relative">
-		<?php foreach( $instance['pricing'] as $i => $pricing ) :
-			if ( ! empty( $pricing['pricing_button_text'] ) ) :
-				$button = '<div class="default-button margin-top-30"><a href="'.sow_esc_url($pricing['pricing_button_url']).'" class="btn btn-lg btn-block '.$pricing['pricing_button_style'].'">'.$pricing['pricing_button_text'].'</a></div>';
-			endif;
-			$icon_styles = array();
-			if(!empty($pricing['pricing_icon_size'])) $icon_styles[] = 'font-size: '.intval($pricing['pricing_icon_size']).'px';
-			if(!empty($pricing['pricing_icon_color'])) $icon_styles[] = 'color: '.$pricing['pricing_icon_color'];
+<div class="boka-pricing row <?php echo $instance['heading_alignment']; ?>">
 
-			echo '<div class="margin-top-30 col-md-4 col-sm-4 col-xs-12"><div class="pricing-list"><span class="pricing-icon">'.siteorigin_widget_get_icon( $pricing['pricing_icon'], $icon_styles ).'</span><h3 class="text-uppercase">'.$pricing['pricing_title'].'</h3><h1>'.$pricing['pricing_price'].'</h1><div class="pricing-details margin-top-30">'.$pricing['pricing_texteditor'].'</div>'.$button.'</div></div>';
-		endforeach; ?>
-	</div>
+
+	<?php foreach( $instance['pricing'] as $i => $pricing ) :
+		$color = "";
+		$button = "";
+		$text_color = "";
+		if ( ! empty( $pricing['color'] ) ) :
+			$button = $pricing['color'].';';
+			$text_color = $pricing['color'].';';
+			$bg_color = $pricing['color'].';';
+
+			$button = ' style=" background-color:' . $button . ' border-color:' . $button . '"' ;
+			$text_color = ' style="color:' . $text_color . '"' ;
+			$bg_color = ' style="background-color:' . $bg_color . '"' ;
+
+		endif;
+
+		?>
+
+		<div class="col-md-<?php echo esc_attr( $instance['per_row'] ); ?> col-sm-<?php echo esc_attr( $instance['per_row'] ); ?> col-xs-12 margin-bottom-30">
+			<div class="pricing-list">
+				<h3 class="margin-null plan-name"<?php echo $bg_color; ?>><?php echo $pricing['planName']; ?></h3>
+				<h2 class="currency-amount"<?php echo $text_color; ?>><span class="small"<?php echo $text_color; ?>><?php echo $pricing['currency']; ?></span><?php echo $pricing['amount']; ?></h2>
+				<div class="margin-top-30"><?php echo $pricing['texteditor']; ?></div>
+
+				<?php
+
+				if ( ! empty( $pricing['button_text'] ) ) : ?>
+					<a href="<?php echo sow_esc_url($pricing['button_url']); ?>" class="btn margin-top-30"<?php echo $button; ?>><?php echo $pricing['button_text']; ?></a>
+				<?php endif; ?>
+
+			</div>
+		</div>
+
+	<?php endforeach; ?>
 </div>

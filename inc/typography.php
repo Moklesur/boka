@@ -18,7 +18,7 @@ function boka_typography_color($color) {
 
     $color .= ".navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover,.navbar-default .navbar-toggle .icon-bar,.woocommerce nav.woocommerce-pagination ul li span.current,.footer-main,.camera_wrap .slider-button .btn,.search-cart .badge,.dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover,.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover,.woocommerce ul.products li.product .button,.widget-area .search-form .search-submit,.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button,.woocommerce nav.woocommerce-pagination ul li a, .woocommerce nav.woocommerce-pagination ul li span,.woocommerce div.product form.cart .button,.woocommerce #review_form #respond .form-submit input,.woocommerce input.button , .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,.woocommerce #payment #place_order ,.wpcf7-submit,.btn{ background-color:" . esc_attr($primary_color) . "; } ";
 
-    $color .= ".navbar-default .navbar-toggle,.woocommerce nav.woocommerce-pagination ul li span.current,.wpcf7 .wpcf7-submit, .wpcf7 input, .wpcf7 select, .wpcf7 textarea,.widget-area .search-form .search-field,.form-control,.service-url,.camera_wrap .slider-button .btn,.search-cart .badge,.dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover,.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover,.woocommerce ul.products li.product .button,.widget-area .search-form .search-submit,.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button,.woocommerce nav.woocommerce-pagination ul li a, .woocommerce nav.woocommerce-pagination ul li span,.woocommerce div.product form.cart .button,.woocommerce #review_form #respond .form-submit input,.woocommerce input.button , .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,.woocommerce #payment #place_order ,.wpcf7-submit,.btn{ border-color: " . esc_attr($primary_color) . "; } ";
+    $color .= ".navbar-default .navbar-toggle,.woocommerce nav.woocommerce-pagination ul li span.current,.wpcf7 .wpcf7-submit,.widget-area .search-form .search-field,.service-url,.camera_wrap .slider-button .btn,.search-cart .badge,.dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover,.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover,.woocommerce ul.products li.product .button,.widget-area .search-form .search-submit,.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button,.woocommerce nav.woocommerce-pagination ul li a, .woocommerce nav.woocommerce-pagination ul li span,.woocommerce div.product form.cart .button,.woocommerce #review_form #respond .form-submit input,.woocommerce input.button , .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,.woocommerce #payment #place_order ,.btn{ border-color: " . esc_attr($primary_color) . "; } ";
 
     $color .= ".camera_wrap .slider-button .btn,.search-cart .badge,.dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover,.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover,.woocommerce ul.products li.product .button,.widget-area .search-form .search-submit,.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button,.woocommerce nav.woocommerce-pagination ul li a, .woocommerce nav.woocommerce-pagination ul li span,.woocommerce div.product form.cart .button,.woocommerce #review_form #respond .form-submit input,.woocommerce input.button , .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,.woocommerce #payment #place_order ,.wpcf7-submit,.btn{ color: #fff; } ";
 
@@ -61,11 +61,14 @@ function boka_typography_color($color) {
     /**
      * Header Section
      */
-    $header_bg_color = get_theme_mod( 'header_bg_color', '#fff' );
+    $header_bg_color = get_theme_mod( 'header_bg_color', '#ffffff' );
+    $header_border_color = get_theme_mod( 'header_border_color', '#ffffff' );
+    $header_border_style = get_theme_mod( 'header_border_style', 'none' );
+    $header_border_size = get_theme_mod( 'header_border_size', '1' );
 
-    $header_border_color = '';
-    if ( get_theme_mod( 'header_border_color' ) ){
-        $header_border_color = 'border-bottom: 1px solid '. esc_attr( get_theme_mod( 'header_border_color' ).';' );
+
+    if ( get_theme_mod( 'header_border_size' ) ){
+        $header_border_color = 'border-bottom: '.  $header_border_size .'px ' . esc_attr( $header_border_style ) .' '. esc_attr( $header_border_color ) .';';
     }
 
     $color .= ".header { background:" . esc_attr($header_bg_color) . "; $header_border_color } ";

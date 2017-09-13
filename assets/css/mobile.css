@@ -23,6 +23,9 @@
         width: 100%;
         text-align: center;
     }
+    .banner-banner-content-fix .header-banner-contents {
+        top: 20%;
+    }
 }
 /********************************************************
         ## Min Width 768px And Max Width 991px
@@ -31,14 +34,23 @@
     .camera_target_content{
         top: 15%;
     }
-    .pricing-list {
-        padding: 25px;
+    .banner-banner-content-fix .header-banner-contents {
+        top: 10%;
     }
 }
 /********************************************************
         ## Max Width 767px
 ********************************************************/
 @media only screen and (max-width:767px) {
+    .header-top{
+        padding-bottom: 24px;
+    }
+    .logo img {
+        margin-top: 28px;
+    }
+    .search-cart li {
+        padding-bottom: 0;
+    }
     .primary-menu .xs-angle-down {
         margin: -7px 0 0 0;
         padding: 9px 15px;
@@ -133,6 +145,13 @@
     }
     .logo {
         margin-top: 2px;
+    }
+    .header-banner-image img{
+        display: none;
+    }
+    .banner-banner-content-fix .header-banner-contents {
+        position: relative;
+        padding: 50px 15px;
     }
 }
 /********************************************************

@@ -1,12 +1,12 @@
 <div class="boka-heading <?php echo $instance['heading_alignment']; ?>">
-
 	<?php
 
 	$heading_tag = $instance['heading_tag'];
 
 	$color = "";
 	if ( ! empty( $instance['color'] ) ) :
-		$color = " style = " .' color:' . $instance['color']. "";
+		$text_color = $instance['color'].';';
+		$color = ' style="color:' . $text_color . '"' ;
 	endif;
 
 	if ( ! empty( $instance['heading'] ) ) : ?>

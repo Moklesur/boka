@@ -45,7 +45,7 @@ function boka_customize_register( $wp_customize ) {
 	/********************* Sections ************************/
 
 	$wp_customize->add_section( 'background_image', array(
-		'title'          => __( 'Background Image', 'boka' ),
+		'title'          => __( 'Body Background Image', 'boka' ),
 		'theme_supports' => 'custom-background',
 		'panel' => 'general_settings_panel',
 		'priority'       => 20
@@ -70,7 +70,7 @@ function boka_customize_register( $wp_customize ) {
 		'site_layout',
 		array(
 			'type'        => 'radio',
-			'label'       => __( 'Layout Settings', 'boka' ),
+			'label'       => __( 'Site Layout', 'boka' ),
 			'priority'       => 10,
 			'section'     => 'site_width',
 			'choices' => array(
@@ -146,7 +146,7 @@ function boka_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'boka_sanitize_checkbox',
 	) );
 	$wp_customize->add_control( 'search_enable', array(
-		'label' => __( 'Hide/Show Search', 'boka' ),
+		'label' => __( 'Show/Hide Search Icon in Header', 'boka' ),
 		'type' => 'checkbox',
 		'section' => 'title_tagline',
 		'priority'       => 40
@@ -166,7 +166,7 @@ function boka_customize_register( $wp_customize ) {
 			$wp_customize,
 			'header_bg_color',
 			array(
-				'label'         => __('Background Color', 'boka'),
+				'label'         => __('Header Background Color', 'boka'),
 				'section'       => 'header_design',
 				'settings'      => 'header_bg_color'
 			)
@@ -185,11 +185,67 @@ function boka_customize_register( $wp_customize ) {
 			$wp_customize,
 			'header_border_color',
 			array(
-				'label'         => __('Border Color', 'boka'),
+				'label'         => __('Header Border Color', 'boka'),
 				'section'       => 'header_design'
 			)
 		)
 	);
+
+	$wp_customize->add_setting(
+		'header_border_style',
+		array(
+			'default'           => 'none',
+			'sanitize_callback' => 'boka_border_style_sanitize',
+		)
+	);
+	$wp_customize->add_control(
+		'header_border_style',
+		array(
+			'type'        => 'select',
+			'label'       => __( 'Header Border style', 'boka' ),
+			'section'     => 'header_design',
+			'choices' => array(
+				'none'    => __( 'none', 'boka' ),
+				'dotted'     => __( 'dotted', 'boka' ),
+				'dashed'     => __( 'dashed', 'boka' ),
+				'solid'     => __( 'solid', 'boka' ),
+				'double'     => __( 'double', 'boka' ),
+				'groove'     => __( 'groove', 'boka' ),
+				'ridge'     => __( 'ridge', 'boka' )
+			),
+		)
+	);
+
+	$wp_customize->add_setting( 'header_border_size', array(
+		'default'           => '1',
+		'sanitize_callback' => 'absint',
+	) );
+	$wp_customize->add_control( 'header_border_size', array(
+		'label' => __( 'Header Border Size', 'boka' ),
+		'type' => 'number',
+		'section' => 'header_design'
+	) );
+
+	$wp_customize->add_setting( 'header_top_padding', array(
+		'default'           => '5',
+		'sanitize_callback' => 'absint',
+	) );
+	$wp_customize->add_control( 'header_top_padding', array(
+		'label' => __( 'Header Padding Top', 'boka' ),
+		'type' => 'number',
+		'section' => 'header_design'
+	) );
+
+	$wp_customize->add_setting( 'header_bottom_padding', array(
+		'default'           => '5',
+		'sanitize_callback' => 'absint',
+	) );
+	$wp_customize->add_control( 'header_bottom_padding', array(
+		'label' => __( 'Header Padding Bottom', 'boka' ),
+		'type' => 'number',
+		'section' => 'header_design'
+	) );
+
 	/********************* Menu Design ************************/
 	$wp_customize->add_setting(
 		'menu_layout',
@@ -1156,6 +1212,29 @@ function boka_blog_layout_sanitize( $input ) {
 		'default'    => __( 'Default ( Sidebar )', 'boka' ),
 		'blog-wide'     => __( 'Full Width', 'boka' ),
 		'masonry'     => __( 'Masonry ( Two Columns )', 'boka' )
+	);
+
+	if ( array_key_exists( $input, $valid ) ) {
+		return $input;
+	} else {
+		return '';
+	}
+}
+
+/**
+ * Header Border Style Settings
+ * @param $input
+ * @return string
+ */
+function boka_border_style_sanitize( $input ) {
+	$valid = array(
+		'none'    => __( 'none', 'boka' ),
+		'dotted'     => __( 'dotted', 'boka' ),
+		'dashed'     => __( 'dashed', 'boka' ),
+		'solid'     => __( 'solid', 'boka' ),
+		'double'     => __( 'double', 'boka' ),
+		'groove'     => __( 'groove', 'boka' ),
+		'ridge'     => __( 'ridge', 'boka' )
 	);
 
 	if ( array_key_exists( $input, $valid ) ) {

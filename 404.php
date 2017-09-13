@@ -9,21 +9,11 @@
 
 get_header(); ?>
 	<main id="main" class="site-main" role="main">
-		<section class="error-404 not-found padding-gap-1 padding-gap-2">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<div class="page-content padding-gap-3">
-							<p><?php _e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'boka' ); ?></p>
-							<form role="search" method="get" id="searchform" class="searchform form-inline margin-top-20 margin-null" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-								<div class="">
-									<input type="text" class="form-control" value="<?php echo get_search_query(); ?>" name="s" id="s" placeholder="<?php esc_attr_e( 'Search', 'boka' ) ?>" />
-									<button type="submit" class="btn btn-default text-uppercase"><?php esc_html_e( 'Search', 'boka' ); ?></button>
-								</div>
-							</form>
-						</div><!-- .page-content -->
-					</div>
-				</div>
+		<section class="error-404 not-found position-relative">
+			<img src="<?php echo get_template_directory_uri(); ?>/assets/images/404.jpg" class="img-responsive" alt="404" />
+			<div class="content-404 text-center">
+				<h1><?php _e( '404', 'boka' ); ?></h1>
+				<p><?php _e( 'Oops! This Page Not To Be found!', 'boka' ); ?></p>
 			</div>
 		</section><!-- .error-404 -->
 	</main><!-- #main -->

@@ -6,11 +6,11 @@ Author URI: https://www.themetim.com/
 Description: Boka is created with Latest Bootsrap focusing with modern websites look. Any agency or personal blogger can easily start with elegant design. As a free theme Boka has ultimate customization area where any user can easily play with color & font even go with box or full width layout. One of the best offer for the user is demo installation & a complete guide to use this theme. Designed with most easiest pagebuilder to make it more easy to change any sections & has 12+ custom widgets to make it more flexible. Boka is fully compatible with woo commerce & with it's custom look to make the shop more attractive. Demo is already created with it's shop look as well to make it more easy who want to go with shop.
 
 Boka is fully responsive & compatible with all major browsers. As a free theme you are getting most popular icon set, Google fonts, Custom team widget, Awesome slider to represent anything you want, Portfolio section, Grid & normal blog layouts, Mailchimp integrated subscribe option, Custom testimonial section, Color switching easy option, Social media widget, Call to action area, Two header variant & much more.
-Version: 1.0.12
+Version: 1.0.15
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: boka
-Tags: blog, custom-background, custom-colors, custom-menu, translation-ready, theme-options, threaded-comments, custom-logo, footer-widgets, sticky-post, custom-header, featured-image-header, full-width-template, left-sidebar, right-sidebar
+Tags: blog, custom-background, custom-colors, custom-menu, translation-ready, theme-options, threaded-comments, custom-logo, footer-widgets, sticky-post, custom-header, featured-image-header, full-width-template, left-sidebar, right-sidebar, e-commerce, portfolio
 */
 
 /********************************************************
@@ -19,7 +19,7 @@ Tags: blog, custom-background, custom-colors, custom-menu, translation-ready, th
 body,.boxed .wrap-fix{
 	background-color: #f9f9f9;
 }
-a,.btn,input,button,.woocommerce .product-fix .compare,.woocommerce .product-fix .yith-wcqv-button,.woocommerce ul.products li.product .thumbs,.team-image::after,.team-social,.pricing-list,.article-wrap,.widget-area section,.content-box{
+a,.btn,input,button,.woocommerce .product-fix .compare,.woocommerce .product-fix .yith-wcqv-button,.woocommerce ul.products li.product .thumbs,.team-image::after,.team-social,.pricing-list,.article-wrap,.widget-area section,.content-box,.team-details,.pricing-list{
 	-webkit-transition: all .3s ease-in-out;
 	-moz-transition: all .3s ease-in-out;
 	-ms-transition: all .3s ease-in-out;
@@ -178,13 +178,17 @@ img{
 .position-relative{
 	position: relative;
 }
-.btn,.widget-area .search-form .search-submit{
+.btn,.widget-area .search-form .search-submit,.wpcf7 .wpcf7-submit{
 	padding: 7px 30px 8px;
 	font-size: 18px;
 	border-radius: 30px;
+	font-weight: 700;
 }
-.font-weight-400,.lead-text{
+.font-weight-400,.lead-text,.boka-list-items li,.wpcf7 .wpcf7-submit,label{
 	font-weight: 400;
+}
+.border-radius,.primary-menu .dropdown-submenu:hover>.dropdown-menu, .primary-menu ul.nav li.dropdown:hover > ul.dropdown-menu,.content-box,.article-wrap,.widget-area section,.team-details,.pricing-list,.single-thumb img,.article-wrap #jp-relatedposts .jp-relatedposts-items-visual .jp-relatedposts-post img.jp-relatedposts-post-img,.wpcf7 input, .wpcf7 select, .wpcf7 textarea,.form-control{
+	border-radius: 5px;
 }
 /********************************************************
     ## Header
@@ -259,7 +263,7 @@ img{
 	right: 0;
 }
 .search-fix .form-control {
-	padding: 10px 15px;
+	padding: 10px 40px 10px 15px;
 	border-radius: 25px;
 	box-shadow: none;
 }
@@ -267,10 +271,12 @@ img{
 	margin-top: -18px;
 	margin-left: -10px;
 }
-.search-fix .btn {
+.search-fix button {
 	position: absolute;
-	top: 15px;
-	right: 15px;
+	top: 25px;
+	right: 32px;
+	border: 0;
+	background: none;
 }
 .main-slider{
 	margin: 0 !important;
@@ -293,7 +299,6 @@ img{
 .primary-menu .dropdown-submenu:hover>.dropdown-menu, .primary-menu ul.nav li.dropdown:hover > ul.dropdown-menu {
 	display: block;
 	padding: 0;
-	border-radius: 5px;
 	margin: 0;
 }
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
@@ -362,8 +367,34 @@ img{
 /********************************************************
     ## SO Widgets
 ********************************************************/
+.boka-pricing .pricing-list{
+	padding: 40px 0;
+}
+.pricing-list .plan-name{
+	padding: 20px 15px;
+	color: #fff;
+}
+.pricing-list .currency-amount{
+
+}
+.pricing-list .currency-amount{
+	font-size: 48px;
+}
+.pricing-list>div{
+	padding: 0 15px;
+}
+.pricing-list ul{
+	padding: 0;
+	list-style: none;
+}
+.pricing-list li{
+	padding: 5px 0;
+}
+.boka-team .team-details{
+	padding: 30px 60px;
+}
 .lead-text{
-	font-size: 24px;
+	font-size: 22px;
 	color: #a0a0a0;
 }
 .boka-heading{
@@ -372,6 +403,30 @@ img{
 }
 .content-box{
 	padding: 50px 22px;
+}
+.content-box:hover,.team-details:hover,.pricing-list:hover{
+	-ms-transform: translate(0, -5px);
+	-webkit-transform: translate(0, -5px);
+	transform: translate(0, -5px);
+}
+.boka-featured-list .featured-list-image-icon{
+	float: left;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	border: 1px solid #fff;
+	text-align: center;
+	border-radius: 50%;
+}
+.boka-featured-list h3, .boka-featured-list p{
+	padding-left: 75px;
+	color: #fff;
+}
+.boka-list-items li{
+	padding: 5px 0;
+}
+.boka-list-items li>span{
+	padding-right: 10px;
 }
 /********************************************************
     ## Home
@@ -398,8 +453,8 @@ img{
 .wpcf7-form-control-wrap{
 	margin-top: 5px;
 }
-.wpcf7 input, .wpcf7 select, .wpcf7 textarea,.wpcf7 .wpcf7-submit{
-	border: 1px solid;
+.wpcf7 input, .wpcf7 select, .wpcf7 textarea,.wpcf7 .wpcf7-submit,.form-control{
+	border: 1px solid #ccc;
 	padding: 6px 15px;
 	outline: none;
 }
@@ -457,13 +512,12 @@ img{
 .widget-area .search-form .screen-reader-text, .widget-area .search-form .search-submit{
 	display: none;
 }
-.content-box,.article-wrap,.widget-area section{
+.content-box,.article-wrap,.widget-area section,.team-details,.pricing-list{
 	-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.01);
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.01);
-	border-radius: 5px;
 	background: #fff;
 }
-.article-wrap:hover,.content-box:hover{
+.article-wrap:hover,.content-box:hover,.team-details:hover,.pricing-list:hover{
 	-webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.10), 0 0 0 1px rgba(0, 0, 0, 0.01);
 	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.10), 0 0 0 1px rgba(0, 0, 0, 0.01);
 }
@@ -472,9 +526,6 @@ img{
 }
 .entry-meta {
 	font-size: 15px;
-}
-.single-thumb img{
-	border-radius: 5px;
 }
 .entry-meta-single>span{
 	margin-top: 10px;
@@ -569,12 +620,12 @@ img{
 	margin-right: 10px;
 }
 .comment-content,.comment-metadata,.comment-awaiting-moderation{
-	margin-left: 105px;
+	margin-left: 75px;
 }
 .comment-metadata{
-	margin-left: 105px;
-	margin-top: -34px;
-	margin-bottom: 20px;
+	margin-left: 75px;
+	margin-top: -19px;
+	margin-bottom: 15px;
 }
 .comments .fn{
 	font-size: 16px;
@@ -595,9 +646,6 @@ img{
 	margin: 15px 0 0;
 	font-size: 24px;
 	line-height: 1;
-}
-.article-wrap #jp-relatedposts .jp-relatedposts-items-visual .jp-relatedposts-post img.jp-relatedposts-post-img{
-	border-radius: 5px;
 }
 .article-wrap #jp-relatedposts {
 	padding-top: 1.5em;
@@ -746,7 +794,7 @@ img{
 }
 .footer-bottom{
 	padding: 28px 0;
-	background: #111;
+	background: #fff;
 }
 .footer-top .widget_text .fa{
 	margin-right: 10px;
@@ -871,4 +919,9 @@ img{
 	top: 5px;
 	width: auto;
 	z-index: 100000; /* Above WP toolbar. */
+}
+.content-404{
+	position: absolute;
+	top: 30%;
+	width: 100%;
 }
