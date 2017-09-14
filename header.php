@@ -32,9 +32,13 @@
 							</div>
 						<?php endif;
 
-						do_action('boka_header_social');
+						if( get_theme_mod( 'enable_top_bar_social' ) ) : ?>
 
-						?>
+							<div class="col-md-6 col-sm-6 col-xs-12 header-social">
+								<?php do_action('boka_social'); ?>
+							</div>
+
+						<?php endif; ?>
 					</div>
 				</div>
 			</section>

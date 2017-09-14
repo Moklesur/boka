@@ -111,9 +111,17 @@
 	<section class="footer-bottom">
 		<div class="container">
 			<div class="row">
-				<?php
-				do_action('boka_footer_social');
+
+				<?php if( get_theme_mod( 'social_footer_enable' ) ) : ?>
+
+				<div class="col-md-6 col-sm-6 col-xs-12 footer-social">
+					<?php do_action('boka_social'); ?>
+				</div>
+
+				<?php endif;
+
 				do_action('boka_footer_copyright');
+
 				?>
 			</div>
 		</div>

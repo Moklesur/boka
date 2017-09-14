@@ -37,12 +37,14 @@ function boka_typography_color($color) {
      */
 
     $header_banner_bg = get_theme_mod( 'header_banner_bg', '#1488cc' );
+    $hero_area_heading_color = get_theme_mod( 'hero_area_heading_color', '#fff' );
     $header_banner_text_color = get_theme_mod( 'header_banner_text_color', '#fff' );
     $header_banner_btn_txt_color = get_theme_mod( 'header_banner_btn_txt_color', '#717171' );
     $header_banner_btn_bg_color = get_theme_mod( 'header_banner_btn_bg_color', '#fff' );
 
     $color .= ".header-banner-image { background-color:" . esc_attr( $header_banner_bg ) . "; } ";
-    $color .= ".header-banner-contents h1,.header-banner-contents p { color:" . esc_attr( $header_banner_text_color ) . "; } ";
+    $color .= ".header-banner-contents h1{ color:" . esc_attr( $hero_area_heading_color ) . "; } ";
+    $color .= ".header-banner-contents p { color:" . esc_attr( $header_banner_text_color ) . "; } ";
     $color .= ".header-banner-contents .btn { color:" . esc_attr( $header_banner_btn_txt_color ) . "; background-color:" . esc_attr( $header_banner_btn_bg_color ) . "; border-color:" . esc_attr( $header_banner_btn_bg_color ) . "; } ";
 
 
@@ -62,29 +64,55 @@ function boka_typography_color($color) {
      * Header Section
      */
     $header_bg_color = get_theme_mod( 'header_bg_color', '#ffffff' );
+
     $header_border_color = get_theme_mod( 'header_border_color', '#ffffff' );
     $header_border_style = get_theme_mod( 'header_border_style', 'none' );
     $header_border_size = get_theme_mod( 'header_border_size', '1' );
 
+    $header_top_padding = '';
+    if ( get_theme_mod( 'header_top_padding' ) ){
+        $header_top_padding = 'padding-top: '.get_theme_mod( 'header_top_padding' ).'px;';
+    }
+
+    $header_bottom_padding = '';
+    if ( get_theme_mod( 'header_bottom_padding' ) ){
+        $header_bottom_padding = 'padding-bottom: '.get_theme_mod( 'header_bottom_padding' ).'px;';
+    }
 
     if ( get_theme_mod( 'header_border_size' ) ){
         $header_border_color = 'border-bottom: '.  $header_border_size .'px ' . esc_attr( $header_border_style ) .' '. esc_attr( $header_border_color ) .';';
     }
 
-    $color .= ".header { background:" . esc_attr($header_bg_color) . "; $header_border_color } ";
+    $color .= ".header { background:" . esc_attr($header_bg_color) . "; $header_border_color $header_top_padding $header_bottom_padding } ";
 
     /**
     * Footer Section
     */
     $footer_bg_color = get_theme_mod( 'footer_bg_color' );
-    $footer_text_color = get_theme_mod( 'footer_text_color', '#fff' );
+    $footer_text_color = get_theme_mod( 'footer_text_color', '#717171' );
 
-    $footer_border_color = '';
-    if ( get_theme_mod( 'footer_border_color' ) ){
-        $footer_border_color = 'border-top: 1px solid '. esc_attr( get_theme_mod( 'footer_border_color' ).';' );
+    $footer_border_color = get_theme_mod( 'footer_border_color', '#ffffff' );
+    $footer_border_style = get_theme_mod( 'footer_border_style', 'none' );
+    $footer_border_size = get_theme_mod( 'footer_border_size', '1' );
+
+    $footer_top_padding = '';
+    if ( get_theme_mod( 'footer_top_padding' ) ){
+        $footer_top_padding = 'padding-top: '.get_theme_mod( 'footer_top_padding' ).'px;';
     }
 
-    $color .= ".footer-main { background:" . esc_attr($footer_bg_color) . "; $footer_border_color } ";
+    $footer_bottom_padding = '';
+    if ( get_theme_mod( 'footer_bottom_padding' ) ){
+        $footer_bottom_padding = 'padding-bottom: '.get_theme_mod( 'footer_bottom_padding' ).'px;';
+    }
+
+    $footer_border = '';
+    if ( get_theme_mod( 'header_border_size' ) ){
+        $footer_border = 'border-top: '.  $footer_border_size .'px ' . esc_attr( $footer_border_style ) .' '. esc_attr( $footer_border_color ) .';';
+    }
+
+    $color .= ".footer-main { background:" . esc_attr($footer_bg_color) . "; $footer_border $footer_top_padding } ";
+    $color .= ".footer-bottom {  $footer_bottom_padding } ";
+
     $color .= ".footer-top ,.footer-main, .footer-main a, .footer-main h4{  color: ". esc_attr($footer_text_color) .";} ";
 
     /**
