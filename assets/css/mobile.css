@@ -42,6 +42,11 @@
         ## Max Width 767px
 ********************************************************/
 @media only screen and (max-width:767px) {
+    .header-banner-image img {
+        display: block;
+        position: absolute;
+        height: 100%;
+    }
     .header-top{
         padding-bottom: 24px;
     }
@@ -145,9 +150,6 @@
     }
     .logo {
         margin-top: 2px;
-    }
-    .header-banner-image img{
-        display: none;
     }
     .banner-banner-content-fix .header-banner-contents {
         position: relative;

@@ -30,7 +30,7 @@ class Boka_Heading_Widget extends SiteOrigin_Widget {
 				),
 				'heading_tag' => array(
 					'type' => 'select',
-					'label' => __( 'Select Heading Tag', 'boka' ),
+					'label' => __( 'Select Title Tag', 'boka' ),
 					'default' => 'h2',
 					'options' => array(
 						'h1' => __( 'H1', 'boka' ),

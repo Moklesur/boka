@@ -215,8 +215,7 @@ function boka_custom_tiled_gallery_width($width){
 function boka_custom_logo() {
 
 	$defaults = array(
-		'height'      => 26,
-		'width'       => 150
+		'width'       => 250
 	);
 	add_theme_support( 'custom-logo', $defaults );
 

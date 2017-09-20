@@ -1,9 +1,38 @@
+<?php
+/**
+ * Slide ID
+ */
+$sliderID = rand(1,1000);
+?>
 <div class="boka-camera-slider-widget camera-slider">
-	<div class="boka-camera-slider camera_wrap">
-		<?php foreach( $instance['CameraSlider'] as $i => $CameraSlider ) :
+	<div class="boka-camera-slider<?php echo $sliderID; ?> camera_wrap">
+		<?php
+		foreach( $instance['CameraSlider'] as $i => $CameraSlider ) :
+
+			$color = "";
+			if ( ! empty( $CameraSlider['color'] ) || ! empty( $CameraSlider['bgColor'] ) ) :
+				$color = $CameraSlider['color'].';';
+				$bgColor = $CameraSlider['bgColor'].';';
+				$color = ' style="color:' . $color . ' background-color:' . $bgColor . ' border-color:' . $bgColor . '"' ;
+			endif;
+
+			$title_animation = '';
+			if ( ! empty( $CameraSlider['title_animation'] ) ) :
+				$title_animation = 'animated '.$CameraSlider['title_animation'];
+			endif;
+
+			$content_animation = '';
+			if ( ! empty( $CameraSlider['content_animation'] ) ) :
+				$content_animation = 'animated '.$CameraSlider['content_animation'];
+			endif;
+
+			$btn_animation = '';
+			if ( ! empty( $CameraSlider['btn_animation'] ) ) :
+				$btn_animation = 'animated '.$CameraSlider['btn_animation'];
+			endif;
 
 			if ( ! empty( $CameraSlider['CameraSlider_button_text'] ) ) :
-				$button = '<div class="slider-button"><a href="'.sow_esc_url($CameraSlider['CameraSlider_button_url']).'" class="btn '.$CameraSlider['CameraSlider_button_style'].'">'.$CameraSlider['CameraSlider_button_text'].'</a></div>';
+				$button = '<div class="slider-button"><a href="'.sow_esc_url($CameraSlider['CameraSlider_button_url']).'"  class="btn '.$btn_animation.'" '.$color.'>'.$CameraSlider['CameraSlider_button_text'].'</a></div>';
 			endif;
 
 			$CameraSlider_image = $CameraSlider['CameraSlider_image'];
@@ -23,7 +52,7 @@
 			$text_position = '';
 			if(!empty($CameraSlider['text_position'])) $text_position = $CameraSlider['text_position'];
 
-			echo '<div  data-src="'. $image_url .'"><div class="camera-slider-inner '.$CameraSlider['heading_alignment'].'" style="margin:'.$text_position.'"><h1 style="'.$CameraSlider_title_color.'">'.$CameraSlider['CameraSlider_title'].'</h1><h3 style="'.$CameraSlider_subtitle_color.'">'.$CameraSlider['CameraSlider_subtitle'].'</h3><div class="slider-details">'.$CameraSlider['CameraSlider_texteditor'].'</div>'.$button.'</div></div>';
+			echo '<div  data-src="'. $image_url .'"><div class="container"><div class="camera-slider-inner '.$CameraSlider['heading_alignment'].'" style="margin:'.$text_position.'"><h1 style="'.$CameraSlider_title_color.'" class="'.$title_animation.'">'.$CameraSlider['CameraSlider_title'].'</h1><p class="'.$content_animation.'" style="'.$CameraSlider_subtitle_color.'">'.$CameraSlider['CameraSlider_subtitle'].'</p>'.$button.'</div></div></div>';
 
 		endforeach; ?>
 	</div>
@@ -33,16 +62,20 @@
  * Primary Color
  */
 $primary_color = get_theme_mod( 'primary_color', '#1488cc' );
+
+/**
+ * Advance Options
+ */
 ?>
 <script>
-	jQuery(function(){
-		if (jQuery('.boka-camera-slider').length) {
-			jQuery('.boka-camera-slider').camera({
-				height: '50%',
-				loader: 'bar',
+	jQuery( window ).ready(function() {
+			jQuery('.boka-camera-slider<?php echo $sliderID; ?>').camera({
+				fx: '<?php echo $instance['control']['effect']; ?>',
+				height: '<?php echo $instance['control']['height']; ?>%',
+				loader: '<?php echo $instance['control']['loader']; ?>',
 				margin:'',
 				alignment: 'center',
-				barPosition: 'bottom',
+				barPosition: '<?php echo $instance['control']['barPosition']; ?>',
 				thumbnails: false,
 				playPause: false,
 				loaderColor: '#fff',
@@ -51,6 +84,6 @@ $primary_color = get_theme_mod( 'primary_color', '#1488cc' );
 				opacityOnGrid: true,
 				pagination: false
 			});
-		}
+
 	});
 </script>

@@ -20,7 +20,7 @@ function boka_header_social_action() { ?>
             echo '<li><a href="'.esc_url( get_theme_mod('header_pint') ).'" target="_blank"><i class="fa fa-pinterest"></i></a></li>';
         }
         if( get_theme_mod('header_ins') ) {
-            echo '<li><a href="'.esc_url( get_theme_mod('header_ins') ).'" target="_blank"><i class="fa fa-linkedin"></i></a></li>';
+            echo '<li><a href="'.esc_url( get_theme_mod('header_ins') ).'" target="_blank"><i class="fa fa-instagram"></i></a></li>';
         }
         if( get_theme_mod('header_dri') ) {
             echo '<li><a href="'.esc_url( get_theme_mod('header_dri') ).'" target="_blank"><i class="fa fa-dribbble"></i></a></li>';

@@ -178,17 +178,17 @@ img{
 .position-relative{
 	position: relative;
 }
-.btn,.widget-area .search-form .search-submit,.wpcf7 .wpcf7-submit{
-	padding: 7px 30px 8px;
-	font-size: 18px;
-	border-radius: 30px;
-	font-weight: 700;
-}
 .font-weight-400,.lead-text,.boka-list-items li,.wpcf7 .wpcf7-submit,label{
 	font-weight: 400;
 }
 .border-radius,.primary-menu .dropdown-submenu:hover>.dropdown-menu, .primary-menu ul.nav li.dropdown:hover > ul.dropdown-menu,.content-box,.article-wrap,.widget-area section,.team-details,.pricing-list,.single-thumb img,.article-wrap #jp-relatedposts .jp-relatedposts-items-visual .jp-relatedposts-post img.jp-relatedposts-post-img,.wpcf7 input, .wpcf7 select, .wpcf7 textarea,.form-control{
 	border-radius: 5px;
+}
+button,input[type=submit],.btn,.widget-area .search-form .search-submit,.wpcf7 .wpcf7-submit,.camera-slider .btn{
+	padding: 7px 30px 8px;
+	font-size: 18px;
+	border-radius: 30px;
+	font-weight: 700;
 }
 /********************************************************
     ## Header
@@ -215,11 +215,11 @@ img{
 .header-banner-contents{
 	padding: 90px 15px 120px;
 }
-.header-banner-contents h1,.header-banner-contents p{
+.header-banner-contents h1,.header-banner-contents p,.camera-slider h1,.camera-slider p{
 	font-size: 48px;
 	margin-bottom: 30px;
 }
-.header-banner-contents p{
+.header-banner-contents p,.camera-slider p{
 	letter-spacing: 2px;
 	font-size: 24px;
 }
@@ -273,10 +273,11 @@ img{
 }
 .search-fix button {
 	position: absolute;
-	top: 25px;
-	right: 32px;
+	top: 16px;
+	right: 12px;
 	border: 0;
 	background: none;
+	color: #888888;
 }
 .main-slider{
 	margin: 0 !important;
@@ -284,10 +285,10 @@ img{
 .camera_wrap .camera_pag .camera_pag_ul{
 	text-align: center;
 }
-.camera_pag{
+/*.camera_pag{
 	margin-top: -40px;
 	display: none;
-}
+}*/
 .primary-menu ul .xs-dropdown-menu li a{
 	padding: 15px 25px;
 }
@@ -321,33 +322,15 @@ img{
 	max-width: 700px;
 }
 .camera_target_content{
-	top: 30%;
-}
-.camera-slider-inner.text-right{
-	padding-right: 90px;
-}
-.camera-slider-inner.text-left{
-	padding-left: 90px;
+	top: 35%;
 }
 .camera-slider-inner.text-center{
 	padding: 0 90px;
 }
 .camera_wrap .slider-button .btn{
 	display: inline-block;
-	padding: 8px 30px;
-	font-size: 18px;
 	line-height: 1.82857143;
-	text-align: center;
 	white-space: nowrap;
-	border: 1px solid;
-}
-.camera-slider-inner h1{
-	text-transform: uppercase;
-	font-size: 55px;
-}
-.camera-slider-inner h3{
-	font-size: 36px;
-	text-transform: capitalize;
 }
 .slider-button,.slider-details{
 	margin-top: 20px;
@@ -453,12 +436,12 @@ img{
 .wpcf7-form-control-wrap{
 	margin-top: 5px;
 }
-.wpcf7 input, .wpcf7 select, .wpcf7 textarea,.wpcf7 .wpcf7-submit,.form-control{
+.wpcf7 input, .wpcf7 select, .wpcf7 textarea,.wpcf7 .wpcf7-submit,.form-control,button, input, select, textarea,input[type=submit]{
 	border: 1px solid #ccc;
 	padding: 6px 15px;
 	outline: none;
 }
-.wpcf7 .wpcf7-submit{
+.wpcf7 .wpcf7-submit,button,input[type=submit]{
 	width: auto;
 	height: inherit;
 	border: 1px solid;
