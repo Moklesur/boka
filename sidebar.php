@@ -13,5 +13,11 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 ?>
 
 <aside id="secondary" class="widget-area col-md-3 col-sm-12 col-xs-12 padding-gap-1" role="complementary">
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
+	<?php
+	if ( class_exists( 'WooCommerce' ) && ( is_shop() || is_product() ) ) {
+		dynamic_sidebar( 'woocommerce-sidebar' );
+	}else {
+		dynamic_sidebar( 'sidebar-1' );
+	}
+	?>
 </aside><!-- #secondary -->

@@ -46,18 +46,13 @@ class Boka_Testimonial_Widget extends SiteOrigin_Widget {
 							'type'  => 'text',
 							'label' => __( 'Name', 'boka' ),
 						),
+						'position' => array(
+							'type'  => 'text',
+							'label' => __( 'Position', 'boka' ),
+						),
 						'testimonial_texteditor' => array(
-							'type' => 'tinymce',
-							'default' => '',
-							'rows' => 10,
-							'default_editor' => 'html',
-							'button_filters' => array(
-								'mce_buttons' => array( $this, 'filter_mce_buttons' ),
-								'mce_buttons_2' => array( $this, 'filter_mce_buttons_2' ),
-								'mce_buttons_3' => array( $this, 'filter_mce_buttons_3' ),
-								'mce_buttons_4' => array( $this, 'filter_mce_buttons_5' ),
-								'quicktags_settings' => array( $this, 'filter_quicktags_settings' ),
-							),
+							'type' => 'textarea',
+							'label' => __( 'Content', 'boka' ),
 						),
 						'testimonial_profile_picture' => array(
 							'type'     => 'media',
@@ -66,6 +61,74 @@ class Boka_Testimonial_Widget extends SiteOrigin_Widget {
 							'fallback' => true,
 						),
 					),
+				),
+				'control' => array(
+					'type' => 'section',
+					'label' => __( 'Control' , 'boka' ),
+					'hide' => true,
+					'fields' => array(
+						'style' => array(
+							'type' => 'select',
+							'label' => __( 'Style of Testimonial', 'boka' ),
+							'default' => 'default',
+							'options' => array(
+								'default' => __( 'Default', 'boka' ),
+								'style-1' => __( 'Style 1', 'boka' ),
+								'style-2' => __( 'Style 2', 'boka' ),
+							)
+						),
+						'per_row' => array(
+							'type'    => 'select',
+							'label'   => __( 'Select Columns', 'boka' ),
+							'description'   => __( 'it will be work for the default setting', 'boka' ),
+							'default' => 3,
+							'options' => array(
+								'12' => 1,
+								'6' => 2,
+								'4' => 3
+							),
+						),
+						'padding' => array(
+							'type' => 'number',
+							'label' => __( 'Wrapper Padding', 'boka' ),
+							'default' => '70'
+						),
+						'bg_color' => array(
+							'type' => 'color',
+							'label' => __( 'Background Color', 'boka' ),
+							'default' => ''
+						),
+						'color_name' => array(
+							'type' => 'color',
+							'label' => __( 'Name Color', 'boka' ),
+							'default' => ''
+						),
+						'color_position' => array(
+							'type' => 'color',
+							'label' => __( 'Position Color', 'boka' ),
+							'default' => '#000'
+						),
+						'color_content' => array(
+							'type' => 'color',
+							'label' => __( 'Content Color', 'boka' ),
+							'default' => '#000'
+						),
+						'indicators' => array(
+							'type' => 'checkbox',
+							'label' => __( 'Show/Hide Slider Indicators ( will not work DEFAULT )', 'boka' ),
+							'default' => ''
+						),
+						'left_right_arrow' => array(
+							'type' => 'checkbox',
+							'label' => __( 'Show/Hide Slider Arrow ( will not work DEFAULT )', 'boka' ),
+							'default' => ''
+						),
+						'quote' => array(
+							'type' => 'checkbox',
+							'label' => __( 'Show/Hide Quote image', 'boka' ),
+							'default' => ''
+						),
+					)
 				),
 			)
 		);

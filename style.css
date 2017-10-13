@@ -6,7 +6,7 @@ Author URI: https://www.themetim.com/
 Description: Boka is created with Latest Bootsrap focusing with modern websites look. Any agency or personal blogger can easily start with elegant design. As a free theme Boka has ultimate customization area where any user can easily play with color & font even go with box or full width layout. One of the best offer for the user is demo installation & a complete guide to use this theme. Designed with most easiest pagebuilder to make it more easy to change any sections & has 12+ custom widgets to make it more flexible. Boka is fully compatible with woo commerce & with it's custom look to make the shop more attractive. Demo is already created with it's shop look as well to make it more easy who want to go with shop.
 
 Boka is fully responsive & compatible with all major browsers. As a free theme you are getting most popular icon set, Google fonts, Custom team widget, Awesome slider to represent anything you want, Portfolio section, Grid & normal blog layouts, Mailchimp integrated subscribe option, Custom testimonial section, Color switching easy option, Social media widget, Call to action area, Two header variant & much more.
-Version: 1.0.16
+Version: 1.0.23
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: boka
@@ -19,7 +19,7 @@ Tags: blog, custom-background, custom-colors, custom-menu, translation-ready, th
 body,.boxed .wrap-fix{
 	background-color: #f9f9f9;
 }
-a,.btn,input,button,.woocommerce .product-fix .compare,.woocommerce .product-fix .yith-wcqv-button,.woocommerce ul.products li.product .thumbs,.team-image::after,.team-social,.pricing-list,.article-wrap,.widget-area section,.content-box,.team-details,.pricing-list{
+a,.btn,input,button,.woocommerce .product-fix .compare,.woocommerce .product-fix .yith-wcqv-button,.woocommerce ul.products li.product .thumbs,.team-image::after,.team-social,.pricing-list,.article-wrap,.widget-area section,.content-box,.team-details,.pricing-list,.woocommerce ul.products li.product,.testimonial .testimonial-prev,.testimonial .testimonial-next,.testimonial .item-default{
 	-webkit-transition: all .3s ease-in-out;
 	-moz-transition: all .3s ease-in-out;
 	-ms-transition: all .3s ease-in-out;
@@ -94,20 +94,14 @@ h6{
 	border-radius: 0;
 	padding: 0;
 	margin: 0;
-	background: #1488CC;
-	background: -webkit-linear-gradient(to left, #2B32B2, #1488CC);
-	background: linear-gradient(to left, #2B32B2, #1488CC);
 }
 img{
 	height: auto;
 	max-width: 100%;
 }
 .breadcrumb-wrap{
-	border-top: 1px solid #f9f9f9;
-	border-bottom: 1px solid #f9f9f9;
 	padding: 9px 0;
 	text-transform: capitalize;
-	font-size: 12px;
 }
 .breadcrumb>li+li:before {
 	padding: 0 10px;
@@ -118,7 +112,7 @@ img{
 .padding-null{
 	padding: 0;
 }
-.padding-gap-1,.parallax,.footer{
+.padding-gap-1,.parallax,.footer,.woocommerce .related.products{
 	padding-top: 90px;
 }
 .padding-gap-2,.up-sells,.related,.woocommerce-tabs,.woocommerce div.product div.images, .woocommerce div.product div.summary{
@@ -193,6 +187,112 @@ button,input[type=submit],.btn,.widget-area .search-form .search-submit,.wpcf7 .
 /********************************************************
     ## Header
 ********************************************************/
+.cart-icon>a>span {
+	position: absolute;
+	top: -9px;
+	width: 22px;
+	height: 22px;
+	text-align: center;
+	line-height: 22px;
+	border-radius: 50%;
+	font-size: 11px;
+	right: -13px;
+	color: #fff;
+	background: #000;
+}
+.mini-cart {
+	position: absolute;
+	top: 100%;
+	z-index: 99;
+	background: #fff;
+	width: 320px;
+	right: 0;
+	padding: 30px;
+	display: none;
+}
+.cart-icon:hover .mini-cart {
+	display: block;
+}
+.cart-contents{
+	position: relative;
+}
+.cart-icon .mini-cart ul{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.cart-icon .mini-cart ul.cart_list li img{
+	max-width: 65px;
+	float: left;
+	margin-right: 10px;
+	height: auto;
+	margin-left: 0;
+	margin-bottom: 10px;
+}
+.cart-icon .mini-cart ul.cart_list li a{
+	font-weight: inherit;
+}
+.cart-icon .mini-cart ul.cart_list li:first-child {
+	padding-top: 0;
+}
+.cart-icon .mini-cart ul.cart_list li {
+	padding: 10px 0 10px;
+	margin: 0 0 10px;
+	list-style: none;
+	border-bottom: 1px solid #fafafd;
+	display: block;
+	overflow: hidden;
+}
+.cart-icon .quantity,.cart-icon strong{
+	font-weight: inherit;
+}
+.cart-icon .quantity{
+	display: block;
+}
+.cart-icon .total{
+	text-transform: uppercase;
+	text-align: center;
+}
+.cart-icon .mini-cart .buttons .button{
+	margin-top: 10px;
+	background: transparent;
+	border: 1px solid #ddd;
+	width: 48%;
+	text-align: center;
+	margin-right: 4%;
+	font-weight: inherit;
+	font-size: 100%;
+	line-height: 1;
+	cursor: pointer;
+	position: relative;
+	text-decoration: none;
+	overflow: visible;
+	padding: .618em 1em;
+	border-radius: 3px;
+	left: auto;
+	color: #515151;
+	white-space: nowrap;
+	display: inline-block;
+}
+.cart-icon .mini-cart .buttons .button:hover{
+	background: #eee;
+}
+.cart-icon .mini-cart .buttons .button:last-child{
+	margin-right: 0;
+}
+.cart-icon .mini-cart ul.cart_list li a.remove{
+	float: right;
+	font-size: 1.5em;
+	height: 1em;
+	width: 1em;
+	text-align: center;
+	line-height: 1;
+	border-radius: 100%;
+	color: red !important;
+	text-decoration: none;
+	font-weight: 700;
+	border: 0;
+}
 .breadcrumb-wrap h1{
 	font-size: 48px;
 	padding: 85px 15px;
@@ -315,9 +415,6 @@ button,input[type=submit],.btn,.widget-area .search-form .search-submit,.wpcf7 .
 .camera_wrap{
 	height: 600px;
 }
-.camera_overlayer {
-	background: rgba(0, 0, 0, .3);
-}
 .camera-slider-inner{
 	max-width: 700px;
 }
@@ -350,15 +447,66 @@ button,input[type=submit],.btn,.widget-area .search-form .search-submit,.wpcf7 .
 /********************************************************
     ## SO Widgets
 ********************************************************/
+.boka-testimonial-style-1,.boka-testimonial-style-2{
+	overflow: hidden;
+}
+.boka-testimonial-style-1 h4,.boka-testimonial-style-2 h4{
+	font-weight: bold;
+}
+.testimonial .carousel-indicators li{
+	border-color: #ddd;
+}
+.testimonial .carousel-indicators .active{
+	background-color: #ddd;
+}
+.testimonial .carousel-indicators li,.testimonial .carousel-indicators .active{
+	width: 9px;
+	height: 9px;
+	margin-left: 3px;
+	margin-right: 3px;
+}
+.testimonial .carousel-indicators{
+	position: relative;
+	bottom: 0;
+	margin-bottom: 0;
+}
+.testimonial-indicator .testimonial-prev,.testimonial-indicator .testimonial-next{
+	position: absolute;
+	top: 43%;
+}
+.testimonial-indicator .testimonial-prev{
+	left: -10%;
+}
+.testimonial:hover .testimonial-prev{
+	left: 0;
+}
+.testimonial-indicator .testimonial-next{
+	right: -10%;
+}
+.testimonial:hover .testimonial-next{
+	right: 0;
+}
+.testimonial .carousel-inner>.item>img{
+	max-width: 100px;
+	margin-bottom: 30px;
+}
+.testimonial-quote{
+	background-image: url("assets/images/quote.png");
+	background-repeat: no-repeat;
+	height: 30px
+}
+.testimonial.text-center .testimonial-quote{
+	background-position: center;
+}
+.testimonial.text-right .testimonial-quote{
+	background-position: right;
+}
 .boka-pricing .pricing-list{
 	padding: 40px 0;
 }
 .pricing-list .plan-name{
 	padding: 20px 15px;
 	color: #fff;
-}
-.pricing-list .currency-amount{
-
 }
 .pricing-list .currency-amount{
 	font-size: 48px;
@@ -387,7 +535,7 @@ button,input[type=submit],.btn,.widget-area .search-form .search-submit,.wpcf7 .
 .content-box{
 	padding: 50px 22px;
 }
-.content-box:hover,.team-details:hover,.pricing-list:hover{
+.content-box:hover,.team-details:hover,.pricing-list:hover,.woocommerce ul.products li.product:hover,.testimonial .item-default:hover{
 	-ms-transform: translate(0, -5px);
 	-webkit-transform: translate(0, -5px);
 	transform: translate(0, -5px);
@@ -495,7 +643,7 @@ button,input[type=submit],.btn,.widget-area .search-form .search-submit,.wpcf7 .
 .widget-area .search-form .screen-reader-text, .widget-area .search-form .search-submit{
 	display: none;
 }
-.content-box,.article-wrap,.widget-area section,.team-details,.pricing-list{
+.content-box,.article-wrap,.widget-area section,.team-details,.pricing-list,.woocommerce ul.products li.product, .woocommerce-page ul.products li.product,.boka-testimonial-style-2,.boka-testimonial-style-1,.item-default{
 	-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.01);
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.01);
 	background: #fff;
@@ -642,11 +790,67 @@ button,input[type=submit],.btn,.widget-area .search-form .search-submit,.wpcf7 .
 /********************************************************
     ## WooCommerce
 ********************************************************/
-#container{
-	max-width: 1170px;
-	margin: 20px auto 0;
-	padding: 0 15px;
-	overflow: hidden;
+.woocommerce-cart table.cart td.actions .coupon .input-text {
+	width: 130px;
+	padding: 7px 12px;
+	margin-right: 15px;
+}
+.woocommerce div.product div.images .woocommerce-product-gallery__image:nth-child(n+2){
+	margin-top: 10px;
+}
+.woocommerce div.product div.images .woocommerce-product-gallery__image img{
+	padding: 5px;
+}
+.woocommerce-product-gallery__wrapper{
+	margin: 0 -5px;
+}
+.woocommerce div.product form.cart .variations label {
+	color: #000;
+	margin-top: 5px;
+	text-transform: capitalize;
+}
+.woocommerce #content div.product .woocommerce-tabs, .woocommerce div.product .woocommerce-tabs, .woocommerce-page #content div.product .woocommerce-tabs, .woocommerce-page div.product .woocommerce-tabs{
+	background: #fff;
+	padding: 30px;
+}
+.woocommerce .related h2{
+	margin-bottom: 30px;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs::before,.woocommerce div.product .woocommerce-tabs ul.tabs li::after, .woocommerce div.product .woocommerce-tabs ul.tabs li::before,.woocommerce div.product .woocommerce-tabs ul.tabs li{
+	border: 0;
+	box-shadow: none;
+	margin: 0;
+	background: none;
+	border-radius: 0;
+	padding: 0;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li a {
+	border-bottom: 2px solid transparent;
+	margin-right: 30px;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs {
+	padding: 0;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active a {
+	color: inherit;
+	text-shadow: inherit;
+	border-bottom: 2px solid;
+}
+.woocommerce ul.products li.product .woocommerce-loop-product__title{
+	padding: 10px 25px 10px;
+}
+.woocommerce ul.products li.product .button,.woocommerce .products .star-rating,.woocommerce ul.products li.product .price{
+	margin-left: 25px;
+	margin-top: 10px;
+}
+.woocommerce .archive-woo .woocommerce-ordering{
+	margin: 0 0 2.5em;
+}
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+	background: #fff;
+	width: 30.7%;
+	padding-bottom: 25px;
+	border-radius: 5px;
 }
 .woocommerce .widget_price_filter .price_slider_wrapper .ui-widget-content{
 	margin-bottom: 25px;
@@ -655,7 +859,6 @@ button,input[type=submit],.btn,.widget-area .search-form .search-submit,.wpcf7 .
 .woocommerce nav.woocommerce-pagination ul li a, .woocommerce nav.woocommerce-pagination ul li span{
 	padding: 12px 17px;
 	margin: 0 2px;
-
 	background-color: transparent;
 	color: #717171;
 	border: none;
@@ -670,8 +873,9 @@ button,input[type=submit],.btn,.widget-area .search-form .search-submit,.wpcf7 .
 }
 .woocommerce .woocommerce-ordering select {
 	vertical-align: top;
-	border: 1px solid;
+	border: 1px solid #ccc;
 	padding: 7px 10px;
+	border-radius: 5px;
 }
 .woocommerce ul.cart_list li img, .woocommerce ul.product_list_widget li img{
 	width: 82px;
@@ -706,6 +910,8 @@ button,input[type=submit],.btn,.widget-area .search-form .search-submit,.wpcf7 .
 	height: 50px;
 	line-height: 50px;
 	background-color: #000;
+	-webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.10), 0 0 0 1px rgba(0, 0, 0, 0.01);
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.10), 0 0 0 1px rgba(0, 0, 0, 0.01);
 }
 .cart .label{
 	font-size: inherit;
@@ -738,6 +944,23 @@ button,input[type=submit],.btn,.widget-area .search-form .search-submit,.wpcf7 .
 }
 .woocommerce form .form-row input.input-text, .woocommerce form .form-row textarea{
 	padding: 8px 15px;
+}
+.woocommerce-pagination ul li a {
+	color: #717171;
+	background: #f9f9f9;
+}
+.woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce nav.woocommerce-pagination ul li a:hover {
+	background: transparent;
+	color: #8a7e88;
+}
+.woocommerce ul.products li.product .button {
+	margin-top: 1em;
+	padding: 10px 25px 11px;
+	font-size: 15px;
+	border-radius: 30px;
+	font-weight: 700;
+	-webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.10), 0 0 0 1px rgba(0, 0, 0, 0.01);
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.10), 0 0 0 1px rgba(0, 0, 0, 0.01);
 }
 /********************************************************
     ## Footer

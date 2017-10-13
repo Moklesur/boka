@@ -13,15 +13,8 @@
         ## Min Width 992px And Max Width 1199px
 ********************************************************/
 @media (min-width: 992px) and (max-width: 1199px) {
-    .woocommerce a.add_to_cart_button{
-        padding: .618em 6px;
-    }
     .woocommerce.archive ul.products li.last{
         margin-right: 0;
-    }
-    .woocommerce ul.products li.product .button{
-        width: 100%;
-        text-align: center;
     }
     .banner-banner-content-fix .header-banner-contents {
         top: 20%;
@@ -37,11 +30,17 @@
     .banner-banner-content-fix .header-banner-contents {
         top: 10%;
     }
+    .woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
+        width: 48%;
+    }
 }
 /********************************************************
         ## Max Width 767px
 ********************************************************/
 @media only screen and (max-width:767px) {
+    .woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
+        width: 48%;
+    }
     .header-banner-image img {
         display: block;
         position: absolute;
@@ -160,6 +159,15 @@
         ## Max Width 480px
 ********************************************************/
 @media only screen and (max-width:480px) {
+    .camera-slider-inner h1{
+        font-size: 120%;
+        margin-bottom: 10px;
+    }
+    .header-banner-contents p, .camera-slider p{
+        font-size: 100%;
+        letter-spacing: inherit;
+        margin-bottom: 10px;
+    }
     .search-fix{
         width: 270px;
         right: -100%;
@@ -171,7 +179,7 @@
         display: none;
     }
     .camera_target_content{
-        top: 10%;
+        top: 3%;
     }
     .camera-slider-inner.text-left{
         padding-left: 15px;
@@ -184,6 +192,10 @@
     }
     .boka-portfolio-list{
         width: 100%;
+    }
+    .camera-slider .btn {
+        padding: 2% 6% 2.5%;
+        font-size: 100%;
     }
 }
 /********************************************************

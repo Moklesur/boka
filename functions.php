@@ -96,6 +96,20 @@ function boka_widgets_init() {
 		'after_title'   => '</h3>',
 	) );
 
+	if ( class_exists( 'WooCommerce' ) ) {
+
+		register_sidebar( array(
+			'name'          => __( 'WooCommerce', 'boka' ),
+			'id'            => 'woocommerce-sidebar',
+			'description'   => esc_html__( 'Add widgets here to appear in your WooCommerce sidebar.', 'boka' ),
+			'before_widget' => '<section id="%1$s" class="widget boka-widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h3 class="widget-title margin-null">',
+			'after_title'   => '</h3>',
+		) );
+
+	}
+
 	$args_footer_widgets = array(
 		'name'          => __( 'Footer %d', 'boka' ),
 		'id'            => 'footer-widget',
@@ -139,8 +153,6 @@ function boka_scripts() {
 	wp_enqueue_script( 'easing', get_template_directory_uri() . '/assets/js/jquery.easing.1.3.min.js', array('jquery'), '1.3', true );
 	wp_enqueue_script( 'masonry', get_template_directory_uri() . '/assets/js/masonry.js', array('jquery'), '4.2.0', true );
 	wp_enqueue_script( 'camera', get_template_directory_uri() . '/assets/js/camera.min.js', array('jquery'), '1.3.4', true );
-	wp_enqueue_script( 'jquery-mousewheel', get_template_directory_uri() . '/assets/js/jquery.mousewheel.min.js', array('jquery'), '3.1.13', true );
-	wp_enqueue_script( 'jquery-simplr-smoothscroll', get_template_directory_uri() . '/assets/js/jquery.simplr.smoothscroll.min.js', array('jquery'), '1.0.1', true );
 	wp_enqueue_script( 'jquery-fitvids', get_template_directory_uri() . '/assets/js/jquery.fitvids.js', array('jquery'), '1.1', true );
 	wp_enqueue_script( 'boka-script', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), '1.0', true );
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -215,7 +227,10 @@ function boka_custom_tiled_gallery_width($width){
 function boka_custom_logo() {
 
 	$defaults = array(
-		'width'       => 250
+		'width'       => 250,
+		'height'      => 45,
+		'flex-width'  => true,
+		'flex-height' => true,
 	);
 	add_theme_support( 'custom-logo', $defaults );
 

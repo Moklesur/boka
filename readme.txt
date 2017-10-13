@@ -75,24 +75,11 @@ Footer Menu
   Copyright © 2008 George McGinley Smith
   Open source under the BSD License.
 
-* Mousewheel
-  jQuery Mousewheel 3.1.13
-  Copyright jQuery Foundation and other contributors
-  Released under the MIT license
-  http://jquery.org/license
-
 * FitVids
   FitVids 1.1
   Copyright 2013, Chris Coyier - http://css-tricks.com + Dave Rupert - http://daverupert.com
   Credit to Thierry Koblentz - http://www.alistapart.com/articles/creating-intrinsic-ratios-for-video/
   Released under the WTFPL license - http://sam.zoy.org/wtfpl/
-
-* Smooth Scroll
-  jquery.simplr.smoothscroll
-  version 1.0.1
-  copyright (c) 2012 https://github.com/simov/simplr-smoothscroll
-  licensed under MIT
-  requires jquery.mousewheel - https://github.com/jquery/jquery-mousewheel
 
 * GLYPHICONS
   are released under the Creative Commons Attribution 3.0 Unported (CC BY 3.0). The GLYPHICONS FREE can be used both commercially and for personal use, but you must always add a link to GLYPHICONS.com in a prominent place (e.g. the footer of a website), include the CC-BY license and the reference to GLYPHICONS.com on every page using icons.

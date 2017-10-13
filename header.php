@@ -81,11 +81,17 @@
 												</form>
 											</li>
 										<?php endif ;
-										if ( class_exists( 'WooCommerce' ) ) : ?>
-											<li class="mini-cart">
-												<a class="cart-contents" href="<?php echo WC()->cart->get_cart_url(); ?>">
+										 if ( class_exists( 'WooCommerce' ) ) : ?>
+											<li class="cart-icon text-left">
+												<a class="cart-contents" href="<?php echo wc_get_cart_url(); ?>" >
 													<i class="fa fa-shopping-basket"></i>
+													<span>
+														<?php echo sprintf ( _n( '%d', '%d', WC()->cart->get_cart_contents_count(), 'boka' ), WC()->cart->get_cart_contents_count() ); ?>
+													</span>
 												</a>
+												<div class="mini-cart">
+													<?php woocommerce_mini_cart(); ?>
+												</div>
 											</li>
 										<?php endif; ?>
 									</ul>
