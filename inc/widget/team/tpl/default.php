@@ -1,6 +1,6 @@
 <div class="boka-team text-center row">
 	<?php foreach( $instance['team'] as $i => $team ) : ?>
-		<div class="boka-team-list team-list col-md-<?php echo esc_attr( $instance['per_row'] ); ?> col-sm-<?php echo esc_attr( $instance['per_row'] ); ?> col-xs-12 margin-bottom-30">
+		<div class="boka-team-list team-list col-md-<?php echo esc_attr( $instance['per_row'] ); ?> col-sm-6 col-xs-12 margin-bottom-30">
 			<div class="team-details">
 
 				<?php
