@@ -1137,6 +1137,98 @@ function boka_customize_register( $wp_customize ) {
 		'type' => 'text',
 		'section' => 'heading_font'
 	) );
+
+	/*********************************************
+	 * Page Title
+	 *********************************************/
+
+	$wp_customize->add_section( 'page_title_panel', array(
+		'title'          => __( 'Page Title', 'boka' ),
+		'priority'       => 50
+	) );
+
+	$wp_customize->add_setting( 'enable_page_title', array(
+		'default'           => '',
+		'sanitize_callback' => 'boka_sanitize_checkbox',
+	) );
+	$wp_customize->add_control( 'enable_page_title', array(
+		'label' => __( 'Show/Hide Page Title', 'boka' ),
+		'type' => 'checkbox',
+		'section' => 'page_title_panel'
+	) );
+
+	$wp_customize->add_setting(
+		'page_title_background_color',
+		array(
+			'default'           => '#1488cc',
+			'sanitize_callback' => 'sanitize_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'page_title_background_color',
+			array(
+				'label'         => __('Background Color', 'boka'),
+				'section' => 'page_title_panel'
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'page_title_text_color',
+		array(
+			'default'           => '#ffffff',
+			'sanitize_callback' => 'sanitize_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'page_title_text_color',
+			array(
+				'label'         => __('Text Color', 'boka'),
+				'section' => 'page_title_panel'
+			)
+		)
+	);
+
+	$wp_customize->add_setting( 'page_title_background_image', array(
+		'default'           => '',
+		'sanitize_callback' => 'esc_url_raw'
+	) );
+
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'page_title_background_image',
+			array(
+				'label'          => __( 'Upload Background Image', 'boka' ),
+				'type'           => 'image',
+				'section'        => 'page_title_panel',
+			)
+		)
+	);
+
+	$wp_customize->add_setting( 'page_title_font_size', array(
+		'default'           => '48',
+		'sanitize_callback' => 'absint',
+	) );
+	$wp_customize->add_control( 'page_title_font_size', array(
+		'label' => __( 'Font Size', 'boka' ),
+		'type' => 'number',
+		'section' => 'page_title_panel'
+	) );
+
+	$wp_customize->add_setting( 'page_title_padding', array(
+		'default'           => '85',
+		'sanitize_callback' => 'absint',
+	) );
+	$wp_customize->add_control( 'page_title_padding', array(
+		'label' => __( 'Padding Top/Bottom', 'boka' ),
+		'type' => 'number',
+		'section' => 'page_title_panel'
+	) );
 }
 add_action( 'customize_register', 'boka_customize_register' );
 

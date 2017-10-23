@@ -38,6 +38,10 @@
         ## Max Width 767px
 ********************************************************/
 @media only screen and (max-width:767px) {
+    .breadcrumb-wrap h1{
+        font-size: 24px;
+        padding: 30px 15px;
+    }
     .woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
         width: 48%;
     }

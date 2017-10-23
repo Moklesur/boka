@@ -2,7 +2,7 @@
 
 function boka_title( $args = array() ) {
 
-    if ( is_front_page() || is_singular( 'post' ) || is_404() ) {
+    if ( is_front_page() || is_singular( 'post' ) || is_404() || get_theme_mod( 'enable_page_title' ) ) {
         return;
     }
 

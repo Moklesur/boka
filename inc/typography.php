@@ -166,6 +166,22 @@ function boka_typography_color( $color ) {
     $color .= "a:hover,a:focus,.site-info a:hover,.woocommerce ul.products li.product .price,.woo-widget a,.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover{ color:" . esc_attr($link_hover_color) . "} ";
 
     /**
+     * Page Title
+     */
+
+    $page_title_background_color = get_theme_mod( 'page_title_background_color', '#1488cc' );
+    $page_title_text_color = get_theme_mod( 'page_title_text_color', '#ffffff' );
+    $page_title_background_image = get_theme_mod( 'page_title_background_image' );
+    $page_title_font_size = get_theme_mod( 'page_title_font_size', '48' );
+    $page_title_padding = get_theme_mod( 'page_title_padding', '85' );
+
+    if ( $page_title_background_image != '' ){
+        $page_title_background_image = "background-image: url( $page_title_background_image )";
+    }
+
+    $color .= ".breadcrumb{ background-color:" . esc_attr( $page_title_background_color ) . "; padding:" . esc_attr( $page_title_padding ) ."px 15px; $page_title_background_image } .breadcrumb h1{ font-size:" . esc_attr( $page_title_font_size ) ."px; color:" . esc_attr( $page_title_text_color ) ."; } ";
+
+    /**
      * Typography & Color Inline
      */
     wp_add_inline_style( 'boka-style', $color );
