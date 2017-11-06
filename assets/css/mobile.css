@@ -38,9 +38,12 @@
         ## Max Width 767px
 ********************************************************/
 @media only screen and (max-width:767px) {
+    .breadcrumb{
+        padding: 35px 15px;
+    }
     .breadcrumb-wrap h1{
-        font-size: 24px;
-        padding: 30px 15px;
+        font-size: 36px;
+        padding: 10px 15px;
     }
     .woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
         width: 48%;
@@ -163,6 +166,9 @@
         ## Max Width 480px
 ********************************************************/
 @media only screen and (max-width:480px) {
+    .breadcrumb{
+        padding: 20px 15px;
+    }
     .camera-slider-inner h1{
         font-size: 120%;
         margin-bottom: 10px;
@@ -206,11 +212,7 @@
         Max Width 320px
 ********************************************************/
 @media only screen and (max-width:320px) {
-
-}
-/********************************************************
-        Max Width 240px
-********************************************************/
-@media only screen and (max-width:240px) {
-
+    .search-fix{
+        width: 235px;
+    }
 }

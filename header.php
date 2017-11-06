@@ -86,7 +86,7 @@
 												<a class="cart-contents" href="<?php echo wc_get_cart_url(); ?>" >
 													<i class="fa fa-shopping-basket"></i>
 													<span>
-														<?php echo sprintf ( _n( '%d', '%d', WC()->cart->get_cart_contents_count(), 'boka' ), WC()->cart->get_cart_contents_count() ); ?>
+														<?php echo sprintf ( _n( ' %d', ' %d', WC()->cart->get_cart_contents_count(), 'boka' ), WC()->cart->get_cart_contents_count() ); ?>
 													</span>
 												</a>
 												<div class="mini-cart">
@@ -123,9 +123,15 @@
 					<img src="<?php header_image(); ?>"  alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" class="img-responsive">
 				<?php endif; ?>
 				<div class="header-banner-contents text-center">
+					<?php if ( get_theme_mod( 'header_banner_heading' ) != '' ) : ?>
 					<h1><?php echo esc_html( get_theme_mod( 'header_banner_heading' ) ); ?></h1>
+					<?php endif;
+					if ( get_theme_mod( 'header_banner_text' ) != '' ) : ?>
 					<p><?php echo esc_html( get_theme_mod( 'header_banner_text' ) ); ?></p>
+					<?php endif;
+					if ( get_theme_mod( 'header_banner_button_text' ) != '' ) : ?>
 					<a href="<?php echo esc_url( get_theme_mod( 'header_banner_button_link' ) ); ?>" class="btn"><?php echo esc_html( get_theme_mod( 'header_banner_button_text' ) ); ?></a>
+					<?php endif; ?>
 				</div>
 			</div>
 		<?php endif; ?>

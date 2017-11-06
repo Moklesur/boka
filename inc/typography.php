@@ -29,7 +29,9 @@ function boka_typography_color( $color ) {
     if ( get_theme_mod( 'enable_top_bar' ) ) :
 
         $top_bar_bg = get_theme_mod( 'top_bar_bg', '#000' );
+        $top_bar_text_color = get_theme_mod( 'top_bar_text_color', '#fff' );
         $color .= ".top-bar { background-color:" . esc_attr( $top_bar_bg ) . "; } ";
+        $color .= ".top-bar * { color:" . esc_attr( $top_bar_text_color ) . "; } ";
 
     endif;
 

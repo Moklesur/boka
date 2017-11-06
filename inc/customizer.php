@@ -374,6 +374,24 @@ function boka_customize_register( $wp_customize ) {
 		)
 	);
 
+	$wp_customize->add_setting(
+		'top_bar_text_color',
+		array(
+			'default'           => '#fff',
+			'sanitize_callback' => 'sanitize_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'top_bar_text_color',
+			array(
+				'label'         => __('Top Bar Text Color', 'boka'),
+				'section'       => 'top_bar'
+			)
+		)
+	);
+
 	$wp_customize->add_setting( 'enable_top_bar_social', array(
 		'default'           => '',
 		'sanitize_callback' => 'boka_sanitize_checkbox',
