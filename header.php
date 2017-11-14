@@ -122,6 +122,7 @@
 				<?php if ( get_header_image() ) : ?>
 					<img src="<?php header_image(); ?>"  alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" class="img-responsive">
 				<?php endif; ?>
+				<?php if ( get_theme_mod( 'header_banner_heading' ) || get_theme_mod( 'header_banner_text' ) || get_theme_mod( 'header_banner_button_text' ) ) : ?>
 				<div class="header-banner-contents text-center">
 					<?php if ( get_theme_mod( 'header_banner_heading' ) != '' ) : ?>
 					<h1><?php echo esc_html( get_theme_mod( 'header_banner_heading' ) ); ?></h1>
@@ -133,6 +134,7 @@
 					<a href="<?php echo esc_url( get_theme_mod( 'header_banner_button_link' ) ); ?>" class="btn"><?php echo esc_html( get_theme_mod( 'header_banner_button_text' ) ); ?></a>
 					<?php endif; ?>
 				</div>
+				<?php endif; ?>
 			</div>
 		<?php endif; ?>
 	</header>

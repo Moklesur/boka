@@ -48,11 +48,6 @@
     .woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
         width: 48%;
     }
-    .header-banner-image img {
-        display: block;
-        position: absolute;
-        height: 100%;
-    }
     .header-top{
         padding-bottom: 24px;
     }
@@ -157,19 +152,42 @@
     .logo {
         margin-top: 2px;
     }
+    .header-banner-contents h1{
+        font-size: 24px;
+    }
+    .header-banner-contents p,.header-banner-contents .btn{
+        font-size: 100%;
+        letter-spacing: inherit;
+    }
+    .header-banner-contents h1, .header-banner-contents p{
+        margin-bottom: 15px;
+    }
+    .header-banner-contents .btn {
+        padding: 4px 20px 5px;
+    }
     .banner-banner-content-fix .header-banner-contents {
-        position: relative;
-        padding: 50px 15px;
+        top: 18%;
     }
 }
 /********************************************************
         ## Max Width 480px
 ********************************************************/
 @media only screen and (max-width:480px) {
+    .banner-banner-content-fix .header-banner-contents {
+        top: 6%;
+    }
+    .header-banner-contents .btn {
+        padding: 4px 20px 5px;
+        font-weight: inherit;
+        font-size: 16px;
+    }
     .breadcrumb{
         padding: 20px 15px;
     }
-    .camera-slider-inner h1{
+    .header-banner-contents h1, .header-banner-contents p {
+        margin-bottom: 10px;
+    }
+    .camera-slider-inner h1,.header-banner-contents h1{
         font-size: 120%;
         margin-bottom: 10px;
     }
@@ -212,7 +230,19 @@
         Max Width 320px
 ********************************************************/
 @media only screen and (max-width:320px) {
+    .banner-banner-content-fix .header-banner-contents {
+        top: 1%;
+    }
+    .header-banner-contents h1, .header-banner-contents p {
+        margin-bottom: 5px;
+    }
     .search-fix{
         width: 235px;
+    }
+    .header-banner-contents h1{
+        font-size: 16px;
+    }
+    .header-banner-contents p,.header-banner-contents .btn, .camera-slider p{
+        font-size: 14px;
     }
 }
