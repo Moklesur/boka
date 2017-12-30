@@ -69,21 +69,20 @@ $primary_color = get_theme_mod( 'primary_color', '#1488cc' );
 ?>
 <script>
 	jQuery( window ).ready(function() {
-			jQuery('.boka-camera-slider<?php echo $sliderID; ?>').camera({
-				fx: '<?php echo $instance['control']['effect']; ?>',
-				height: '<?php echo $instance['control']['height']; ?>%',
-				loader: '<?php echo $instance['control']['loader']; ?>',
-				margin:'',
-				alignment: 'center',
-				barPosition: '<?php echo $instance['control']['barPosition']; ?>',
-				thumbnails: false,
-				playPause: false,
-				loaderColor: '#fff',
-				loaderBgColor: '<?php echo esc_attr( $primary_color ); ?>',
-				hover: true,
-				opacityOnGrid: true,
-				pagination: false
-			});
-
+		jQuery('.boka-camera-slider<?php echo $sliderID; ?>').camera({
+			fx: '<?php echo $instance['control']['effect']; ?>',
+			height: '<?php echo $instance['control']['height']; ?>%',
+			loader: '<?php echo $instance['control']['loader']; ?>',
+			margin:'',
+			alignment: 'center',
+			barPosition: '<?php echo $instance['control']['barPosition']; ?>',
+			thumbnails: false,
+			playPause: false,
+			loaderColor: '#fff',
+			loaderBgColor: '<?php echo esc_attr( $primary_color ); ?>',
+			hover: true,
+			opacityOnGrid: true,
+			pagination: false
+		});
 	});
 </script>

@@ -1249,6 +1249,106 @@ function boka_customize_register( $wp_customize ) {
 	) );
 }
 add_action( 'customize_register', 'boka_customize_register' );
+/**
+ * Adding Go to Pro Section in Customizer
+ * https://github.com/justintadlock/trt-customizer-pro
+ */
+if( class_exists( 'WP_Customize_Section' ) ) :
+	/**
+	 * Adding Go to Pro Section in Customizer
+	 * https://github.com/justintadlock/trt-customizer-pro
+	 */
+	class boka_Customize_Section_Pro extends WP_Customize_Section {
+
+		/**
+		 * The type of customize section being rendered.
+		 *
+		 * @since  1.0.0
+		 * @access public
+		 * @var    string
+		 */
+		public $type = 'pro-section';
+
+		/**
+		 * Custom button text to output.
+		 *
+		 * @since  1.0.0
+		 * @access public
+		 * @var    string
+		 */
+		public $pro_text = '';
+
+		/**
+		 * Custom pro button URL.
+		 *
+		 * @since  1.0.0
+		 * @access public
+		 * @var    string
+		 */
+		public $pro_url = '';
+
+		/**
+		 * Add custom parameters to pass to the JS via JSON.
+		 *
+		 * @since  1.0.0
+		 * @access public
+		 * @return void
+		 */
+		public function json() {
+			$json = parent::json();
+
+			$json['pro_text'] = $this->pro_text;
+			$json['pro_url']  = esc_url( $this->pro_url );
+
+			return $json;
+		}
+
+		/**
+		 * Outputs the Underscore.js template.
+		 *
+		 * @since  1.0.0
+		 * @access public
+		 * @return void
+		 */
+		protected function render_template() { ?>
+			<li id="accordion-section-{{ data.id }}" class="accordion-section control-section control-section-{{ data.type }} cannot-expand get-pro-theme">
+				<h3 class="accordion-section-title">
+					{{ data.title }}
+					<# if ( data.pro_text && data.pro_url ) { #>
+						<a href="{{ data.pro_url }}" class="button button-secondary alignright" target="_blank">{{ data.pro_text }}</a>
+						<# } #>
+				</h3>
+			</li>
+		<?php }
+	}
+endif;
+
+add_action( 'customize_register', 'boka_sections_pro' );
+function boka_sections_pro( $wp_customize ) {
+	// Register custom section types.
+	$wp_customize->register_section_type( 'boka_Customize_Section_Pro' );
+
+	// Register sections.
+	$wp_customize->add_section(
+		new boka_Customize_Section_Pro(
+			$wp_customize,
+			'boka_get_pro',
+			array(
+				'title'    => esc_html__( 'Pro Available', 'boka' ),
+				'priority' => 5,
+				'pro_text' => esc_html__( 'Get Pro Theme', 'boka' ),
+				'pro_url'  => 'https://www.themetim.com/wordpress-themes/boka-pro/'
+			)
+		)
+	);
+}
+/**
+ * Enqueue Scripts for customize controls
+ */
+function boka_customize_scripts() {
+	wp_enqueue_script( 'boka-customize-controls-js', get_template_directory_uri().'/assets/js/customize-controls.js', array( 'jquery' ), '', true );
+}
+add_action( 'customize_controls_enqueue_scripts', 'boka_customize_scripts' );
 
 /**
  * Text
