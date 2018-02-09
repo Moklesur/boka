@@ -14,7 +14,7 @@ $margin[] = 'padding-gap-6';
 		<?php if ( has_post_thumbnail() && get_theme_mod('featured_image_index_enable') != 1 ) : ?>
 
 			<div class="entry-thumb">
-				<a href="<?php the_permalink(); ?>">
+				<a href="<?php echo esc_url( get_permalink() ); ?>">
 					<img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive" />
 				</a>
 			</div>

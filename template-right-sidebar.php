@@ -6,7 +6,6 @@
  * @subpackage boka
  */
 get_header(); ?>
-
     <main class="left-sidebar-page">
         <section>
             <div class="container">
@@ -29,7 +28,6 @@ get_header(); ?>
             </div>
         </section>
     </main><!-- #main -->
-
 <?php
 
 get_footer();

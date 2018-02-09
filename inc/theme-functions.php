@@ -48,9 +48,7 @@ function boka_footer_copyright(){
     ?>
     <div class="col-md-6 col-sm-6 col-xs-12 site-info">
         <a href="<?php echo esc_url( __( 'https://www.themetim.com', 'boka' ) ); ?>">
-            <?php
-            echo esc_html( get_theme_mod( 'copyright', 'Boka By ThemeTim' ) );
-            ?>
+            <?php esc_html_e( get_theme_mod( 'copyright', 'Boka WordPress Theme By ThemeTim' ) ); ?>
         </a>
     </div>
     <?php

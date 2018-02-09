@@ -8,7 +8,6 @@
  */
 
 get_header(); ?>
-
 	<main class="article-page">
 		<section>
 			<div class="container">

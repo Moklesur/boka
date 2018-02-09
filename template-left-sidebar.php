@@ -29,7 +29,6 @@ get_header(); ?>
             </div>
         </section>
     </main><!-- #main -->
-
 <?php
 
 get_footer();

@@ -19,7 +19,7 @@ if ( is_sticky() ){
 		<?php if ( has_post_thumbnail() && get_theme_mod('featured_image_index_enable') != 1 ) : ?>
 
 			<div class="entry-thumb">
-				<a href="<?php the_permalink(); ?>">
+				<a href="<?php echo esc_url( get_permalink() ); ?>">
 					<img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive" />
 				</a>
 			</div>
@@ -63,7 +63,7 @@ if ( is_sticky() ){
 				?>
 				<div class="clearfix"></div>
 				<footer class="entry-footer overflow text-capitalize margin-top-20">
-					<a href="<?php echo esc_url( get_permalink() ); ?>" class="read-more"><?php _e( 'read more', 'boka' )?> &rarr;</a>
+					<a href="<?php echo esc_url( get_permalink() ); ?>" class="read-more"><?php esc_html_e( 'read more', 'boka' )?> &rarr;</a>
 				</footer><!-- .entry-footer -->
 			<?php } ?>
 		</div><!-- .entry-content -->
