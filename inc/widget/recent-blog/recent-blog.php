@@ -5,7 +5,7 @@
  * @package boka
  */
 
-class Themetim_Recent_Blog_Widget extends SiteOrigin_Widget {
+class Boka_Recent_Blog_Widget extends SiteOrigin_Widget {
 
 	function __construct() {
 
@@ -18,14 +18,13 @@ class Themetim_Recent_Blog_Widget extends SiteOrigin_Widget {
 			array(),
 
 			array(
-				'heading_alignment' => array(
+				'layout_style' => array(
 					'type' => 'select',
-					'label' => __( 'Text Alignment', 'boka' ),
-					'default' => 'text-left',
+					'label' => __( 'Layout', 'boka' ),
+					'default' => 'default',
 					'options' => array(
-						'text-left' => __( 'Text Left', 'boka' ),
-						'text-center' => __( 'Text Center', 'boka' ),
-						'text-right' => __( 'Text Right', 'boka' ),
+						'default' => __( 'Default', 'boka' ),
+						'two-column' => __( 'Two Columns', 'boka' )
 					)
 				),
 				'title' => array(
@@ -35,7 +34,7 @@ class Themetim_Recent_Blog_Widget extends SiteOrigin_Widget {
 				'post_limit' => array(
 					'type' => 'number',
 					'label' => __( 'Post Limit', 'boka' ),
-                    'default' => '2'
+                    'default' => '3'
 				),
 			)
 
@@ -47,4 +46,4 @@ class Themetim_Recent_Blog_Widget extends SiteOrigin_Widget {
 	}
 }
 
-siteorigin_widget_register( 'boka-recent-blog-widget', __FILE__, 'Themetim_Recent_Blog_Widget' );
+siteorigin_widget_register( 'boka-recent-blog-widget', __FILE__, 'Boka_Recent_Blog_Widget' );

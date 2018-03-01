@@ -119,10 +119,10 @@ function boka_typography_color( $color ) {
         $footer_border = 'border-top: '.  $footer_border_size .'px ' . esc_attr( $footer_border_style ) .' '. esc_attr( $footer_border_color ) .';';
     }
 
-    $color .= ".footer-main { background:" . esc_attr($footer_bg_color) . "; $footer_border $footer_top_padding } ";
+    $color .= ".footer-main,.footer-bottom { background:" . esc_attr($footer_bg_color) . "; $footer_border $footer_top_padding } ";
     $color .= ".footer-bottom {  $footer_bottom_padding } ";
 
-    $color .= ".footer-top ,.footer-main, .footer-main a, .footer-main h4{  color: ". esc_attr($footer_text_color) .";} ";
+    $color .= ".footer-top ,.footer-main, .footer-main a, .footer-main h4,.footer-bottom{  color: ". esc_attr($footer_text_color) .";} ";
 
     /**
      * Font Family

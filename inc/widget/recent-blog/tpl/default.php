@@ -1,6 +1,6 @@
-<div class="boka-recent-blog <?php echo $instance['heading_alignment']; ?>">
+<div class="boka-recent-blog">
 	<?php if ( ! empty( $instance['title'] ) ) : ?>
-		<div class="<?php echo $instance['heading_alignment']; ?>-heading margin-bottom-30">
+		<div class="margin-bottom-30">
 			<?php if ( ! empty( $instance['title'] ) ) : ?>
 				<h1 class="page-header"><?php echo esc_html( $instance['title'] ); ?></h1>
 			<?php endif; ?>
@@ -15,34 +15,48 @@
 	) );
 
 	?>
-	<div class="recent-blog-post-widget text-left">
+	<div class="recent-blog-post-widget <?php echo $instance['layout_style']; ?>-post-layout">
 		<?php
 		if ($query_latest_blog->have_posts()) :
-			while ( $query_latest_blog->have_posts() ) : $query_latest_blog->the_post(); ?>
-				<div class="col-md-6 col-sm-6 col-xs-12 margin-top-30">
-					<?php if ( has_post_thumbnail() ) : ?>
-						<div class="entry-thumb">
-							<a href="<?php the_permalink(); ?>">
-								<img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive margin-bottom-20" alt="" />
-							</a>
+			while ( $query_latest_blog->have_posts() ) : $query_latest_blog->the_post();
+
+				$col_4 = 'col-md-12 col-sm-12 col-xs-12';
+				$row = 'row';
+				$col_5 = 'col-md-5 col-sm-5 col-xs-12 margin-top-30';
+				$col_7 = 'col-md-7 col-sm-7 col-xs-12 margin-top-30';
+
+				if( $instance['layout_style'] == 'default' ){
+					$col_4 = 'col-md-4 col-sm-4 col-xs-12 margin-top-30';
+					$row = '';
+					$col_5 = '';
+					$col_7 = '';
+				}
+				?>
+				<div class="<?php echo $col_4; ?>">
+					<div class="<?php echo $row; ?>">
+						<div class="<?php echo $col_5; ?>">
+							<?php if ( has_post_thumbnail() ) : ?>
+								<div class="entry-thumb">
+									<a href="<?php the_permalink(); ?>">
+										<img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive margin-bottom-20" alt="" />
+									</a>
+								</div>
+							<?php endif; ?>
 						</div>
-					<?php endif; ?>
-					<?php the_title( sprintf( '<h2 class="entry-title text-capitalize margin-null link-fix"><a href="%s">', esc_url( get_permalink() ) ), '</a></h2>' );
-					if ( 'post' === get_post_type() ) : ?>
-						<div class="entry-meta margin-bottom-20 link-fix">
-							<?php
-							boka_posted_on();
-							boka_entry_footer();
-							?>
-						</div><!-- .entry-meta -->
-					<?php endif; ?>
-					<div class="entry-summary">
-						<?php the_excerpt(); ?>
-					</div>
-					<div class="margin-top-20">
-						<a href="<?php echo esc_url( get_permalink() ); ?>" class="read-more">
-							<?php _e( 'read more', 'boka' )?> &rarr;
-						</a>
+						<div class="<?php echo $col_7; ?>">
+							<?php the_title( sprintf( '<h2 class="entry-title text-capitalize margin-null link-fix"><a href="%s">', esc_url( get_permalink() ) ), '</a></h2>' );
+							if ( 'post' === get_post_type() ) : ?>
+								<div class="entry-meta margin-bottom-20 link-fix">
+									<?php
+									boka_posted_on();
+									boka_entry_footer();
+									?>
+								</div><!-- .entry-meta -->
+							<?php endif; ?>
+							<div class="entry-summary">
+								<?php the_excerpt(); ?>
+							</div>
+						</div>
 					</div>
 				</div>
 			<?php endwhile;
