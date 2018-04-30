@@ -186,6 +186,8 @@ require get_template_directory() . '/inc/typography.php';
 add_action( 'after_setup_theme', 'boka_woocommerce_support' );
 function boka_woocommerce_support() {
 	add_theme_support( 'woocommerce' );
+    add_theme_support( 'wc-product-gallery-lightbox' );
+    add_theme_support( 'wc-product-gallery-zoom' );
 }
 /**
  * woocommerce Hook

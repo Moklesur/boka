@@ -34,8 +34,7 @@ $(function(){
         $masonry.imagesLoaded( function() {
             $masonry.masonry({
                 itemSelector: '.hentry',
-                //isAnimated: true,
-                isFitWidth: true,
+                isAnimated: true,
                 animationOptions: {
                     duration: 500,
                     easing: 'linear'

@@ -29,11 +29,7 @@ get_header(); ?>
 
 							endwhile;
 
-							if ( class_exists( 'WooCommerce' ) ) :
-								woocommerce_pagination();
-							else:
-								the_posts_navigation();
-							endif;
+                            the_posts_navigation();
 
 						else :
 

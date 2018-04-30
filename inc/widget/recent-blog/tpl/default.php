@@ -24,12 +24,14 @@
 				$row = 'row';
 				$col_5 = 'col-md-5 col-sm-5 col-xs-12 margin-top-30';
 				$col_7 = 'col-md-7 col-sm-7 col-xs-12 margin-top-30';
+				$margin = '';
 
 				if( $instance['layout_style'] == 'default' ){
 					$col_4 = 'col-md-4 col-sm-4 col-xs-12 margin-top-30';
 					$row = '';
 					$col_5 = '';
 					$col_7 = '';
+					$margin = 'margin-bottom-20';
 				}
 				?>
 				<div class="<?php echo $col_4; ?>">
@@ -38,7 +40,7 @@
 							<?php if ( has_post_thumbnail() ) : ?>
 								<div class="entry-thumb">
 									<a href="<?php the_permalink(); ?>">
-										<img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive margin-bottom-20" alt="" />
+										<img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive <?php echo $margin; ?>" alt="" />
 									</a>
 								</div>
 							<?php endif; ?>

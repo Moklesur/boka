@@ -41,11 +41,7 @@ get_header(); ?>
 								?>
 							</div>
 						<?php
-						if ( class_exists( 'WooCommerce' ) ) :
-							woocommerce_pagination();
-						else:
-							the_posts_navigation();
-						endif;
+                        the_posts_navigation();
 						else :
 
 							get_template_part( 'template-parts/content', 'none' );
