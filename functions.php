@@ -300,6 +300,13 @@ function boka_active_plugins() {
 			'required'  => false,
 		),
         array(
+            'name'   => __( 'Boka Core', 'boka' ),
+            'slug'   => 'boka-core',
+            'source' => 'https://github.com/Moklesur/boka-core/archive/main.zip',
+            'required'     => true, // If false, the plugin is only 'recommended' instead of required.
+            'external_url' => 'https://github.com/Moklesur/boka-core',
+        ),
+        array(
             'name'      => 'Elementor Page Builder',
             'slug'      => 'elementor',
             'required'  => false
