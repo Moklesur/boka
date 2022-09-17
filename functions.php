@@ -194,43 +194,7 @@ function boka_woocommerce_support() {
  * woocommerce Hook
  */
 require get_template_directory() . '/inc/woocommerce.php';
-/**
- * Boka SO Widget
- */
-require get_template_directory() . '/inc/widget/widget-setting.php';
-/**
- * Elementor widgets
- */
-function boka_register_elementor_widgets()
-{
 
-    if ( defined('ELEMENTOR_PATH') && class_exists('Elementor\Widget_Base') ) {
-        require get_template_directory() . '/plugins/camera-slider.php';
-        require get_template_directory() . '/plugins/heading.php';
-        require get_template_directory() . '/plugins/content-boxes.php';
-    }
-    
-}
-add_action('elementor/widgets/widgets_registered', 'boka_register_elementor_widgets');
-
-/**
- * @param $elements_manager
- * elementor Category Name
- */
-function boka_elementor_widget_categories($elements_manager)
-{
-
-    $elements_manager->add_category(
-        'boka',
-        array(
-            'title' => __('Boka Widgets', 'boka'),
-            'icon' => 'fa fa-plug',
-        )
-    );
-
-}
-
-add_action('elementor/elements/categories_registered', 'boka_elementor_widget_categories');
 /**
  * Boka Bootstrap Menu
  */
