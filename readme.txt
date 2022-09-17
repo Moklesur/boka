@@ -4,7 +4,7 @@ Contributors: themetim
 Requires at least: 4.5
 Tested up to: 5.2.2
 Requires PHP: 5.4
-Stable tag: 1.0
+Stable tag: 2.0
 Tags: blog, custom-background, custom-colors, custom-menu, translation-ready, theme-options, threaded-comments, custom-logo, footer-widgets, sticky-post, custom-header, featured-image-header, full-width-template, left-sidebar, right-sidebar, e-commerce, portfolio
 
 == License ==
@@ -99,3 +99,9 @@ Footer Menu
 
 * Image (used in screenshot)
   https://pixabay.com/en/person-man-male-commuting-bike-731492/
+
+  == Credits ==
+  Version: 2.0
+  * Elementor addons update
+  * Boka Core plugins
+  * bug fix
